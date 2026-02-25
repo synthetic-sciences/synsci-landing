@@ -1,106 +1,99 @@
-// ── Terminal animation ──
-function initTerminal() {
-  const term = document.getElementById('term');
-  if (!term) return;
+function safePlay(video) {
+  const playPromise = video.play();
+  if (playPromise && typeof playPromise.catch === 'function') {
+    playPromise.catch(() => {});
+  }
+}
 
-  let stopped = false;
-  const cursor = () => '<span class="term-cursor"></span>';
+function initModeVideos() {
+  const cards = document.querySelectorAll('.mode-card');
+  if (!cards.length) return;
 
-  function clear() { term.innerHTML = ''; }
+  const modal = document.getElementById('videoModal');
+  const modalPlayer = document.getElementById('videoModalPlayer');
+  const modalTitle = document.getElementById('videoModalTitle');
+  const closeEls = modal ? modal.querySelectorAll('[data-close-video]') : [];
+  const closeBtn = modal ? modal.querySelector('.video-modal-close') : null;
+  let lastTrigger = null;
 
-  function typeText(text, speed = 15) {
-    return new Promise(resolve => {
-      let i = 0;
-      const el = document.createElement('span');
-      term.appendChild(el);
-      function tick() {
-        if (stopped) return resolve();
-        if (i < text.length) {
-          el.innerHTML = text.slice(0, i + 1) + cursor();
-          i++;
-          setTimeout(tick, speed + Math.random() * 8);
-        } else {
-          el.innerHTML = text;
-          resolve();
-        }
+  function resetPreview(video) {
+    video.pause();
+    if (video.currentTime > 0) video.currentTime = 0;
+  }
+
+  function closeModal() {
+    if (!modal || modal.hidden || !modalPlayer) return;
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+    modalPlayer.pause();
+    modalPlayer.removeAttribute('src');
+    modalPlayer.load();
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  function openModal(source, title, trigger) {
+    if (!modal || !modalPlayer || !modalTitle || !source) return;
+    lastTrigger = trigger;
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    modalTitle.textContent = title;
+    modalPlayer.setAttribute('src', source);
+    modalPlayer.currentTime = 0;
+    safePlay(modalPlayer);
+    if (closeBtn) closeBtn.focus();
+  }
+
+  cards.forEach(card => {
+    const preview = card.querySelector('.agent-preview-video');
+    const trigger = card.querySelector('.agent-media-trigger');
+    if (!preview || !trigger) return;
+
+    preview.muted = true;
+    preview.playsInline = true;
+    preview.preload = 'auto';
+    preview.load();
+
+    const startPreview = () => {
+      if (preview.readyState >= 2) {
+        safePlay(preview);
+        return;
       }
-      tick();
+      const handleLoaded = () => safePlay(preview);
+      preview.addEventListener('loadeddata', handleLoaded, { once: true });
+      preview.load();
+    };
+    const stopPreview = () => resetPreview(preview);
+
+    trigger.addEventListener('pointerenter', startPreview);
+    trigger.addEventListener('pointerleave', stopPreview);
+    card.addEventListener('focusin', startPreview);
+    card.addEventListener('focusout', event => {
+      if (!card.contains(event.relatedTarget)) stopPreview();
     });
-  }
 
-  function addLine(html) {
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    term.appendChild(div);
-  }
-
-  function pause(ms) {
-    return new Promise(r => setTimeout(r, ms));
-  }
-
-  async function play() {
-    clear();
-
-    // step 1: npm install
-    await typeText('<span class="t-prompt">~ $</span> <span class="t-cmd">npm i -g @synsci/cli</span>', 18);
-    await pause(250);
-    addLine('');
-    addLine('<span class="t-dim">added 1 package in 3s</span>');
-    await pause(150);
-    addLine('<span class="t-green">&#10003;</span> <span class="t-dim">installed</span> @synsci/cli@1.1.80');
-    await pause(300);
-    addLine('');
-
-    // step 2: connect login
-    await typeText('<span class="t-prompt">~ $</span> <span class="t-cmd">synsc connect login</span>', 18);
-    await pause(250);
-    addLine('');
-    addLine('<span class="t-dim">opening browser...</span>');
-    await pause(200);
-    addLine('<span class="t-green">&#10003;</span> <span class="t-dim">authenticated via github as</span> <span class="t-cyan">researcher@lab</span>');
-    await pause(150);
-    addLine('<span class="t-green">&#10003;</span> <span class="t-dim">credentials synced:</span> <span class="t-cyan">tinker</span> <span class="t-dim">·</span> <span class="t-cyan">huggingface</span> <span class="t-dim">·</span> <span class="t-cyan">modal</span>');
-    await pause(300);
-    addLine('');
-
-    // step 3: synsc
-    await typeText('<span class="t-prompt">~ $</span> <span class="t-cmd">synsc</span>', 22);
-    await pause(200);
-    addLine('');
-    addLine('<span class="t-dim">synthetic sciences cli v1.1.80</span>');
-    await pause(100);
-    addLine('<span class="t-green">&#10003;</span> <span class="t-dim">agent:</span> <span class="t-coral">research</span> <span class="t-dim">· model:</span> claude sonnet 4.5');
-    await pause(100);
-    addLine('<span class="t-green">&#10003;</span> <span class="t-dim">skills loaded:</span> 93');
-    await pause(200);
-    addLine('');
-    addLine('<span class="t-prompt">&gt;</span> ' + cursor());
-    // animation complete — stays as final state, no loop
-  }
-
-  // start when visible
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        stopped = false;
-        play();
-        obs.unobserve(e.target);
-      }
+    trigger.addEventListener('click', () => {
+      const source = card.dataset.videoSrc;
+      const title = card.dataset.videoTitle || 'Mode Demo';
+      stopPreview();
+      openModal(source, title, trigger);
     });
-  }, { threshold: 0.3 });
+  });
 
-  obs.observe(term);
+  closeEls.forEach(el => el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeModal();
+  });
 }
 
 // ── Scroll reveal ──
 function initReveal() {
   const targets = [
-    '.section-hdr', '.hero-top', '.hero-mockup',
-    '.agent-featured', '.agent-card', '.showcase-inner',
-    '.cloud-card',
-    '.ib-card',
+    '.section-hdr', '.hero-top', '.hero-mockup-wrapper',
+    '.mode-card', '.showcase-inner',
+    '.runtime-card', '.sleep-monitor',
+    '.isg-card',
     '.pricing-card',
-    '.footer-hero'
+    '.footer-brand'
   ];
   const els = document.querySelectorAll(targets.join(','));
   els.forEach(el => el.classList.add('reveal'));
@@ -123,6 +116,47 @@ function initScroll() {
   });
 }
 
+// ── Dynamic section transitions ──
+function initDynamicTransitions() {
+  const transitionBars = document.querySelectorAll('.section-transition span');
+  const showcaseArts = document.querySelectorAll('.showcase-art');
+  if (!transitionBars.length && !showcaseArts.length) return;
+
+  let rafId = 0;
+
+  const update = () => {
+    rafId = 0;
+    const viewportHeight = window.innerHeight || 1;
+
+    transitionBars.forEach(bar => {
+      const rect = bar.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const distance = Math.abs(center - viewportHeight / 2);
+      const intensity = Math.max(0, 1 - distance / (viewportHeight * 0.65));
+      const shift = -42 + intensity * 84;
+      bar.style.setProperty('--transition-shift', `${shift.toFixed(2)}%`);
+      bar.style.setProperty('--transition-alpha', (0.12 + intensity * 0.24).toFixed(2));
+    });
+
+    showcaseArts.forEach(art => {
+      const section = art.closest('.showcase');
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const sectionDelta = rect.top + rect.height / 2 - viewportHeight / 2;
+      const shift = Math.max(-42, Math.min(42, sectionDelta * -0.08));
+      art.style.setProperty('--art-shift', `${shift.toFixed(2)}px`);
+    });
+  };
+
+  const requestUpdate = () => {
+    if (!rafId) rafId = requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate);
+  requestUpdate();
+}
+
 // ── Copy command ──
 window.copyCmd = function(btn, text) {
   navigator.clipboard.writeText(text);
@@ -136,5 +170,6 @@ window.copyCmd = function(btn, text) {
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initScroll();
-  initTerminal();
+  initDynamicTransitions();
+  initModeVideos();
 });
