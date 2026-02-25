@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>privacy policy — synthetic sciences</title>
+  <meta name="description" content="privacy policy for synthetic sciences and the synsc platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/legal.css" />
+</head>
+<body>
+
+  <!-- paper texture SVG filters -->
+  <div class="paper-bg" aria-hidden="true">
+    <svg width="0" height="0">
+      <filter id="paper-surface" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" seed="2" stitchTiles="stitch" result="noise"/>
+        <feDiffuseLighting in="noise" lighting-color="#FFFFFF" surfaceScale="2.5" result="lit">
+          <feDistantLight azimuth="45" elevation="55"/>
+        </feDiffuseLighting>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <filter id="fiber">
+        <feTurbulence type="turbulence" baseFrequency="0.015 0.12" numOctaves="2" seed="5" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+    </svg>
+  </div>
+
+  <!-- nav -->
+  <div class="nav-spacer"></div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <img src="/logo.png" alt="synthetic sciences" class="nav-logo-img" width="28" height="28" />
+        <a href="/" class="nav-wordmark">synthetic sciences</a>
+      </div>
+      <div class="nav-center">
+        <a href="/#agents" class="nav-link">modes</a>
+        <a href="/#infrastructure" class="nav-link">infrastructure</a>
+        <a href="/#pricing" class="nav-link">pricing</a>
+      </div>
+      <div class="nav-right">
+        <a href="https://cli.syntheticsciences.ai" class="btn-solid">get started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <section class="legal-hero">
+    <div class="legal-breadcrumb">
+      <a href="/">home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>privacy policy</span>
+    </div>
+    <h1 class="legal-h1">privacy policy</h1>
+    <span class="legal-effective">
+      <span class="eff-dot"></span>
+      effective february 24, 2026
+    </span>
+  </section>
+
+  <div class="divider" style="max-width: 1200px; margin: 0 auto;"></div>
+
+  <!-- body -->
+  <div class="legal-body">
+
+    <!-- table of contents -->
+    <aside class="legal-toc">
+      <div class="legal-toc-title">contents</div>
+      <div class="legal-toc-list">
+        <a href="#introduction"><span class="toc-num">01</span> introduction</a>
+        <a href="#info-collect"><span class="toc-num">02</span> information we collect</a>
+        <a href="#how-use"><span class="toc-num">03</span> how we use information</a>
+        <a href="#data-sharing"><span class="toc-num">04</span> data sharing</a>
+        <a href="#data-storage"><span class="toc-num">05</span> data storage &amp; security</a>
+        <a href="#your-rights"><span class="toc-num">06</span> your rights</a>
+        <a href="#cookies"><span class="toc-num">07</span> cookies &amp; tracking</a>
+        <a href="#third-party"><span class="toc-num">08</span> third-party services</a>
+        <a href="#children"><span class="toc-num">09</span> children's privacy</a>
+        <a href="#changes"><span class="toc-num">10</span> changes to this policy</a>
+        <a href="#contact"><span class="toc-num">11</span> contact us</a>
+      </div>
+    </aside>
+
+    <!-- content -->
+    <div class="legal-content">
+
+      <div class="legal-section" id="introduction">
+        <span class="legal-section-num">01</span>
+        <h2>introduction</h2>
+        <p>Inkvell Inc. ("Synthetic Sciences," "we," "our," or "us") operates the Synthetic Sciences platform, including the synsc CLI tool, cloud dashboard, and associated services (collectively, the "Service"). This Privacy Policy describes how we collect, use, store, and share your information when you use our Service.</p>
+        <p>By accessing or using our Service, you agree to this Privacy Policy. If you do not agree, please discontinue use of the Service.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="info-collect">
+        <span class="legal-section-num">02</span>
+        <h2>information we collect</h2>
+        <p><strong>Account information.</strong> When you create an account, we collect your name, email address, and authentication credentials (e.g., via GitHub OAuth). If you subscribe to a paid plan, we collect billing information through our payment processor.</p>
+        <p><strong>Usage data.</strong> We automatically collect information about how you interact with the Service, including:</p>
+        <ul>
+          <li>Agent sessions, mode selections, and feature usage</li>
+          <li>Compute resource provisioning and usage metrics</li>
+          <li>CLI commands executed (metadata only, not content)</li>
+          <li>Error logs and performance diagnostics</li>
+          <li>Device type, browser, IP address, and approximate location</li>
+        </ul>
+        <p><strong>Research data.</strong> When you use our agents, the content you provide (queries, uploaded files, generated outputs) is processed to deliver the Service. We do not use your research content to train our models unless you explicitly opt in.</p>
+        <p><strong>Third-party credentials.</strong> You may connect external services (e.g., Hugging Face, Modal, Weights &amp; Biases). We store encrypted API keys solely to facilitate these integrations on your behalf.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="how-use">
+        <span class="legal-section-num">03</span>
+        <h2>how we use your information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Provide, maintain, and improve the Service</li>
+          <li>Process transactions and manage your subscription</li>
+          <li>Authenticate your identity and secure your account</li>
+          <li>Send transactional communications (e.g., billing receipts, security alerts)</li>
+          <li>Analyze usage patterns to improve performance and reliability</li>
+          <li>Comply with legal obligations and enforce our Terms of Service</li>
+        </ul>
+        <p>We do <strong>not</strong> sell your personal information to third parties. We do <strong>not</strong> use your research content for advertising purposes.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="data-sharing">
+        <span class="legal-section-num">04</span>
+        <h2>data sharing</h2>
+        <p>We may share your information in the following limited circumstances:</p>
+        <ul>
+          <li><strong>Service providers.</strong> Third-party vendors who help us operate the Service (e.g., cloud hosting, payment processing, analytics). These providers are contractually bound to protect your data.</li>
+          <li><strong>Compute providers.</strong> When you provision GPU resources, minimal metadata is shared with infrastructure partners (e.g., Modal, Tinker) to execute your workloads.</li>
+          <li><strong>Legal requirements.</strong> When required by law, regulation, or valid legal process.</li>
+          <li><strong>Business transfers.</strong> In connection with a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
+        </ul>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="data-storage">
+        <span class="legal-section-num">05</span>
+        <h2>data storage &amp; security</h2>
+        <p>Your data is stored on secure servers in the United States. We implement industry-standard security measures including encryption in transit (TLS 1.3) and at rest (AES-256), access controls, and regular security audits.</p>
+        <p>Third-party API keys and credentials are encrypted using envelope encryption and are only decrypted within isolated sandbox environments during active agent sessions.</p>
+        <p>While we take reasonable precautions, no method of electronic transmission or storage is 100% secure. We cannot guarantee absolute security.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="your-rights">
+        <span class="legal-section-num">06</span>
+        <h2>your rights</h2>
+        <p>Depending on your jurisdiction, you may have the right to:</p>
+        <ul>
+          <li><strong>Access</strong> the personal data we hold about you</li>
+          <li><strong>Correct</strong> inaccurate or incomplete personal data</li>
+          <li><strong>Delete</strong> your personal data and account</li>
+          <li><strong>Export</strong> your data in a portable format</li>
+          <li><strong>Restrict or object</strong> to certain processing activities</li>
+          <li><strong>Withdraw consent</strong> where processing is based on consent</li>
+        </ul>
+        <p>To exercise any of these rights, contact us at <a href="mailto:team@syntheticsciences.ai">team@syntheticsciences.ai</a>. We will respond within 30 days.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="cookies">
+        <span class="legal-section-num">07</span>
+        <h2>cookies &amp; tracking</h2>
+        <p>We use minimal cookies and similar technologies:</p>
+        <ul>
+          <li><strong>Essential cookies.</strong> Required for authentication and core functionality.</li>
+          <li><strong>Analytics.</strong> Anonymized usage metrics to improve the Service. You can opt out via your account settings.</li>
+        </ul>
+        <p>We do not use advertising cookies or trackers. We do not participate in cross-site tracking.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="third-party">
+        <span class="legal-section-num">08</span>
+        <h2>third-party services</h2>
+        <p>Our Service integrates with third-party platforms (e.g., GitHub, Hugging Face, Modal, Weights &amp; Biases, Pinecone). When you connect these services, their respective privacy policies govern how they handle your data. We encourage you to review their policies.</p>
+        <p>We are not responsible for the privacy practices of third-party services.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="children">
+        <span class="legal-section-num">09</span>
+        <h2>children's privacy</h2>
+        <p>The Service is not intended for individuals under the age of 16. We do not knowingly collect personal information from children. If we become aware that we have collected data from a child, we will take steps to delete it promptly.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="changes">
+        <span class="legal-section-num">10</span>
+        <h2>changes to this policy</h2>
+        <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you via email or through the Service. The "effective date" at the top of this page indicates when the policy was last revised.</p>
+        <p>Your continued use of the Service after changes take effect constitutes acceptance of the updated policy.</p>
+      </div>
+
+      <div class="legal-divider"></div>
+
+      <div class="legal-section" id="contact">
+        <span class="legal-section-num">11</span>
+        <h2>contact us</h2>
+        <p>If you have questions about this Privacy Policy or how we handle your data, reach out to us.</p>
+
+        <div class="legal-contact">
+          <h3>get in touch</h3>
+          <p>Inkvell Inc. — operating as Synthetic Sciences.</p>
+          <a href="mailto:team@syntheticsciences.ai" class="contact-email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
+            team@syntheticsciences.ai
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer-dark">
+    <div class="footer-hero">
+      <img src="/logo.png" alt="" width="72" height="72" class="footer-logo-large" />
+      <div class="footer-wordmark-large">synthetic sciences</div>
+      <p class="footer-tagline">ai agents that do real research.</p>
+      <a href="https://cli.syntheticsciences.ai" class="btn-footer">get started</a>
+    </div>
+    <nav class="footer-nav">
+      <a href="/#agents">modes</a>
+      <a href="/#infrastructure">infrastructure</a>
+      <a href="/#pricing">pricing</a>
+      <a href="mailto:team@syntheticsciences.ai">contact</a>
+    </nav>
+    <div class="footer-dark-bottom">
+      <span>&copy; 2026 inkvell inc.</span>
+      <div class="footer-dark-links">
+        <a href="/privacy/">privacy</a>
+        <a href="/terms/">terms</a>
+        <a href="mailto:team@syntheticsciences.ai">email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
