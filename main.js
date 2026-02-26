@@ -1,3 +1,6 @@
+import { inject } from '@vercel/analytics';
+inject();
+
 function safePlay(video) {
   const playPromise = video.play();
   if (playPromise && typeof playPromise.catch === 'function') {
