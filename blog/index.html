@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Synthetic Sciences</title>
+  <meta name="description" content="Updates, research notes, and engineering insights from the Synthetic Sciences team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+</head>
+<body>
+
+  <div class="paper-bg" aria-hidden="true">
+    <svg width="0" height="0">
+      <filter id="paper-surface" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" seed="2" stitchTiles="stitch" result="noise"/>
+        <feDiffuseLighting in="noise" lighting-color="#FFFFFF" surfaceScale="2.5" result="lit">
+          <feDistantLight azimuth="45" elevation="55"/>
+        </feDiffuseLighting>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <filter id="fiber">
+        <feTurbulence type="turbulence" baseFrequency="0.015 0.12" numOctaves="2" seed="5" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+    </svg>
+  </div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-shell">
+      <a href="/" class="nav-brand" aria-label="Synthetic Sciences home">
+        <span class="nav-logo-wrap">
+          <img src="/logo.png" alt="Synthetic Sciences" class="nav-logo-img" width="48" height="48" />
+        </span>
+        <span class="nav-wordmark">Synthetic Sciences</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#agents" class="nav-link">Modes</a>
+        <a href="/#infrastructure" class="nav-link">Infrastructure</a>
+        <a href="/#pricing" class="nav-link">Pricing</a>
+        <a href="/blog/" class="nav-link">Blog</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://cli.syntheticsciences.ai" class="nav-cta nav-cta-ghost">Get Started</a>
+        <a href="https://cal.com/ishaan-gangwani-ddrk7f/onboarding" class="nav-cta nav-cta-primary">Get Onboarded</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-rails" aria-hidden="true"></div>
+
+  <section class="blog-hero">
+    <div class="blog-hero-bg" aria-hidden="true"></div>
+    <div class="blog-hero-inner">
+      <div class="blog-breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Blog</span>
+      </div>
+      <h1 class="blog-hero-h1">Blog</h1>
+      <p class="blog-hero-p">Updates, research notes, and engineering insights from the team.</p>
+    </div>
+  </section>
+
+  <main class="blog-main">
+    <div class="blog-grid">
+
+      <article class="blog-card blog-card-featured">
+        <div class="blog-card-inner">
+          <div class="blog-card-meta">
+            <span class="blog-tag">Launch</span>
+            <time datetime="2026-02-25">Feb 25, 2026</time>
+          </div>
+          <h2 class="blog-card-title">Introducing Synthetic Sciences</h2>
+          <p class="blog-card-excerpt">We're building AI agents that do real scientific research — from literature reviews to model training to publication-ready writing. Here's why and how.</p>
+          <span class="blog-card-read">Read More &rarr;</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-inner">
+          <div class="blog-card-meta">
+            <span class="blog-tag">Research</span>
+            <time datetime="2026-02-20">Feb 20, 2026</time>
+          </div>
+          <h2 class="blog-card-title">Long-Horizon RL Environments for Scientific Workflows</h2>
+          <p class="blog-card-excerpt">We develop RL environments and process-based training data for LLMs, starting with agentic coding environments for ML research.</p>
+          <span class="blog-card-read">Read More &rarr;</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-inner">
+          <div class="blog-card-meta">
+            <span class="blog-tag">Engineering</span>
+            <time datetime="2026-02-15">Feb 15, 2026</time>
+          </div>
+          <h2 class="blog-card-title">How We Orchestrate Persistent Research Agents</h2>
+          <p class="blog-card-excerpt">A deep dive into the infrastructure behind sandboxed, stateful agent runtimes that survive disconnects and scale from CPU to multi-GPU clusters.</p>
+          <span class="blog-card-read">Read More &rarr;</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-inner">
+          <div class="blog-card-meta">
+            <span class="blog-tag">Product</span>
+            <time datetime="2026-02-10">Feb 10, 2026</time>
+          </div>
+          <h2 class="blog-card-title">4 Modes, Thousands of Workflows</h2>
+          <p class="blog-card-excerpt">From literature synthesis to model training — how our four specialized agent modes cover the full research lifecycle.</p>
+          <span class="blog-card-read">Read More &rarr;</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-inner">
+          <div class="blog-card-meta">
+            <span class="blog-tag">Infrastructure</span>
+            <time datetime="2026-02-05">Feb 5, 2026</time>
+          </div>
+          <h2 class="blog-card-title">Credential Sync and Zero-Setup Compute</h2>
+          <p class="blog-card-excerpt">Connect your keys once. Your agents inherit them everywhere — across sessions, sandboxes, and GPU clusters.</p>
+          <span class="blog-card-read">Read More &rarr;</span>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-inner">
+          <div class="blog-card-meta">
+            <span class="blog-tag">Company</span>
+            <time datetime="2026-01-28">Jan 28, 2026</time>
+          </div>
+          <h2 class="blog-card-title">Backed by Y Combinator</h2>
+          <p class="blog-card-excerpt">We're thrilled to announce our participation in Y Combinator and what it means for the future of autonomous scientific research.</p>
+          <span class="blog-card-read">Read More &rarr;</span>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="footer-dark">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/logo.png" alt="" width="72" height="72" class="footer-logo" />
+        <span class="footer-wordmark">Synthetic Sciences</span>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; 2026 Inkvell Inc.</span>
+        <div class="footer-legal-links">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="mailto:team@syntheticsciences.ai">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
