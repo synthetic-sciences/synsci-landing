@@ -123,10 +123,10 @@ body:after {
   right:0;
   z-index:1200;
   height:56px;
-  background:#1a1412;
-  border-bottom:1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter:blur(24px) saturate(1.4);
-  -webkit-backdrop-filter:blur(24px) saturate(1.4);
+  background:rgba(46, 37, 34, 0.72);
+  border-bottom:1px solid rgba(181, 138, 115, 0.12);
+  backdrop-filter:blur(20px) saturate(1.6);
+  -webkit-backdrop-filter:blur(20px) saturate(1.6);
 }
 
 .nav-shell {
@@ -245,26 +245,28 @@ body:after {
   flex-direction:column;
   align-items:center;
 }
-.hero-rails {
-  position:absolute;
+.page-rails {
+  position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:1;
+  z-index:5;
 }
-.hero-rails::before,
-.hero-rails::after {
+.page-rails::before,
+.page-rails::after {
   content:"";
   position:absolute;
   top:0;
   bottom:0;
-  width:1px;
-  background:linear-gradient(180deg, rgba(87, 56, 40, 0.45), rgba(87, 56, 40, 0.08));
+  width:8px;
+  background:
+    linear-gradient(180deg, rgba(87,56,40,0.40), rgba(87,56,40,0.06)) left / 1px 100% no-repeat,
+    linear-gradient(180deg, rgba(87,56,40,0.22), rgba(87,56,40,0.04)) right / 1px 100% no-repeat;
 }
-.hero-rails::before {
-  left:max(20px, calc((100vw - 1200px) / 2 + 40px));
+.page-rails::before {
+  left:max(20px, calc((100vw - 1200px) / 2 + 8px));
 }
-.hero-rails::after {
-  right:max(20px, calc((100vw - 1200px) / 2 + 40px));
+.page-rails::after {
+  right:max(20px, calc((100vw - 1200px) / 2 + 8px));
 }
 .hero::before {
   content:"";
@@ -943,7 +945,7 @@ body:after {
 
 /* ── dark footer ── */
 .footer-dark {
-  position:relative; z-index:1;
+  position:relative; z-index:10;
   background:#1a1412;
   color:#f4e6da;
   padding:0; overflow:hidden;
@@ -1096,8 +1098,8 @@ body.modal-open { overflow:hidden }
   .hero-mockup-wrapper { padding:0 20px; }
   .hero-proof { font-size:10px; letter-spacing:0.06em; padding:6px 10px; margin-bottom:16px }
   .yc-logo { width:18px; height:18px }
-  .hero-rails::before { left:20px; }
-  .hero-rails::after { right:20px; }
+  .page-rails::before { left:20px; }
+  .page-rails::after { right:20px; }
   .hero-cta { flex-direction:column; align-items:stretch; justify-content: center; }
   .footer-inner { flex-direction:column; align-items:flex-start; gap:20px; padding:32px 20px }
   .footer-wordmark { font-size:clamp(24px, 6vw, 36px) }
@@ -1132,8 +1134,8 @@ body.modal-open { overflow:hidden }
   .hero { padding-top:96px }
   .hero-h1 { font-size:clamp(36px,10vw,52px) }
   .hero-proof { width:100%; justify-content:center; }
-  .hero-rails::before { left:14px; }
-  .hero-rails::after { right:14px; }
+  .page-rails::before { left:14px; }
+  .page-rails::after { right:14px; }
   .bento-name { font-size:24px }
   .integrations-grid { grid-template-columns:1fr; }
   .agent-grid { grid-template-columns:1fr }
