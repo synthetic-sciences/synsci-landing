@@ -735,8 +735,8 @@ body:after {
 
 .agent-card:hover {
   background:#ffffff;
-  transform:translateY(-3px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.08);
+  transform:translateY(-4px);
+  box-shadow:0 20px 48px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04);
 }
 
 .agent-media-trigger {
@@ -756,12 +756,12 @@ body:after {
   object-fit:cover;
   border:1px solid rgba(255,255,255,0.14);
   background:#070a12;
-  transition:transform .4s ease, filter .4s ease;
-  filter:brightness(.7);
+  transition:transform .5s cubic-bezier(.25,.46,.45,.94), filter .5s ease;
+  filter:brightness(.55) saturate(.9);
 }
 .agent-card:hover .agent-preview-thumb {
-  transform:scale(1.03);
-  filter:brightness(.85);
+  transform:scale(1.06);
+  filter:brightness(.95) saturate(1.1);
 }
 
 .agent-media-overlay {
@@ -771,30 +771,55 @@ body:after {
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:12px;
+  gap:14px;
   padding:14px;
-  background:linear-gradient(180deg, rgba(2, 6, 17, 0.05) 0%, rgba(2, 6, 17, 0.55) 100%);
+  background:linear-gradient(180deg, rgba(2, 6, 17, 0.08) 0%, rgba(2, 6, 17, 0.6) 100%);
   color:#f7f8fb;
-  opacity:1;
-  transition:opacity .3s ease;
+  transition:background .4s ease;
+}
+.agent-card:hover .agent-media-overlay {
+  background:linear-gradient(180deg, rgba(2, 6, 17, 0.0) 0%, rgba(2, 6, 17, 0.35) 100%);
+}
+
+/* shine sweep on hover */
+.agent-media-trigger::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 55%, transparent 60%);
+  transform:translateX(-120%);
+  transition:none;
+  pointer-events:none;
+}
+.agent-card:hover .agent-media-trigger::after {
+  transform:translateX(120%);
+  transition:transform .7s ease;
 }
 
 .agent-play-icon {
-  transition:transform .3s ease;
+  transition:transform .35s cubic-bezier(.25,.46,.45,.94), opacity .3s ease;
+  opacity:0.75;
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,0.4));
 }
 .agent-card:hover .agent-play-icon {
-  transform:scale(1.12);
+  transform:scale(1.18);
+  opacity:1;
 }
 
 .agent-media-cta {
-  font-size:12px;
+  font-size:11px;
   font-weight:600;
-  letter-spacing:0.06em;
+  letter-spacing:0.08em;
   text-transform:uppercase;
-  opacity:0.7;
-  transition:opacity .3s ease;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .3s ease .1s, transform .3s ease .1s;
 }
-.agent-card:hover .agent-media-cta { opacity:1; }
+.agent-card:hover .agent-media-cta {
+  opacity:1;
+  transform:translateY(0);
+}
 
 .agent-card-content { position:relative; z-index:1; padding:0 4px 4px; }
 
