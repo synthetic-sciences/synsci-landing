@@ -1,84 +1,43 @@
 import { inject } from '@vercel/analytics';
 inject();
 
-function safePlay(video) {
-  const playPromise = video.play();
-  if (playPromise && typeof playPromise.catch === 'function') {
-    playPromise.catch(() => {});
-  }
-}
-
 function initModeVideos() {
   const cards = document.querySelectorAll('.mode-card');
   if (!cards.length) return;
 
   const modal = document.getElementById('videoModal');
-  const modalPlayer = document.getElementById('videoModalPlayer');
+  const modalIframe = document.getElementById('videoModalIframe');
   const modalTitle = document.getElementById('videoModalTitle');
   const closeEls = modal ? modal.querySelectorAll('[data-close-video]') : [];
   const closeBtn = modal ? modal.querySelector('.video-modal-close') : null;
   let lastTrigger = null;
 
-  function resetPreview(video) {
-    video.pause();
-    if (video.currentTime > 0) video.currentTime = 0;
-  }
-
   function closeModal() {
-    if (!modal || modal.hidden || !modalPlayer) return;
+    if (!modal || modal.hidden) return;
     modal.hidden = true;
     document.body.classList.remove('modal-open');
-    modalPlayer.pause();
-    modalPlayer.removeAttribute('src');
-    modalPlayer.load();
+    if (modalIframe) modalIframe.src = '';
     if (lastTrigger) lastTrigger.focus();
   }
 
-  function openModal(source, title, trigger) {
-    if (!modal || !modalPlayer || !modalTitle || !source) return;
+  function openModal(ytId, title, trigger) {
+    if (!modal || !modalIframe || !modalTitle || !ytId) return;
     lastTrigger = trigger;
     modal.hidden = false;
     document.body.classList.add('modal-open');
     modalTitle.textContent = title;
-    modalPlayer.setAttribute('src', source);
-    modalPlayer.currentTime = 0;
-    safePlay(modalPlayer);
+    modalIframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1`;
     if (closeBtn) closeBtn.focus();
   }
 
   cards.forEach(card => {
-    const preview = card.querySelector('.agent-preview-video');
     const trigger = card.querySelector('.agent-media-trigger');
-    if (!preview || !trigger) return;
-
-    preview.muted = true;
-    preview.playsInline = true;
-    preview.preload = 'auto';
-    preview.load();
-
-    const startPreview = () => {
-      if (preview.readyState >= 2) {
-        safePlay(preview);
-        return;
-      }
-      const handleLoaded = () => safePlay(preview);
-      preview.addEventListener('loadeddata', handleLoaded, { once: true });
-      preview.load();
-    };
-    const stopPreview = () => resetPreview(preview);
-
-    trigger.addEventListener('pointerenter', startPreview);
-    trigger.addEventListener('pointerleave', stopPreview);
-    card.addEventListener('focusin', startPreview);
-    card.addEventListener('focusout', event => {
-      if (!card.contains(event.relatedTarget)) stopPreview();
-    });
+    if (!trigger) return;
 
     trigger.addEventListener('click', () => {
-      const source = card.dataset.videoSrc;
+      const ytId = card.dataset.ytId;
       const title = card.dataset.videoTitle || 'Mode Demo';
-      stopPreview();
-      openModal(source, title, trigger);
+      openModal(ytId, title, trigger);
     });
   });
 

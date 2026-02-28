@@ -114,12 +114,12 @@
     </div>
 
     <div class="agent-grid mode-grid">
-      <article class="agent-card mode-card" data-video-src="/Research-Mode.mp4" data-video-title="Research mode demo">
+      <article class="agent-card mode-card" data-yt-id="043u80BY5kA" data-video-title="Research mode demo">
         <button class="agent-media-trigger" type="button" aria-label="Open Research mode demo">
-          <video class="agent-preview-video" src="/Research-Mode.mp4" muted loop playsinline preload="auto"></video>
+          <img class="agent-preview-thumb" src="https://img.youtube.com/vi/043u80BY5kA/maxresdefault.jpg" alt="Research mode preview" loading="lazy" />
           <div class="agent-media-overlay">
-            <span class="agent-media-hint">Hover to preview</span>
-            <span class="agent-media-cta">Click to watch full demo</span>
+            <span class="agent-play-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" stroke="rgba(255,255,255,.6)" stroke-width="2"/><polygon points="19,14 19,34 36,24" fill="rgba(255,255,255,.85)"/></svg></span>
+            <span class="agent-media-cta">Watch Demo</span>
           </div>
         </button>
         <div class="agent-card-content">
@@ -129,12 +129,12 @@
         </div>
       </article>
 
-      <article class="agent-card mode-card" data-video-src="/Biology-Mode.mp4" data-video-title="Biology mode demo">
+      <article class="agent-card mode-card" data-yt-id="_d_jUR429F4" data-video-title="Biology mode demo">
         <button class="agent-media-trigger" type="button" aria-label="Open Biology mode demo">
-          <video class="agent-preview-video" src="/Biology-Mode.mp4" muted loop playsinline preload="auto"></video>
+          <img class="agent-preview-thumb" src="https://img.youtube.com/vi/_d_jUR429F4/maxresdefault.jpg" alt="Biology mode preview" loading="lazy" />
           <div class="agent-media-overlay">
-            <span class="agent-media-hint">Hover to preview</span>
-            <span class="agent-media-cta">Click to watch full demo</span>
+            <span class="agent-play-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" stroke="rgba(255,255,255,.6)" stroke-width="2"/><polygon points="19,14 19,34 36,24" fill="rgba(255,255,255,.85)"/></svg></span>
+            <span class="agent-media-cta">Watch Demo</span>
           </div>
         </button>
         <div class="agent-card-content">
@@ -144,12 +144,12 @@
         </div>
       </article>
 
-      <article class="agent-card mode-card" data-video-src="/Flywheel-Mode.mp4" data-video-title="Flywheel mode demo">
+      <article class="agent-card mode-card" data-yt-id="043u80BY5kA" data-video-title="Flywheel mode demo">
         <button class="agent-media-trigger" type="button" aria-label="Open Flywheel mode demo">
-          <video class="agent-preview-video" src="/Flywheel-Mode.mp4" muted loop playsinline preload="auto"></video>
+          <img class="agent-preview-thumb" src="https://img.youtube.com/vi/043u80BY5kA/maxresdefault.jpg" alt="Flywheel mode preview" loading="lazy" />
           <div class="agent-media-overlay">
-            <span class="agent-media-hint">Hover to preview</span>
-            <span class="agent-media-cta">Click to watch full demo</span>
+            <span class="agent-play-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" stroke="rgba(255,255,255,.6)" stroke-width="2"/><polygon points="19,14 19,34 36,24" fill="rgba(255,255,255,.85)"/></svg></span>
+            <span class="agent-media-cta">Watch Demo</span>
           </div>
         </button>
         <div class="agent-card-content">
@@ -159,12 +159,12 @@
         </div>
       </article>
 
-      <article class="agent-card mode-card" data-video-src="/Write-Mode.mp4" data-video-title="Write mode demo">
+      <article class="agent-card mode-card" data-yt-id="VkMjfqeCNEI" data-video-title="Write mode demo">
         <button class="agent-media-trigger" type="button" aria-label="Open Write mode demo">
-          <video class="agent-preview-video" src="/Write-Mode.mp4" muted loop playsinline preload="auto"></video>
+          <img class="agent-preview-thumb" src="https://img.youtube.com/vi/VkMjfqeCNEI/maxresdefault.jpg" alt="Write mode preview" loading="lazy" />
           <div class="agent-media-overlay">
-            <span class="agent-media-hint">Hover to preview</span>
-            <span class="agent-media-cta">Click to watch full demo</span>
+            <span class="agent-play-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="23" stroke="rgba(255,255,255,.6)" stroke-width="2"/><polygon points="19,14 19,34 36,24" fill="rgba(255,255,255,.85)"/></svg></span>
+            <span class="agent-media-cta">Watch Demo</span>
           </div>
         </button>
         <div class="agent-card-content">
@@ -580,7 +580,9 @@
     <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
       <button class="video-modal-close" type="button" aria-label="Close video" data-close-video>&times;</button>
       <p class="video-modal-title" id="videoModalTitle">Mode Demo</p>
-      <video id="videoModalPlayer" controls playsinline preload="metadata"></video>
+      <div class="video-modal-embed">
+        <iframe id="videoModalIframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 
