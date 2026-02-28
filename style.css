@@ -997,6 +997,11 @@ body:after {
   color:rgba(255,255,255,.2);
   letter-spacing:.01em;
 }
+.footer-legal span a {
+  color:rgba(255,255,255,.25);
+  transition:color .15s;
+}
+.footer-legal span a:hover { color:var(--paper) }
 .footer-legal-links {
   display:flex;
   gap:20px;
