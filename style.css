@@ -749,19 +749,29 @@ body:after {
   overflow:hidden;
 }
 
+.agent-preview-video {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  background:#070a12;
+}
+
 .agent-preview-thumb {
+  position:relative;
+  z-index:1;
   width:100%;
   aspect-ratio:16 / 10;
   display:block;
   object-fit:cover;
   border:1px solid rgba(255,255,255,0.14);
   background:#070a12;
-  transition:transform .5s cubic-bezier(.25,.46,.45,.94), filter .5s ease;
-  filter:brightness(.55) saturate(.9);
+  transition:opacity .4s ease;
 }
 .agent-card:hover .agent-preview-thumb {
-  transform:scale(1.06);
-  filter:brightness(.95) saturate(1.1);
+  opacity:0;
 }
 
 .agent-media-overlay {
@@ -1164,6 +1174,7 @@ body.modal-open { overflow:hidden }
   .agent-grid { grid-template-columns:1fr }
   .agent-card { padding:14px; gap:14px }
   .agent-preview-thumb { aspect-ratio:16/9 }
+  .agent-preview-video { aspect-ratio:16/9 }
   .isg-card { padding: 24px; }
   .isg-3, .isg-4 { flex-direction: column; align-items: flex-start; }
   .integrations-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }

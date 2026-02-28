@@ -1,6 +1,11 @@
 import { inject } from '@vercel/analytics';
 inject();
 
+function safePlay(video) {
+  const p = video.play();
+  if (p && typeof p.catch === 'function') p.catch(() => {});
+}
+
 function initModeVideos() {
   const cards = document.querySelectorAll('.mode-card');
   if (!cards.length) return;
@@ -31,12 +36,46 @@ function initModeVideos() {
   }
 
   cards.forEach(card => {
+    const preview = card.querySelector('.agent-preview-video');
     const trigger = card.querySelector('.agent-media-trigger');
     if (!trigger) return;
 
+    // Set up hover-to-play on the local mp4 preview
+    if (preview) {
+      preview.muted = true;
+      preview.playsInline = true;
+      preview.preload = 'auto';
+      preview.load();
+
+      const startPreview = () => {
+        if (preview.readyState >= 2) {
+          safePlay(preview);
+          return;
+        }
+        preview.addEventListener('loadeddata', () => safePlay(preview), { once: true });
+        preview.load();
+      };
+      const stopPreview = () => {
+        preview.pause();
+        if (preview.currentTime > 0) preview.currentTime = 0;
+      };
+
+      trigger.addEventListener('pointerenter', startPreview);
+      trigger.addEventListener('pointerleave', stopPreview);
+      card.addEventListener('focusin', startPreview);
+      card.addEventListener('focusout', event => {
+        if (!card.contains(event.relatedTarget)) stopPreview();
+      });
+    }
+
+    // Click opens the YouTube modal
     trigger.addEventListener('click', () => {
       const ytId = card.dataset.ytId;
       const title = card.dataset.videoTitle || 'Mode Demo';
+      if (preview) {
+        preview.pause();
+        if (preview.currentTime > 0) preview.currentTime = 0;
+      }
       openModal(ytId, title, trigger);
     });
   });
