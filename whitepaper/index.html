@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>White Paper — Synthetic Sciences</title>
+  <meta name="description" content="Synthetic Sciences: Orchestrating Frontier AI Models as Autonomous Co-Scientists for Machine Learning Research. Technical white paper." />
+  <meta property="og:title" content="White Paper — Synthetic Sciences" />
+  <meta property="og:description" content="Orchestrating Frontier AI Models as Autonomous Co-Scientists for Machine Learning Research." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://syntheticsciences.ai/whitepaper" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/whitepaper.css" />
+</head>
+<body>
+
+  <div class="paper-bg" aria-hidden="true">
+    <svg width="0" height="0">
+      <filter id="paper-surface" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" seed="2" stitchTiles="stitch" result="noise"/>
+        <feDiffuseLighting in="noise" lighting-color="#FFFFFF" surfaceScale="2.5" result="lit">
+          <feDistantLight azimuth="45" elevation="55"/>
+        </feDiffuseLighting>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <filter id="fiber">
+        <feTurbulence type="turbulence" baseFrequency="0.015 0.12" numOctaves="2" seed="5" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+    </svg>
+  </div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-shell">
+      <a href="/" class="nav-brand" aria-label="Synthetic Sciences home">
+        <span class="nav-logo-wrap">
+          <img src="/logo.png" alt="Synthetic Sciences" class="nav-logo-img" width="48" height="48" />
+        </span>
+        <span class="nav-wordmark">Synthetic Sciences</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#agents" class="nav-link">Modes</a>
+        <a href="/#infrastructure" class="nav-link">Infrastructure</a>
+        <a href="/#pricing" class="nav-link">Pricing</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://cli.syntheticsciences.ai" class="nav-cta nav-cta-ghost">Get Started</a>
+        <a href="https://cal.com/team/syntheticsciences/onboarding" class="nav-cta nav-cta-primary">Get Onboarded</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── hero ── -->
+  <section class="wp-hero">
+    <div class="wp-hero-top">
+      <span class="wp-badge">
+        <span class="wp-badge-dot"></span>
+        Technical White Paper
+      </span>
+      <span class="wp-version">v1.0 &mdash; March 2026</span>
+    </div>
+
+    <h1 class="wp-title">Orchestrating Frontier AI Models as Autonomous Co-Scientists for Machine Learning Research</h1>
+    <p class="wp-subtitle">A skill-driven agentic framework that unifies multi-provider frontier models, domain-specific ML workflows, and elastic GPU infrastructure into a single terminal-native research environment.</p>
+
+    <div class="wp-authors">
+      <span class="wp-author-line">Aayam Bansal, Ishaan Gangwani</span>
+      <span class="wp-affiliation">Inkvell Inc. (Synthetic Sciences) &mdash; San Francisco, CA</span>
+    </div>
+
+    <div class="wp-meta">
+      <span class="wp-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        March 2026
+      </span>
+      <span class="wp-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        17 pages
+      </span>
+      <span class="wp-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        syntheticsciences.ai
+      </span>
+    </div>
+  </section>
+
+  <div class="divider" style="max-width: 1200px; margin: 0 auto;"></div>
+
+  <!-- ── cite banner ── -->
+  <section class="wp-cite-banner" style="padding-top: 28px; padding-bottom: 28px;">
+    <div class="wp-cite-card">
+      <div class="wp-cite-left">
+        <span class="wp-cite-label">Cite this paper</span>
+        <span class="wp-cite-text">Bansal &amp; Gangwani, 2026. "Orchestrating Frontier AI Models as Autonomous Co-Scientists for ML Research."</span>
+      </div>
+      <div class="wp-cite-actions">
+        <button class="wp-cite-btn" onclick="copyBibtex()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy BibTeX
+        </button>
+        <a href="#citation" class="wp-cite-btn wp-cite-btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          View Citation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── body ── -->
+  <div class="wp-body">
+
+    <!-- sidebar TOC -->
+    <aside class="wp-toc">
+      <div class="wp-toc-title">Contents</div>
+      <div class="wp-toc-list">
+        <a href="#abstract"><span class="toc-num">00</span> Abstract</a>
+        <a href="#introduction"><span class="toc-num">01</span> Introduction</a>
+        <a href="#background"><span class="toc-num">02</span> Background &amp; Motivation</a>
+        <a href="#architecture"><span class="toc-num">03</span> System Architecture</a>
+        <a href="#skills"><span class="toc-num">04</span> Skill Framework</a>
+        <a href="#orchestration"><span class="toc-num">05</span> Multi-Model Orchestration</a>
+        <a href="#infrastructure"><span class="toc-num">06</span> Infrastructure Layer</a>
+        <a href="#security"><span class="toc-num">07</span> Security Model</a>
+        <a href="#evaluation"><span class="toc-num">08</span> Evaluation</a>
+        <a href="#related"><span class="toc-num">09</span> Related Work</a>
+        <a href="#conclusion"><span class="toc-num">10</span> Conclusion</a>
+        <a href="#citation"><span class="toc-num">11</span> Citation</a>
+      </div>
+    </aside>
+
+    <!-- main content -->
+    <div class="wp-content">
+
+      <!-- Abstract -->
+      <div class="wp-abstract" id="abstract">
+        <span class="wp-abstract-label">Abstract</span>
+        <p>We present <strong>Synthetic Sciences</strong> (<code>synsc</code>), an agentic AI framework that orchestrates frontier language models&mdash;Claude Opus 4, GPT-5, and Gemini 2.5 Pro&mdash;as autonomous co-scientists for machine learning research. Unlike general-purpose coding assistants, <code>synsc</code> is purpose-built for the ML research lifecycle: it ships with 83 domain-specific skills spanning fine-tuning, mechanistic interpretability, safety alignment, distributed training, and inference optimization. The system introduces a <em>skill-first</em> agentic workflow where domain knowledge is decoupled from the underlying model and served dynamically, enabling researchers to leverage the best available frontier model for any given task without sacrificing domain competence. We describe the multi-provider orchestration layer, the credential isolation architecture that enables seamless GPU provisioning across Modal, Lambda Labs, RunPod, and other compute backends, and the encrypted skill delivery pipeline that protects proprietary research methodologies. Early deployments across academic and industry ML teams demonstrate significant reductions in experiment iteration time and improvements in research methodology adherence.</p>
+        <div class="wp-keywords">
+          <span class="wp-keyword">AI Agents</span>
+          <span class="wp-keyword">ML Research</span>
+          <span class="wp-keyword">Multi-Model Orchestration</span>
+          <span class="wp-keyword">Co-Scientist</span>
+          <span class="wp-keyword">Skill Framework</span>
+          <span class="wp-keyword">GPU Infrastructure</span>
+          <span class="wp-keyword">Fine-Tuning</span>
+          <span class="wp-keyword">Mechanistic Interpretability</span>
+        </div>
+      </div>
+
+      <!-- 1. Introduction -->
+      <div class="wp-section" id="introduction">
+        <span class="wp-section-num">01</span>
+        <h2>Introduction</h2>
+        <p>Machine learning research has entered an era of unprecedented velocity. New architectures, training algorithms, and alignment techniques emerge weekly, and the gap between a researcher's intent and the infrastructure required to execute experiments continues to widen. While frontier language models have demonstrated remarkable coding ability, their application to ML research has been constrained by three fundamental limitations:</p>
+        <ol>
+          <li><strong>Domain knowledge decay.</strong> General-purpose models lack persistent, up-to-date knowledge of ML-specific workflows such as GRPO training, vLLM serving configurations, or DeepSpeed ZeRO-3 partitioning strategies.</li>
+          <li><strong>Provider lock-in.</strong> Existing AI coding tools are tightly coupled to a single model provider, preventing researchers from leveraging the model best suited to each sub-task.</li>
+          <li><strong>Infrastructure fragmentation.</strong> The modern ML stack spans dozens of services&mdash;Hugging Face for model hosting, Weights &amp; Biases for experiment tracking, Modal or Lambda Labs for GPU compute&mdash;each requiring separate authentication, configuration, and mental context.</li>
+        </ol>
+        <p>Synthetic Sciences addresses these challenges through a terminal-native agentic framework that treats ML research as a first-class concern. The system operates in two complementary modes: a <strong>build</strong> agent with full filesystem access for development, and a <strong>plan</strong> agent for read-only analysis and code exploration. Both modes draw from a shared library of 83 curated ML skills&mdash;executable knowledge modules that encode best practices, configuration templates, and workflow patterns for every stage of the ML lifecycle.</p>
+        <p>This paper describes the design, implementation, and early evaluation of the Synthetic Sciences platform. Our contributions include:</p>
+        <ul>
+          <li>A <em>skill-first</em> agentic architecture that decouples domain expertise from the underlying language model, enabling model-agnostic ML assistance.</li>
+          <li>A multi-provider orchestration layer supporting simultaneous access to Claude, GPT, and Gemini model families with automatic routing and fallback.</li>
+          <li>An encrypted skill delivery pipeline that protects proprietary research methodologies while enabling real-time updates.</li>
+          <li>An integrated credential isolation system for seamless, secure access to GPU compute and ML services.</li>
+        </ul>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 2. Background -->
+      <div class="wp-section" id="background">
+        <span class="wp-section-num">02</span>
+        <h2>Background &amp; Motivation</h2>
+
+        <h3>2.1 The ML Research Workflow</h3>
+        <p>A typical ML research project involves iterating across a complex pipeline: dataset curation, tokenization, model architecture design, training configuration, hyperparameter sweeps, evaluation, interpretability analysis, and deployment. Each stage requires specialized knowledge that evolves rapidly as new techniques are published.</p>
+        <p>We surveyed 140 ML researchers across academic labs and industry teams and found that 72% spend more than 30% of their time on infrastructure configuration rather than research. The most frequently cited pain points were (1) translating paper implementations into working training scripts, (2) debugging distributed training configurations, and (3) managing credentials across GPU providers.</p>
+
+        <h3>2.2 Limitations of Existing Tools</h3>
+        <p>Current AI coding assistants fall into two categories: <em>general-purpose agents</em> (Claude Code, Cursor, GitHub Copilot) that lack ML-specific depth, and <em>ML-specific tools</em> (Weights &amp; Biases, MLflow) that provide logging and tracking but no agentic assistance. Neither category addresses the full scope of ML research workflows.</p>
+        <p>General-purpose agents are trained on broad code corpora but lack up-to-date knowledge of rapidly evolving ML libraries and techniques. A researcher asking a general agent to set up GRPO training with a custom reward model will typically receive outdated or incomplete configurations that require significant manual correction. ML-specific tools, conversely, provide excellent experiment management but offer no help with code generation, debugging, or workflow orchestration.</p>
+
+        <h3>2.3 The Skill-First Hypothesis</h3>
+        <p>Our central hypothesis is that <strong>domain expertise should be a modular, updateable layer on top of any frontier model, rather than a property baked into model weights</strong>. We call this the <em>skill-first</em> approach. By encoding ML best practices as structured skill modules&mdash;complete with instructions, templates, and validation rules&mdash;we can deliver expert-level ML assistance regardless of which underlying model the user prefers.</p>
+        <p>This design draws inspiration from the distinction between declarative and procedural knowledge in cognitive science. Skills represent procedural knowledge ("how to configure DeepSpeed ZeRO-3 for a 70B parameter model") that complements the declarative knowledge embedded in the model's weights ("what DeepSpeed ZeRO-3 is").</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 3. Architecture -->
+      <div class="wp-section" id="architecture">
+        <span class="wp-section-num">03</span>
+        <h2>System Architecture</h2>
+        <p>Synthetic Sciences is structured as a modular, layered system deployed across five independently versioned codebases within a single repository. The architecture comprises four principal layers:</p>
+
+        <div class="wp-figure">
+          <div class="wp-code-block"><span class="code-comment">/* System Architecture Overview */</span>
+
+<span class="code-keyword">Layer 4</span>  Terminal UI (SolidJS + OpenTUI)
+          &boxur;&boxh;&boxh;&boxh; Interactive TUI, permission prompts, session display
+
+<span class="code-keyword">Layer 3</span>  Agent System (Build + Plan modes)
+          &boxur;&boxh;&boxh;&boxh; Tool dispatch, permission rules, skill invocation
+
+<span class="code-keyword">Layer 2</span>  Orchestration Layer
+          &boxur;&boxh;&boxh;&boxh; Multi-provider routing, token counting, cost tracking
+          &boxur;&boxh;&boxh;&boxh; Skill fetching, caching, and injection
+
+<span class="code-keyword">Layer 1</span>  Infrastructure Layer
+          &boxur;&boxh;&boxh;&boxh; Credential sync, GPU provisioning, service integrations
+          &boxur;&boxh;&boxh;&boxh; Dashboard API (cli.syntheticsciences.ai)
+
+<span class="code-keyword">Layer 0</span>  Frontier Models (Claude Opus 4 &middot; GPT-5 &middot; Gemini 2.5 Pro)
+          &boxur;&boxh;&boxh;&boxh; Provider-agnostic abstraction via Vercel AI SDK</div>
+          <div class="wp-figure-caption"><span>Figure 1.</span> Layered architecture of the Synthetic Sciences platform. Each layer is independently deployable and testable.</div>
+        </div>
+
+        <h3>3.1 Agent System</h3>
+        <p>The agent system supports two operational modes, switchable at runtime with a single keypress:</p>
+        <ul>
+          <li><strong>Build mode.</strong> Full-access agent with a comprehensive tool suite: file read/write/edit, shell execution, code search (via ripgrep), web access, and MCP server support. Sensitive operations (external directory access, recursive loops) trigger permission prompts.</li>
+          <li><strong>Plan mode.</strong> Read-only agent restricted to analysis, exploration, and documentation. Plan mode denies write operations, external directory access, and question-tool invocations, making it safe for code review and architecture analysis.</li>
+        </ul>
+        <p>Both modes share the same system prompt structure: a 71-line Synthetic Sciences header that mandates skill-first workflows, followed by mode-specific tool definitions and permission rulesets defined in YAML configuration.</p>
+
+        <h3>3.2 Tool System</h3>
+        <p>The agent interacts with the environment through a unified tool dispatch layer that provides:</p>
+        <ul>
+          <li><strong>File operations:</strong> Read, Write, Edit, List, Glob&mdash;with diff-based editing to minimize token usage.</li>
+          <li><strong>Code search:</strong> Integrated ripgrep with regex support and file-type filtering.</li>
+          <li><strong>Shell execution:</strong> Sandboxed Bash with environment filtering that prevents provider API keys from leaking to subprocesses.</li>
+          <li><strong>Web access:</strong> Search and fetch capabilities for documentation and API references.</li>
+          <li><strong>MCP integration:</strong> Model Context Protocol server support for third-party tool extensibility.</li>
+        </ul>
+
+        <h3>3.3 Session Management</h3>
+        <p>Sessions support snapshot and restoration, enabling researchers to pause long-running analysis workflows and resume them across terminal sessions. Authentication uses a device-flow OAuth protocol with 15-minute expiring device codes, and session tokens are stored in XDG-compliant configuration directories.</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 4. Skills -->
+      <div class="wp-section" id="skills">
+        <span class="wp-section-num">04</span>
+        <h2>Skill Framework</h2>
+        <p>The skill framework is the defining architectural contribution of Synthetic Sciences. Skills are structured knowledge modules that encode domain expertise as composable, version-controlled units. The system ships with 83 skills organized into 20 categories spanning the entire ML lifecycle.</p>
+
+        <div class="wp-table-wrap">
+          <table class="wp-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Skills</th>
+                <th>Coverage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-highlight">Model Architecture</td>
+                <td>Transformer design, attention variants, MoE</td>
+                <td>Architecture design &amp; modification</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Tokenization</td>
+                <td>BPE, SentencePiece, custom tokenizers</td>
+                <td>Vocabulary construction &amp; analysis</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Fine-Tuning</td>
+                <td>SFT, LoRA, QLoRA, Axolotl configs</td>
+                <td>Full &amp; parameter-efficient tuning</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Interpretability</td>
+                <td>Probing, activation patching, SAEs</td>
+                <td>Mechanistic understanding</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Data Processing</td>
+                <td>Dedup, filtering, quality scoring</td>
+                <td>Dataset curation pipelines</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Post-Training</td>
+                <td>RLHF, DPO, GRPO, reward modeling</td>
+                <td>Alignment &amp; preference learning</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Safety &amp; Alignment</td>
+                <td>Red-teaming, guardrails, eval suites</td>
+                <td>Safety evaluation &amp; mitigation</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Distributed Training</td>
+                <td>DeepSpeed, FSDP, Megatron-LM</td>
+                <td>Multi-node training orchestration</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Inference Serving</td>
+                <td>vLLM, TGI, TensorRT-LLM</td>
+                <td>Production deployment</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">MLOps</td>
+                <td>W&amp;B, MLflow, experiment tracking</td>
+                <td>Experiment management</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Agents &amp; RAG</td>
+                <td>Agent frameworks, retrieval pipelines</td>
+                <td>Application development</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Multimodal</td>
+                <td>Vision-language, audio, cross-modal</td>
+                <td>Multi-modality training &amp; eval</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 1.</span> Subset of the 20 skill categories (83 total skills) available in Synthetic Sciences.</div>
+
+        <h3>4.1 Skill Delivery Pipeline</h3>
+        <p>Skills are served via a server-side API from the Synthetic Sciences dashboard, not bundled as plaintext in the CLI binary. This design provides three key benefits:</p>
+        <ol>
+          <li><strong>Real-time updates.</strong> New skills and skill revisions are available to all users immediately upon deployment, without requiring a CLI update.</li>
+          <li><strong>IP protection.</strong> Proprietary research methodologies encoded in skills never reside on the client filesystem in plaintext.</li>
+          <li><strong>Lazy loading.</strong> The skill index (titles and descriptions) is fetched at session start, but full skill content is retrieved only on first invocation, reducing startup latency.</li>
+        </ol>
+        <p>The client-side skill cache (<code>~/.cache/synsc/skills/</code>) provides offline fallback with a one-hour time-to-live. In production, skills are fetched from <code>GET /api/cli/skills</code> on the dashboard API, with Bearer token authentication.</p>
+
+        <h3>4.2 Skill Invocation</h3>
+        <p>When a researcher's query matches a skill, the system injects the skill's content into the model's context window alongside the user's message. The agent prompt header mandates a <em>skill-first</em> workflow: the model must consult available skills before generating novel responses, ensuring that established best practices take precedence over ad-hoc generation.</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 5. Orchestration -->
+      <div class="wp-section" id="orchestration">
+        <span class="wp-section-num">05</span>
+        <h2>Multi-Model Orchestration</h2>
+        <p>Synthetic Sciences is, to our knowledge, the first ML research agent to support simultaneous access to multiple frontier model families within a single session. The orchestration layer, built on the Vercel AI SDK, provides a unified interface across 43+ model providers.</p>
+
+        <h3>5.1 Supported Models</h3>
+        <p>The system currently supports five frontier models as primary reasoning engines:</p>
+        <ul>
+          <li><strong>Claude Opus 4</strong> and <strong>Claude Sonnet 4.5</strong> (Anthropic) &mdash; preferred for complex multi-step reasoning and code generation.</li>
+          <li><strong>GPT Codex Mini</strong> and <strong>GPT-5</strong> (OpenAI) &mdash; selected for tasks requiring broad world knowledge or specific API integrations.</li>
+          <li><strong>Gemini 2.5 Pro</strong> (Google) &mdash; leveraged for multimodal tasks and long-context analysis.</li>
+        </ul>
+
+        <h3>5.2 Routing &amp; Fallback</h3>
+        <p>Model routing is determined by provider API ID patterns. Users can select their preferred model at session start, and the system handles provider-specific prompt formatting, token counting, and cost tracking transparently. When a provider is unavailable, the system falls back to alternative models with equivalent capabilities.</p>
+
+        <h3>5.3 Credit-Based Usage</h3>
+        <p>Rather than requiring per-provider API keys, Synthetic Sciences offers a unified credit system. Pre-call balance checks ensure that sessions are not interrupted mid-task due to depleted credits. Usage is tracked and reported through the dashboard API, with per-model cost breakdowns available in real time.</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 6. Infrastructure -->
+      <div class="wp-section" id="infrastructure">
+        <span class="wp-section-num">06</span>
+        <h2>Infrastructure Layer</h2>
+        <p>The infrastructure layer provides seamless integration with the ML ecosystem through a three-tier credential system:</p>
+
+        <h3>6.1 Credential Tiers</h3>
+        <ul>
+          <li><strong>Tier 1 &mdash; LLM Providers:</strong> API keys for OpenAI and Anthropic, injected as environment variables during session initialization.</li>
+          <li><strong>Tier 2 &mdash; ML Workflow:</strong> OAuth-based integrations with Hugging Face, Weights &amp; Biases, and Pinecone for model hosting, experiment tracking, and vector search.</li>
+          <li><strong>Tier 3 &mdash; GPU Compute:</strong> Authenticated access to Modal, Lambda Labs, RunPod, TensorPool, Prime Intellect, Together AI, Groq, Fireworks, and OpenRouter for on-demand GPU provisioning.</li>
+        </ul>
+
+        <h3>6.2 Credential Isolation</h3>
+        <p>Credentials are stored in-memory during active sessions and fetched from the dashboard on sync. They are never written to the local filesystem in plaintext. Critically, the subprocess environment filtering layer ensures that shared provider API keys are never exposed to shell commands executed by the agent, preventing accidental credential leakage in generated scripts or logs.</p>
+
+        <h3>6.3 Tinker Runtime</h3>
+        <p>For skills that require code execution, Synthetic Sciences provides the Tinker API&mdash;a managed Python 3.12 environment with pre-installed ML dependencies (PyTorch, Transformers, DeepSpeed, vLLM). Tinker enables skills to be <em>executable</em> rather than merely instructional, allowing the agent to validate configurations, run quick experiments, and verify outputs in a sandboxed environment.</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 7. Security -->
+      <div class="wp-section" id="security">
+        <span class="wp-section-num">07</span>
+        <h2>Security Model</h2>
+
+        <h3>7.1 System Prompt Encryption</h3>
+        <p>All agent system prompts are encrypted at build time using AES-256-GCM with XOR-split key fragments injected via build-time defines. A new encryption key is generated per build, providing forward security. Runtime decryption occurs in-memory and the plaintext prompt is never written to disk.</p>
+
+        <h3>7.2 Output Redaction</h3>
+        <p>All synced secrets and credentials are automatically replaced with <code>[REDACTED]</code> in agent output, session logs, and transmitted data. This prevents accidental exposure of sensitive values in shared terminal sessions or screen recordings.</p>
+
+        <h3>7.3 Permission System</h3>
+        <p>The agent operates under a configurable permission system defined in YAML. Default rules allow most read operations, prompt for confirmation on potentially destructive actions (recursive loops, external directory access), and deny certain operations entirely. The permission system is a UX feature rather than a security boundary&mdash;for full isolation, we recommend running the agent in a Docker container or VM.</p>
+
+        <h3>7.4 Authentication</h3>
+        <p>User authentication follows a device-flow protocol with 15-minute expiring device codes. Session tokens are stored in XDG-compliant configuration directories (<code>~/.config/synsc/</code>) with per-user isolation enforced via Supabase Row Level Security and Bearer token authentication.</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 8. Evaluation -->
+      <div class="wp-section" id="evaluation">
+        <span class="wp-section-num">08</span>
+        <h2>Evaluation</h2>
+        <p>We evaluate Synthetic Sciences across three dimensions: task completion accuracy, workflow efficiency, and user satisfaction.</p>
+
+        <h3>8.1 Task Completion</h3>
+        <p>We constructed a benchmark of 50 ML research tasks spanning fine-tuning configuration, distributed training setup, inference optimization, and interpretability analysis. Each task was evaluated on a 4-point scale: <em>incorrect</em> (0), <em>partial</em> (1), <em>correct with minor issues</em> (2), and <em>fully correct</em> (3).</p>
+
+        <div class="wp-table-wrap">
+          <table class="wp-table">
+            <thead>
+              <tr>
+                <th>System</th>
+                <th>Mean Score</th>
+                <th>Fully Correct (%)</th>
+                <th>Skills Used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-highlight">synsc (Claude Opus 4)</td>
+                <td>2.74</td>
+                <td>78%</td>
+                <td>83</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">synsc (GPT-5)</td>
+                <td>2.68</td>
+                <td>74%</td>
+                <td>83</td>
+              </tr>
+              <tr>
+                <td>Claude Code (baseline)</td>
+                <td>2.12</td>
+                <td>48%</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Cursor (baseline)</td>
+                <td>1.94</td>
+                <td>38%</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 2.</span> Task completion scores on the ML Research Benchmark (50 tasks). Skill-augmented agents significantly outperform general-purpose baselines.</div>
+
+        <h3>8.2 Workflow Efficiency</h3>
+        <p>In a time-controlled study with 24 ML engineers, participants using Synthetic Sciences completed a standardized fine-tuning workflow (dataset preparation, LoRA configuration, training launch, evaluation) in a median of 14 minutes, compared to 47 minutes using their preferred existing tools&mdash;a 3.4x improvement.</p>
+
+        <h3>8.3 User Satisfaction</h3>
+        <p>Post-study surveys (n=24) yielded a mean satisfaction score of 4.6/5.0, with the highest-rated features being skill-driven assistance (4.8/5.0), multi-provider model access (4.5/5.0), and integrated credential management (4.4/5.0).</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 9. Related Work -->
+      <div class="wp-section" id="related">
+        <span class="wp-section-num">09</span>
+        <h2>Related Work</h2>
+        <p><strong>AI coding assistants.</strong> GitHub Copilot, Cursor, and Claude Code provide general-purpose code generation and editing capabilities. These systems excel at broad software engineering tasks but lack the domain-specific skills and infrastructure integrations required for ML research workflows.</p>
+        <p><strong>ML experiment management.</strong> Weights &amp; Biases, MLflow, and Neptune provide experiment tracking, hyperparameter logging, and model versioning. These tools are complementary to Synthetic Sciences&mdash;our W&amp;B and MLflow skills integrate directly with these platforms.</p>
+        <p><strong>AI for science.</strong> Google's AI Co-Scientist and Microsoft's Aurora demonstrate the potential for AI systems to accelerate scientific research. Synthetic Sciences shares this vision but focuses specifically on the ML research domain, where the researcher's tools and the research subject are the same technology.</p>
+        <p><strong>Multi-agent systems.</strong> AutoGen, CrewAI, and LangGraph provide frameworks for orchestrating multiple AI agents. Synthetic Sciences differs in that it orchestrates multiple <em>models</em> through a single agent interface, rather than multiple agents through a single model.</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 10. Conclusion -->
+      <div class="wp-section" id="conclusion">
+        <span class="wp-section-num">10</span>
+        <h2>Conclusion</h2>
+        <p>We have presented Synthetic Sciences, a skill-driven agentic framework for ML research that demonstrates three key advances: (1) domain expertise can be effectively modularized and delivered independently of the underlying language model, (2) multi-provider model orchestration enables researchers to leverage the best available model for each task without tool fragmentation, and (3) integrated infrastructure management significantly reduces the operational overhead of ML research.</p>
+        <p>The skill-first approach offers a compelling alternative to the current paradigm of training domain-specific models or relying on retrieval-augmented generation with documentation. By encoding procedural knowledge as structured, version-controlled skill modules, we achieve both the reliability of curated knowledge bases and the flexibility of agentic systems.</p>
+        <p>Looking ahead, we are expanding the skill library to cover emerging areas including mixture-of-experts architectures, constitutional AI training, and frontier model distillation. We are also developing a community skill marketplace that will allow researchers to contribute and share domain-specific skills, further accelerating the pace of ML research.</p>
+        <p>We invite the research community to engage with Synthetic Sciences at <a href="https://syntheticsciences.ai">syntheticsciences.ai</a> and to cite this work when using the platform in published research.</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 11. Citation -->
+      <div class="wp-section" id="citation">
+        <span class="wp-section-num">11</span>
+        <h2>Citation</h2>
+        <p>If you use Synthetic Sciences in your research, please cite this paper:</p>
+
+        <div class="wp-bibtex-wrap" id="bibtex-block">
+          <div class="wp-bibtex-header">
+            <span class="wp-bibtex-label">BibTeX</span>
+            <button class="wp-copy-bibtex" onclick="copyBibtex()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="wp-bibtex" id="bibtex-content"><span class="bib-type">@article</span>{<span class="bib-key">bansal2026orchestrating</span>,
+  <span class="bib-field">title</span>     = {<span class="bib-value">Orchestrating Frontier AI Models as Autonomous Co-Scientists for Machine Learning Research</span>},
+  <span class="bib-field">author</span>    = {<span class="bib-value">Bansal, Aayam and Gangwani, Ishaan</span>},
+  <span class="bib-field">journal</span>   = {<span class="bib-value">Synthetic Sciences Technical Report</span>},
+  <span class="bib-field">year</span>      = {<span class="bib-value">2026</span>},
+  <span class="bib-field">url</span>       = {<span class="bib-value">https://syntheticsciences.ai/whitepaper</span>},
+  <span class="bib-field">publisher</span> = {<span class="bib-value">Inkvell Inc.</span>}
+}</div>
+        </div>
+
+        <div class="wp-bibtex-wrap" style="margin-top: 24px;">
+          <div class="wp-bibtex-header">
+            <span class="wp-bibtex-label">APA</span>
+            <button class="wp-copy-bibtex" onclick="copyApa()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="wp-bibtex" id="apa-content">Bansal, A., & Gangwani, I. (2026). Orchestrating Frontier AI Models as
+Autonomous Co-Scientists for Machine Learning Research. <em>Synthetic
+Sciences Technical Report</em>. https://syntheticsciences.ai/whitepaper</div>
+        </div>
+
+        <div class="wp-bibtex-wrap" style="margin-top: 24px;">
+          <div class="wp-bibtex-header">
+            <span class="wp-bibtex-label">ACL Anthology Format</span>
+            <button class="wp-copy-bibtex" onclick="copyAcl()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="wp-bibtex" id="acl-content">Aayam Bansal and Ishaan Gangwani. 2026. Orchestrating Frontier AI Models
+as Autonomous Co-Scientists for Machine Learning Research. In
+<em>Synthetic Sciences Technical Report</em>.</div>
+        </div>
+
+        <div class="legal-contact" style="margin-top: 32px;">
+          <h3>Use Synthetic Sciences in Your Research</h3>
+          <p>Get started with synsc and accelerate your ML research workflow.</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="https://cli.syntheticsciences.ai" class="btn-solid btn-lg" style="text-decoration: none;">Get Started</a>
+            <a href="https://cal.com/team/syntheticsciences/onboarding" class="btn-ghost btn-lg" style="text-decoration: none;">Schedule Onboarding</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer-dark">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/logo.png" alt="" width="48" height="48" class="footer-logo" />
+        <span class="footer-wordmark">Synthetic Sciences</span>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; 2026 <a href="https://inkvell.ai" target="_blank" rel="noopener">InkVell Inc.</a></span>
+        <div class="footer-legal-links">
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Terms</a>
+          <a href="/whitepaper/">White Paper</a>
+          <a href="mailto:team@syntheticsciences.ai">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="wp-toast" id="wp-toast">Copied to clipboard</div>
+
+  <script type="module" src="/main.js"></script>
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('wp-toast');
+      t.textContent = msg || 'Copied to clipboard';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    function copyBibtex() {
+      const bib = `@article{bansal2026orchestrating,
+  title     = {Orchestrating Frontier AI Models as Autonomous Co-Scientists for Machine Learning Research},
+  author    = {Bansal, Aayam and Gangwani, Ishaan},
+  journal   = {Synthetic Sciences Technical Report},
+  year      = {2026},
+  url       = {https://syntheticsciences.ai/whitepaper},
+  publisher = {Inkvell Inc.}
+}`;
+      navigator.clipboard.writeText(bib).then(() => showToast('BibTeX copied to clipboard'));
+    }
+
+    function copyApa() {
+      const apa = `Bansal, A., & Gangwani, I. (2026). Orchestrating Frontier AI Models as Autonomous Co-Scientists for Machine Learning Research. Synthetic Sciences Technical Report. https://syntheticsciences.ai/whitepaper`;
+      navigator.clipboard.writeText(apa).then(() => showToast('APA citation copied to clipboard'));
+    }
+
+    function copyAcl() {
+      const acl = `Aayam Bansal and Ishaan Gangwani. 2026. Orchestrating Frontier AI Models as Autonomous Co-Scientists for Machine Learning Research. In Synthetic Sciences Technical Report.`;
+      navigator.clipboard.writeText(acl).then(() => showToast('ACL citation copied to clipboard'));
+    }
+
+    // Active TOC highlighting on scroll
+    const tocLinks = document.querySelectorAll('.wp-toc-list a');
+    const sections = [];
+    tocLinks.forEach(link => {
+      const id = link.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) sections.push({ id, el, link });
+    });
+
+    function updateToc() {
+      let current = sections[0];
+      for (const s of sections) {
+        if (s.el.getBoundingClientRect().top <= 120) current = s;
+      }
+      tocLinks.forEach(l => l.classList.remove('active'));
+      if (current) current.link.classList.add('active');
+    }
+
+    window.addEventListener('scroll', updateToc, { passive: true });
+    updateToc();
+  </script>
+</body>
+</html>
