@@ -207,19 +207,19 @@
           <div class="wp-code-block"><span class="code-comment">/* Delphie Indexing Pipeline */</span>
 
 <span class="code-keyword">Stage 1</span>  Clone &amp; Parse
-          &boxur;&boxh;&boxh;&boxh; Git clone &rarr; AST extraction &rarr; symbol table
+          &#x2514;&#x2500;&#x2500;&#x2500; Git clone &#x2192; AST extraction &#x2192; symbol table
 
 <span class="code-keyword">Stage 2</span>  Chunk Extraction
-          &boxur;&boxh;&boxh;&boxh; AST-boundary splitting (functions, classes, blocks)
-          &boxur;&boxh;&boxh;&boxh; Preserves semantic coherence
+          &#x2514;&#x2500;&#x2500;&#x2500; AST-boundary splitting (functions, classes, blocks)
+          &#x2514;&#x2500;&#x2500;&#x2500; Preserves semantic coherence
 
 <span class="code-keyword">Stage 3</span>  Structural Enrichment
-          &boxur;&boxh;&boxh;&boxh; File path, scope, symbols, imports
-          &boxur;&boxh;&boxh;&boxh; Adjacent chunk relationships (same_class, sequential)
+          &#x2514;&#x2500;&#x2500;&#x2500; File path, scope, symbols, imports
+          &#x2514;&#x2500;&#x2500;&#x2500; Adjacent chunk relationships (same_class, sequential)
 
 <span class="code-keyword">Stage 4</span>  Embed &amp; Store
-          &boxur;&boxh;&boxh;&boxh; Code-optimized embeddings (Gemini)
-          &boxur;&boxh;&boxh;&boxh; Vector DB (Supabase pgvector) + symbol index</div>
+          &#x2514;&#x2500;&#x2500;&#x2500; Code-optimized embeddings (Gemini)
+          &#x2514;&#x2500;&#x2500;&#x2500; Vector DB (Supabase pgvector) + symbol index</div>
           <div class="wp-figure-caption"><span>Figure 1.</span> Delphie's four-stage indexing pipeline. AST-boundary chunking and structural enrichment distinguish it from naive fixed-window approaches.</div>
         </div>
 
