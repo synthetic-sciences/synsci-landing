@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delphie Context Engine &mdash; Benchmark Report | Synthetic Sciences</title>
-  <meta name="description" content="Comprehensive benchmark evaluation of the Delphie code context engine across 8 test suites, ~2,000 queries, with position-debiased LLM judging. Compared against Context7 and Nia." />
-  <meta property="og:title" content="Delphie Context Engine &mdash; Benchmark Report" />
-  <meta property="og:description" content="8 benchmark suites. ~2,000 queries. Position-debiased LLM judge. The most rigorous evaluation of code context engines to date." />
+  <title>Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents | Synthetic Sciences</title>
+  <meta name="description" content="Synsc-Delphi is a structure-aware code retrieval engine for AI agents. Evaluated across 8 benchmark phases totaling ~3,300 data points with position-debiased LLM judging." />
+  <meta property="og:title" content="Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents" />
+  <meta property="og:description" content="8 benchmark phases. ~3,300 data points. Position-debiased LLM judge. Structure-aware code retrieval with AST-extracted metadata." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://syntheticsciences.ai/context" />
 
   <!-- Google Scholar meta tags -->
-  <meta name="citation_title" content="Delphie Context Engine: A Comprehensive Benchmark Evaluation of Code Context Retrieval Systems" />
+  <meta name="citation_title" content="Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents" />
   <meta name="citation_author" content="Bansal, Aayam" />
   <meta name="citation_author" content="Gangwani, Ishaan" />
-  <meta name="citation_date" content="2025/06" />
-  <meta name="citation_online_date" content="2025/06/15" />
-  <meta name="citation_pdf_url" content="https://syntheticsciences.ai/context/delphie-benchmark-report.pdf" />
+  <meta name="citation_date" content="2026/03" />
+  <meta name="citation_online_date" content="2026/03/16" />
+  <meta name="citation_pdf_url" content="https://syntheticsciences.ai/context/delphi-benchmark-report.pdf" />
   <meta name="citation_language" content="en" />
   <meta name="citation_publisher" content="Synthetic Sciences" />
   <meta name="citation_technical_report_institution" content="Synthetic Sciences" />
@@ -75,13 +75,13 @@
     <div class="wp-hero-top">
       <span class="wp-badge">
         <span class="wp-badge-dot"></span>
-        Benchmark Report
+        Technical Whitepaper
       </span>
-      <span class="wp-version">v4.0 &mdash; March 2026</span>
+      <span class="wp-version">v5.0 &mdash; March 2026</span>
     </div>
 
-    <h1 class="wp-title">Delphie: A Code Context Engine for Agentic Workflows</h1>
-    <p class="wp-subtitle">8 benchmark suites, ~2,000 queries, position-debiased LLM judging, and RAGAS-inspired context quality metrics. The most rigorous public evaluation of code context engines to date.</p>
+    <h1 class="wp-title">Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents</h1>
+    <p class="wp-subtitle">A code retrieval engine that indexes repositories at the chunk level with AST-extracted symbol metadata, producing embeddings that capture both semantic meaning and structural context. Evaluated across 8 benchmark phases totaling ~3,300 data points with position-debiased LLM judging.</p>
 
     <div class="wp-authors">
       <span class="wp-author-line">Aayam Bansal, Ishaan Gangwani</span>
@@ -95,7 +95,7 @@
       </span>
       <span class="wp-meta-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        ~2,000 queries
+        ~3,300 data points
       </span>
       <span class="wp-meta-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
@@ -114,8 +114,8 @@
   <section class="wp-cite-banner" style="padding-top: 28px; padding-bottom: 28px;">
     <div class="wp-cite-card">
       <div class="wp-cite-left">
-        <span class="wp-cite-label">Cite this report</span>
-        <span class="wp-cite-text">Bansal &amp; Gangwani, 2026. &ldquo;Delphie: A Code Context Engine for Agentic Workflows.&rdquo;</span>
+        <span class="wp-cite-label">Cite this paper</span>
+        <span class="wp-cite-text">Bansal &amp; Gangwani, 2026. &ldquo;Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents.&rdquo;</span>
       </div>
       <div class="wp-cite-actions">
         <button class="wp-cite-btn" onclick="copyBibtex()">
@@ -139,19 +139,16 @@
       <div class="wp-toc-list">
         <a href="#abstract"><span class="toc-num">00</span> Abstract</a>
         <a href="#introduction"><span class="toc-num">01</span> Introduction</a>
-        <a href="#architecture"><span class="toc-num">02</span> Delphie Architecture</a>
-        <a href="#methodology"><span class="toc-num">03</span> Benchmark Methodology</a>
-        <a href="#phase1"><span class="toc-num">04</span> Phase 1: Custom Benchmarks</a>
-        <a href="#phase2"><span class="toc-num">05</span> Phase 2: Validated Retrieval</a>
-        <a href="#phase3"><span class="toc-num">06</span> Phase 3: LLM-as-Judge</a>
-        <a href="#phase4"><span class="toc-num">07</span> Phase 4: Enhanced Judge</a>
-        <a href="#context-quality"><span class="toc-num">08</span> Context Quality Metrics</a>
-        <a href="#enrichment"><span class="toc-num">09</span> Context Enrichment</a>
-        <a href="#validity"><span class="toc-num">10</span> Ecological Validity</a>
-        <a href="#limitations"><span class="toc-num">11</span> Limitations</a>
-        <a href="#conclusion"><span class="toc-num">12</span> Conclusion</a>
-        <a href="#references"><span class="toc-num">13</span> References</a>
-        <a href="#citation"><span class="toc-num">14</span> Citation</a>
+        <a href="#architecture"><span class="toc-num">02</span> System Architecture</a>
+        <a href="#indexing"><span class="toc-num">03</span> Indexing Pipeline</a>
+        <a href="#retrieval"><span class="toc-num">04</span> Retrieval Pipeline</a>
+        <a href="#methodology"><span class="toc-num">05</span> Benchmark Methodology</a>
+        <a href="#results"><span class="toc-num">06</span> Results</a>
+        <a href="#limitations"><span class="toc-num">07</span> Limitations</a>
+        <a href="#future-work"><span class="toc-num">08</span> Future Work</a>
+        <a href="#conclusion"><span class="toc-num">09</span> Conclusion</a>
+        <a href="#references"><span class="toc-num">10</span> References</a>
+        <a href="#citation"><span class="toc-num">11</span> Citation</a>
       </div>
     </aside>
 
@@ -161,17 +158,18 @@
       <!-- Abstract -->
       <div class="wp-abstract" id="abstract">
         <span class="wp-abstract-label">Abstract</span>
-        <p>We present the results of <strong>SynSci Context Bench</strong>, an open-source benchmark harness for evaluating code context engines&mdash;the retrieval systems that feed relevant source code to AI coding agents. We compare <strong>Delphie</strong> (Synthetic Sciences), <strong>Context7</strong>, and <strong>Nia</strong> across 8 test suites comprising approximately 2,000 queries. The evaluation spans four phases of increasing rigor: hand-crafted custom benchmarks, industry-standard datasets (CoSQA, CodeSearchNet), blind LLM-as-Judge scoring, and a position-debiased enhanced judge with 4-dimensional scoring and RAGAS-inspired context quality metrics. Delphie achieves 2.8x higher scores than Context7 on code-to-code retrieval (CodeSearchNet) under position-debiased evaluation, winning 436 of 497 queries (88%). Context7 leads on documentation-style queries (CoSQA) by 1.67x, though we argue these queries have low ecological validity for agent workflows. All benchmark code, datasets, and raw results are publicly available.</p>
+        <p>We present <strong>Synsc-Delphi</strong>, a code retrieval engine that provides AI agents with precise, scoped context from software repositories. Synsc-Delphi indexes source code at the chunk level with AST-extracted symbol metadata, producing embeddings that capture both semantic meaning and structural context. A two-layer enrichment pipeline&mdash;pre-embedding structural prefixes and post-retrieval symbol/docstring injection&mdash;improves retrieval specificity without modifying stored content.</p>
+        <p>We evaluate Synsc-Delphi against two production context engines (Context7 and Nia) across 8 benchmark phases totaling ~3,300 evaluated data points, using 100 queries per engine per phase, LLM-as-judge scoring with Claude Sonnet 4.6, and position-debiased evaluation. On CodeSearchNet, Synsc-Delphi achieves MRR 0.865 and wins 84/100 queries on the debiased enhanced judge (total score 1.705 vs 0.410 for Context7 and 0.345 for Nia). On CoSQA, Synsc-Delphi wins 51/100 queries (total 1.225 vs 0.875 Nia and 0.598 Context7). We release the full benchmark harness for reproducibility.</p>
         <div class="wp-keywords">
           <span class="wp-keyword">Code Retrieval</span>
-          <span class="wp-keyword">Context Engines</span>
-          <span class="wp-keyword">RAG</span>
+          <span class="wp-keyword">AST Metadata</span>
+          <span class="wp-keyword">Semantic Embeddings</span>
           <span class="wp-keyword">LLM-as-Judge</span>
           <span class="wp-keyword">Position Debiasing</span>
           <span class="wp-keyword">CodeSearchNet</span>
           <span class="wp-keyword">CoSQA</span>
           <span class="wp-keyword">RAGAS</span>
-          <span class="wp-keyword">AI Agents</span>
+          <span class="wp-keyword">MCP</span>
         </div>
       </div>
 
@@ -179,880 +177,677 @@
       <div class="wp-section" id="introduction">
         <span class="wp-section-num">01</span>
         <h2>Introduction</h2>
-        <p>AI coding agents have become an integral part of modern software development. When an agent encounters an unfamiliar codebase, it needs to retrieve relevant source code, type definitions, function signatures, and implementation details to generate correct, context-aware responses. The system responsible for this retrieval is a <strong>code context engine</strong>.</p>
-        <p>Despite their importance, code context engines have lacked rigorous, standardized evaluation. Existing benchmarks either test general information retrieval (not code-specific), use proprietary datasets, or rely on simple keyword matching that fails to capture retrieval quality as perceived by an LLM consumer.</p>
-        <p>We built <strong>SynSci Context Bench</strong> to address this gap. The harness evaluates three publicly available context engines:</p>
-        <ul>
-          <li><strong>Delphie</strong> (Synthetic Sciences) &mdash; a scoped code retrieval engine that indexes specific repositories with AST-level extraction and context enrichment.</li>
-          <li><strong>Context7</strong> &mdash; a documentation retrieval system that serves pre-crawled library documentation and tutorials.</li>
-          <li><strong>Nia</strong> &mdash; a universal knowledge search engine spanning code, documentation, papers, and packages across the ecosystem.</li>
-        </ul>
-        <p>The evaluation progressed through four phases, each designed to address fairness concerns identified in the prior phase. This iterative approach is itself a contribution: we document the biases inherent in each evaluation methodology and how subsequent phases correct for them.</p>
-        <p>Our key findings are:</p>
+        <p>Large language models used as software engineering assistants depend on the quality of context they receive. Three approaches exist:</p>
         <ol>
-          <li><strong>Delphie dominates code-to-code retrieval.</strong> On CodeSearchNet (the industry standard), Delphie scores 2.8x higher than Context7 under position-debiased 4D evaluation, winning 88% of 497 queries.</li>
-          <li><strong>Context7 wins on documentation queries.</strong> On CoSQA, Context7 scores 1.67x higher&mdash;but these queries represent knowledge an LLM already has, making retrieval unnecessary in practice.</li>
-          <li><strong>Position debiasing is essential for code retrieval evaluation.</strong> Code chunks exhibit substantially stronger positional effects (Position Consistency = 0.553) than general text (0.82 baseline), confirming that single-pass LLM judging inflates scores for code retrieval by ~10%.</li>
-          <li><strong>Context enrichment provides measurable improvement.</strong> Post-retrieval enrichment with function signatures and docstrings improves LLM judge scores, with the largest gain in specificity (+0.082).</li>
+          <li><strong>Documentation retrieval.</strong> Engines like Context7 index pre-crawled documentation sites. They return human-readable explanations but cannot search private repositories or return specific implementations.</li>
+          <li><strong>Universal knowledge search.</strong> Engines like Nia search across documentation, issues, and code globally, but cannot scope results to a specific repository.</li>
+          <li><strong>Scoped code retrieval.</strong> Synsc-Delphi indexes individual repositories at the chunk level with AST-extracted metadata, then performs scoped semantic search within a user&rsquo;s collection.</li>
         </ol>
-        <p>The entire benchmark harness, all datasets, and raw results are open-source at <a href="https://github.com/synthetic-sciences/SynSci-Context-Bench">github.com/synthetic-sciences/SynSci-Context-Bench</a>.</p>
+
+        <h3>1.1 Design Goals</h3>
+        <ul>
+          <li><strong>Repository-scoped search:</strong> Results come only from indexed repositories</li>
+          <li><strong>Chunk-level precision:</strong> Return the specific function or class, not an entire file</li>
+          <li><strong>Symbol awareness:</strong> Leverage AST-extracted metadata to improve embedding quality</li>
+          <li><strong>Multi-tenant isolation:</strong> Public repos are deduplicated; private repos are isolated</li>
+          <li><strong>MCP integration:</strong> All capabilities exposed as Model Context Protocol tools</li>
+        </ul>
       </div>
 
       <div class="wp-divider"></div>
 
-      <!-- 2. Architecture -->
+      <!-- 2. System Architecture -->
       <div class="wp-section" id="architecture">
         <span class="wp-section-num">02</span>
-        <h2>Delphie Architecture</h2>
-        <p>Delphie is built around a simple principle: <strong>AI agents need code, not documentation</strong>. When an agent is navigating an unfamiliar codebase, it needs the actual function implementations, type definitions, and call sites&mdash;not a tutorial explaining how the library works. Delphie is purpose-built for this retrieval task.</p>
-
-        <h3>2.1 Indexing Pipeline</h3>
-        <p>Delphie indexes repositories at the chunk level rather than the file level. The indexing pipeline operates in four stages:</p>
-        <ol>
-          <li><strong>Clone &amp; parse.</strong> The repository is cloned and each source file is parsed into an AST (Abstract Syntax Tree). The AST identifies function definitions, class declarations, imports, type annotations, and call sites.</li>
-          <li><strong>Chunk extraction.</strong> Source files are split into semantically meaningful chunks using AST boundaries. Each chunk corresponds to a function, class, or logical code block rather than an arbitrary fixed-size window.</li>
-          <li><strong>Structural enrichment.</strong> Each chunk is enriched with structural metadata before embedding: file path, enclosing scope, defined symbols, imported modules, and relationships to adjacent chunks. This metadata is prepended to the chunk text before embedding computation.</li>
-          <li><strong>Embedding &amp; storage.</strong> Enriched chunks are embedded using a code-optimized embedding model and stored in a vector database (Supabase) alongside the extracted symbol table and chunk relationship graph.</li>
-        </ol>
+        <h2>System Architecture</h2>
 
         <div class="wp-figure">
-          <div class="wp-code-block"><span class="code-comment">/* Delphie Indexing Pipeline */</span>
+          <div class="wp-code-block"><span class="code-comment">/* Synsc-Delphi System Architecture */</span>
 
-<span class="code-keyword">Stage 1</span>  Clone &amp; Parse
-          &#x2514;&#x2500;&#x2500;&#x2500; Git clone &#x2192; AST extraction &#x2192; symbol table
+<span class="code-keyword">INDEXING PIPELINE</span>
+          &#x2514;&#x2500;&#x2500;&#x2500; Clone &#x2192; Filter &#x2192; Chunk &#x2192; AST Extract &#x2192; Enrich &#x2192; Embed &#x2192; Store
+          &#x2514;&#x2500;&#x2500;&#x2500; GitClient (dulwich) &#x2192; Chunker (tiktoken) &#x2192; Context Enrichment (scope trees)
+          &#x2514;&#x2500;&#x2500;&#x2500; tree-sitter parsers | Gemini Embed API | Supabase PostgreSQL+pgvec
 
-<span class="code-keyword">Stage 2</span>  Chunk Extraction
-          &#x2514;&#x2500;&#x2500;&#x2500; AST-boundary splitting (functions, classes, blocks)
-          &#x2514;&#x2500;&#x2500;&#x2500; Preserves semantic coherence
+<span class="code-keyword">RETRIEVAL PIPELINE</span>
+          &#x2514;&#x2500;&#x2500;&#x2500; Query Embed &#x2192; pgvector ANN &#x2192; Symbol Boost &#x2192; Metadata Score
+          &#x2514;&#x2500;&#x2500;&#x2500; Threshold &#x2192; MMR &#x2192; Enrich
 
-<span class="code-keyword">Stage 3</span>  Structural Enrichment
-          &#x2514;&#x2500;&#x2500;&#x2500; File path, scope, symbols, imports
-          &#x2514;&#x2500;&#x2500;&#x2500; Adjacent chunk relationships (same_class, sequential)
-
-<span class="code-keyword">Stage 4</span>  Embed &amp; Store
-          &#x2514;&#x2500;&#x2500;&#x2500; Code-optimized embeddings (Gemini)
-          &#x2514;&#x2500;&#x2500;&#x2500; Vector DB (Supabase pgvector) + symbol index</div>
-          <div class="wp-figure-caption"><span>Figure 1.</span> Delphie's four-stage indexing pipeline. AST-boundary chunking and structural enrichment distinguish it from naive fixed-window approaches.</div>
+<span class="code-keyword">API LAYER</span>
+          &#x2514;&#x2500;&#x2500;&#x2500; MCP Server (stdio) &#x2194; HTTP Server (FastAPI)
+          &#x2514;&#x2500;&#x2500;&#x2500; 31 tools: search, index, analyze, papers, datasets</div>
+          <div class="wp-figure-caption"><span>Figure 1.</span> Synsc-Delphi&rsquo;s three-layer architecture: indexing pipeline, retrieval pipeline, and API layer with 31 MCP tools.</div>
         </div>
 
-        <h3>2.2 Search &amp; Retrieval</h3>
-        <p>At query time, Delphie performs a scoped vector similarity search against the indexed repository. Search is always scoped to a specific repository&mdash;the engine never returns results from unrelated codebases, eliminating the noise that plagues universal search approaches.</p>
-        <p>After retrieving the top-k chunks, Delphie performs <strong>post-retrieval enrichment</strong>: each chunk is augmented with the enclosing function or class signature, the first three lines of its docstring, and the last five lines of the preceding chunk for continuity. This enrichment runs two batched SQL queries (~10&ndash;30ms) and helps downstream LLM consumers understand each chunk without reading the entire file.</p>
-
-        <h3>2.3 Architectural Differences</h3>
-        <p>The three engines tested in this benchmark solve fundamentally different problems:</p>
+        <h3>2.1 Data Model</h3>
+        <p>PostgreSQL with pgvector. Core entities:</p>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
-                <th>Aspect</th>
-                <th>Delphie</th>
-                <th>Context7</th>
-                <th>Nia</th>
+                <th>Table</th>
+                <th>Purpose</th>
+                <th>Key Fields</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="td-highlight">Design goal</td>
-                <td>Scoped code retrieval within a repo</td>
-                <td>Documentation retrieval</td>
-                <td>Universal knowledge search</td>
+                <td class="td-highlight"><code>repositories</code></td>
+                <td>Repository metadata</td>
+                <td>url, branch, commit_sha, is_public, indexed_by</td>
               </tr>
               <tr>
-                <td class="td-highlight">Search scope</td>
-                <td>Specified repository only</td>
-                <td>Pre-crawled docs/libs</td>
-                <td>All indexed sources</td>
+                <td class="td-highlight"><code>repository_files</code></td>
+                <td>Per-file metadata</td>
+                <td>file_path, language, line_count, content_hash</td>
               </tr>
               <tr>
-                <td class="td-highlight">Indexing</td>
-                <td>Per-repo with AST extraction + enrichment</td>
-                <td>Pre-crawled, no user indexing</td>
-                <td>Global with doc crawling</td>
+                <td class="td-highlight"><code>code_chunks</code></td>
+                <td>Indexed code segments</td>
+                <td>content, start_line, end_line, chunk_type, symbol_names</td>
               </tr>
               <tr>
-                <td class="td-highlight">Best use case</td>
-                <td>&ldquo;Find this function in my codebase&rdquo;</td>
-                <td>&ldquo;How does library X work?&rdquo;</td>
-                <td>&ldquo;Find knowledge across the ecosystem&rdquo;</td>
+                <td class="td-highlight"><code>chunk_embeddings</code></td>
+                <td>Vector representations</td>
+                <td>embedding (768-dim), chunk_id, repo_id</td>
               </tr>
               <tr>
-                <td class="td-highlight">Content type</td>
-                <td>Raw source code + signatures</td>
-                <td>Docs, tutorials, guides</td>
-                <td>Docs, code, papers, packages</td>
+                <td class="td-highlight"><code>symbols</code></td>
+                <td>AST-extracted symbols</td>
+                <td>name, qualified_name, signature, docstring, symbol_type</td>
+              </tr>
+              <tr>
+                <td class="td-highlight"><code>chunk_relationships</code></td>
+                <td>Inter-chunk edges</td>
+                <td>source_chunk_id, target_chunk_id, relationship_type</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 1.</span> Architectural differences between the three evaluated engines. Each engine targets a different retrieval use case.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 1.</span> Core data model. Public repositories are indexed once and shared across users via a junction table. Adding a popular repo that&rsquo;s already indexed takes ~100ms.</div>
       </div>
 
       <div class="wp-divider"></div>
 
-      <!-- 3. Methodology -->
-      <div class="wp-section" id="methodology">
+      <!-- 3. Indexing Pipeline -->
+      <div class="wp-section" id="indexing">
         <span class="wp-section-num">03</span>
+        <h2>Indexing Pipeline</h2>
+
+        <h3>3.1 Repository Ingestion</h3>
+        <p>Repositories are cloned via dulwich with auto-detected default branch. File filtering applies extension whitelist (50+ extensions, 30 languages), exclusion patterns (node_modules, __pycache__, lock files, binaries), and fast mode (skips tests/examples).</p>
+
+        <h3>3.2 Chunking</h3>
+        <p>Token-based algorithm with AST-aware boundary selection:</p>
+        <ul>
+          <li><strong>Max tokens:</strong> 2,048 per chunk</li>
+          <li><strong>Overlap:</strong> 100 tokens</li>
+          <li><strong>Minimum:</strong> 50 tokens</li>
+          <li><strong>Tokenizer:</strong> <code>cl100k_base</code> (tiktoken)</li>
+        </ul>
+        <p>Algorithm: accumulate lines until 75% of max tokens (soft limit), then seek next symbol boundary to split. Hard-split at max if no boundary found. This aligns chunks with logical code units&mdash;functions and methods typically occupy one chunk.</p>
+
+        <h3>3.3 Symbol Extraction</h3>
+        <p>tree-sitter parsers extract: name, qualified_name, symbol_type (function/class/method/variable), signature, docstring, parameters with types, return type, decorators, and source location.</p>
+
+        <h3>3.4 Pre-Embedding Context Enrichment</h3>
+        <p>Each chunk receives a structural context prefix before embedding:</p>
+
+        <div class="wp-figure">
+          <div class="wp-code-block"><span class="code-comment"># Structural context prefix prepended before embedding</span>
+<span class="code-keyword"># File:</span> <span class="code-string">auth/middleware.py</span>
+<span class="code-keyword"># Scope:</span> <span class="code-string">AuthMiddleware > validate_token</span>
+<span class="code-keyword"># Defines:</span> <span class="code-string">validate_token(self, token: str) -> bool</span>
+<span class="code-keyword"># Uses:</span> <span class="code-string">jwt, datetime, hashlib</span>
+<span class="code-keyword"># After:</span> <span class="code-string">refresh_token, revoke_token</span>
+
+<span class="code-comment">&lt;actual code chunk&gt;</span></div>
+          <div class="wp-figure-caption"><span>Figure 2.</span> Pre-embedding structural enrichment. Constructed via scope tree (hierarchical symbol containment), sibling discovery (up to 3 symbols before/after), and import extraction (up to 10). Inspired by <a href="https://github.com/supermemoryai/code-chunk">supermemoryai/code-chunk</a>.</div>
+        </div>
+
+        <h3>3.5 Embedding</h3>
+
+        <div class="wp-table-wrap">
+          <table class="wp-table">
+            <thead>
+              <tr>
+                <th>Content Type</th>
+                <th>Model</th>
+                <th>Dimensions</th>
+                <th>Task Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-highlight">Code chunks</td>
+                <td><code>gemini-embedding-001</code></td>
+                <td>768</td>
+                <td><code>RETRIEVAL_DOCUMENT</code> / <code>RETRIEVAL_QUERY</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 2.</span> Embedding configuration. Dual task types are critical for asymmetric retrieval where queries are natural language but documents are code. Embeddings are L2-normalized for cosine similarity.</div>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 4. Retrieval Pipeline -->
+      <div class="wp-section" id="retrieval">
+        <span class="wp-section-num">04</span>
+        <h2>Retrieval Pipeline</h2>
+        <p>Six-stage quality pipeline:</p>
+
+        <h3>4.1 Vector Similarity</h3>
+        <p>Query embedded with <code>RETRIEVAL_QUERY</code> task type, matched against stored embeddings using pgvector&rsquo;s <code>&lt;=&gt;</code> operator. Over-fetches by <code>max(top_k &times; 3, 20)</code> for post-processing headroom.</p>
+
+        <h3>4.2 Symbol-Aware Boosting</h3>
+        <p>Query parsed for code identifiers (camelCase, snake_case, PascalCase, dotted paths). Results with matching symbols get +0.15 score boost.</p>
+
+        <h3>4.3 Metadata Scoring</h3>
+        <p>Test/documentation/example directories get -0.08 penalty. High assertion/mock content gets -0.04 penalty.</p>
+
+        <h3>4.4 Dynamic Threshold</h3>
+        <div class="wp-figure">
+          <div class="wp-code-block"><span class="code-keyword">threshold</span> = max(0.3, top_score &times; 0.6)</div>
+          <div class="wp-figure-caption"><span>Equation 1.</span> Adaptive threshold&mdash;strong top results raise the bar, ambiguous queries stay permissive.</div>
+        </div>
+
+        <h3>4.5 MMR Diversification</h3>
+        <div class="wp-figure">
+          <div class="wp-code-block"><span class="code-keyword">score</span> = 0.7 &times; sim(candidate, query) &minus; 0.3 &times; max_sim(candidate, selected)</div>
+          <div class="wp-figure-caption"><span>Equation 2.</span> Maximal Marginal Relevance prevents returning multiple chunks from the same function.</div>
+        </div>
+
+        <h3>4.6 Post-Retrieval Enrichment</h3>
+        <p>Final results (&le;10 chunks) enriched with enclosing symbol signature/docstring and preceding chunk context. Costs ~10&ndash;30ms (two indexed queries).</p>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 5. Benchmark Methodology -->
+      <div class="wp-section" id="methodology">
+        <span class="wp-section-num">05</span>
         <h2>Benchmark Methodology</h2>
-        <p>The evaluation was conducted in four phases, each designed to address fairness concerns from the prior phase. This layered approach ensures that no single evaluation methodology&rsquo;s biases dominate the conclusions.</p>
+
+        <h3>5.1 Engines</h3>
+
+        <div class="wp-table-wrap">
+          <table class="wp-table">
+            <thead>
+              <tr>
+                <th>Engine</th>
+                <th>Architecture</th>
+                <th>Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-highlight">Synsc-Delphi</td>
+                <td>Chunk-level embeddings + AST metadata</td>
+                <td>User&rsquo;s indexed repos</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Context7</td>
+                <td>Pre-crawled documentation</td>
+                <td>Popular libraries</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Nia</td>
+                <td>Universal knowledge search</td>
+                <td>Global corpus</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 3.</span> Engines evaluated. All engines indexed identically: 15 repos via web UI using public GitHub URLs. No engine received pre-processed or specially aligned data.</div>
+
+        <h3>5.2 Benchmark Suite</h3>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
                 <th>Phase</th>
-                <th>Task</th>
-                <th>Method</th>
-                <th>Queries</th>
-                <th>Engines</th>
+                <th>Benchmark</th>
+                <th>Queries/Engine</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td class="td-highlight">1</td>
-                <td>Custom retrieval quality</td>
-                <td>Hand-crafted queries against FastAPI / Pydantic / httpx</td>
-                <td>55</td>
-                <td>Delphie, Nia, Context7</td>
+                <td>Retrieval Quality (MRR, P@K, NDCG)</td>
+                <td>100</td>
               </tr>
               <tr>
                 <td class="td-highlight">2</td>
-                <td>Industry-standard IR</td>
-                <td>CoSQA + CodeSearchNet, content/file matching</td>
-                <td>997</td>
-                <td>Delphie, Nia</td>
+                <td>Multi-Hop Retrieval (coverage, hop recall)</td>
+                <td>100</td>
               </tr>
               <tr>
                 <td class="td-highlight">3</td>
-                <td>LLM-as-Judge (3D)</td>
-                <td>Blind Claude Sonnet 4.6, 3 dimensions (rel/comp/spec)</td>
-                <td>997</td>
-                <td>Delphie, Context7, Nia</td>
+                <td>Code QA (definitions, call sites, imports)</td>
+                <td>100</td>
               </tr>
               <tr>
                 <td class="td-highlight">4</td>
-                <td>Enhanced Judge (4D, debiased)</td>
-                <td>Position-debiased, 4 dimensions + faithfulness, RAGAS</td>
-                <td>997</td>
-                <td>Delphie, Context7</td>
+                <td>Adversarial Near-Miss (decoys, version confusion)</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">5</td>
+                <td>Hallucination Rate</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">6</td>
+                <td>CodeSearchNet &mdash; LLM judge (Husain et al. 2019)</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">7</td>
+                <td>CoSQA &mdash; LLM judge (Huang et al. 2021)</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">8</td>
+                <td>Enhanced Judge (position-debiased 4D + RAGAS)</td>
+                <td>200</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">&mdash;</td>
+                <td><em>AdvTest (supplementary)</em></td>
+                <td>100</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 2.</span> Four-phase evaluation methodology. Each phase addresses fairness limitations of the prior one.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 4.</span> Benchmark suite. Total: ~3,300 evaluated data points across 3 engines (plus 300 supplementary AdvTest).</div>
 
-        <h3>3.1 Why Four Phases?</h3>
-        <p>Each phase was designed to correct for biases identified in the previous round:</p>
-        <ul>
-          <li><strong>Phase 1</strong> used hand-crafted queries &rarr; potential bias toward Delphie&rsquo;s design.</li>
-          <li><strong>Phase 2</strong> used industry-standard datasets &rarr; but content-matching penalizes engines that transform text during indexing.</li>
-          <li><strong>Phase 3</strong> used blind LLM judging &rarr; but single-pass scoring has ~10% positional bias (Zheng et al. 2023).</li>
-          <li><strong>Phase 4</strong> added position debiasing + faithfulness + judge consistency metrics &rarr; the most rigorous evaluation.</li>
-        </ul>
-
-        <h3>3.2 Statistical Rigor</h3>
-        <p>Every pairwise comparison in the benchmark harness includes paired t-tests, Wilcoxon signed-rank tests, bootstrap confidence intervals (10,000 resamples), Cohen&rsquo;s d (effect size), Cliff&rsquo;s delta (non-parametric effect size), and Bonferroni correction for multiple comparisons. The enhanced judge additionally tracks its own reliability with Cohen&rsquo;s kappa and Position Consistency metrics.</p>
-
-        <h3>3.3 Test Corpora</h3>
-        <p>Custom benchmarks use three well-known Python libraries as test corpora: <strong>FastAPI</strong> (web framework), <strong>Pydantic</strong> (data validation), and <strong>httpx</strong> (HTTP client). These were indexed on both Delphie and Nia; Context7 uses its pre-crawled documentation for these libraries. Industry-standard benchmarks use CoSQA (Huang et al. 2021) and CodeSearchNet (Husain et al. 2019) from HuggingFace.</p>
-
-        <h3>3.4 Judge Configuration</h3>
-        <p>All LLM-as-Judge evaluations use <strong>Claude Sonnet 4.6</strong> (Anthropic) as the blind judge. The judge receives only the query and retrieved context&mdash;no engine identification, no metadata about which engine produced which result. In Phase 4, each query is evaluated twice with reversed chunk ordering; final scores are the average of both passes.</p>
+        <h3>5.3 Scoring</h3>
+        <p><strong>IR Metrics:</strong> Precision@K, Recall@K, MRR, NDCG@K.</p>
+        <p><strong>LLM Judge:</strong> Claude Sonnet 4.6 evaluates each (query, retrieved context) pair on Relevance, Completeness, Specificity (0&ndash;3 each). Engine-blind, temperature 0.</p>
+        <p><strong>Enhanced Judge:</strong> Adds Faithfulness (4th dimension) and position debiasing&mdash;each query evaluated twice with shuffled chunk order, scores averaged. Eliminates ~10% positional bias (Zheng et al. 2023).</p>
+        <p><strong>Context Quality (RAGAS-inspired):</strong> Context Precision, Context Density, Signal-to-Noise, Chunk Diversity. Computed without LLM calls.</p>
       </div>
 
       <div class="wp-divider"></div>
 
-      <!-- 4. Phase 1 -->
-      <div class="wp-section" id="phase1">
-        <span class="wp-section-num">04</span>
-        <h2>Phase 1: Custom Benchmarks</h2>
-        <p>The custom benchmark suite comprises five test types: retrieval quality, multi-hop retrieval, code-specific QA, adversarial near-miss, and hallucination rate. All queries were hand-crafted against the FastAPI/Pydantic/httpx test corpus.</p>
+      <!-- 6. Results -->
+      <div class="wp-section" id="results">
+        <span class="wp-section-num">06</span>
+        <h2>Results</h2>
 
-        <h3>4.1 Retrieval Quality</h3>
-        <p>10 natural language queries measuring how well each engine surfaces the most relevant code. Results are evaluated using standard IR metrics: Mean Reciprocal Rank (MRR), Precision@K, and NDCG@10.</p>
+        <h3>6.1 Retrieval Quality (100 queries)</h3>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
                 <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
+                <th>Synsc-Delphi</th>
                 <th>Nia</th>
+                <th>Context7</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td class="td-highlight">MRR</td>
-                <td class="td-winner">0.817</td>
-                <td>0.350</td>
-                <td>0.345</td>
+                <td class="td-winner">0.962</td>
+                <td>0.728</td>
+                <td>0.790</td>
               </tr>
               <tr>
                 <td class="td-highlight">P@1</td>
-                <td class="td-winner">0.700</td>
-                <td>0.300</td>
-                <td>0.300</td>
+                <td class="td-winner">0.940</td>
+                <td>0.660</td>
+                <td>0.790</td>
               </tr>
               <tr>
                 <td class="td-highlight">P@5</td>
-                <td class="td-winner">0.440</td>
-                <td>0.285</td>
-                <td>0.200</td>
+                <td class="td-winner">0.852</td>
+                <td>0.482</td>
+                <td>0.790</td>
               </tr>
               <tr>
                 <td class="td-highlight">NDCG@10</td>
-                <td class="td-winner">0.779</td>
-                <td>0.355</td>
-                <td>0.345</td>
+                <td class="td-winner">0.901</td>
+                <td>0.706</td>
+                <td>0.790</td>
               </tr>
               <tr>
-                <td class="td-highlight">Avg Latency</td>
-                <td>4,521ms</td>
-                <td class="td-winner">2,850ms</td>
-                <td>11,738ms</td>
+                <td class="td-highlight">Recall@10</td>
+                <td class="td-winner">2.103</td>
+                <td>1.187</td>
+                <td>0.199</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 3.</span> Retrieval quality on 10 custom queries. Delphie returns the correct result in the top position 70% of the time vs 30% for both competitors.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 5.</span> Retrieval quality on 100 queries. Synsc-Delphi achieves MRR 0.962 with P@1 of 0.940.</div>
 
-        <h3>4.2 Multi-Hop Retrieval</h3>
-        <p>10 queries requiring context from multiple files or repositories. Multi-hop coverage measures whether the engine surfaces code from all required source locations in a single query.</p>
+        <h3>6.2 Multi-Hop Retrieval (100 queries)</h3>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
                 <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
+                <th>Synsc-Delphi</th>
                 <th>Nia</th>
+                <th>Context7</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td class="td-highlight">Hop Coverage</td>
-                <td class="td-winner">0.967</td>
-                <td>0.850</td>
-                <td>0.783</td>
+                <td class="td-winner">0.973</td>
+                <td>0.732</td>
+                <td>0.848</td>
               </tr>
               <tr>
-                <td class="td-highlight">Hop MRR</td>
-                <td class="td-winner">0.917</td>
-                <td>0.701</td>
-                <td>0.599</td>
+                <td class="td-highlight">Hop Recall@5</td>
+                <td class="td-winner">0.940</td>
+                <td>0.672</td>
+                <td>0.848</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Avg Hop MRR</td>
+                <td class="td-winner">0.835</td>
+                <td>0.553</td>
+                <td>0.848</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 4.</span> Multi-hop retrieval. Delphie surfaces code from nearly all required libraries (96.7% coverage) in a single query.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 6.</span> Multi-hop retrieval. Synsc-Delphi achieves 97.3% hop coverage.</div>
 
-        <h3>4.3 Code-Specific QA</h3>
-        <p>15 queries testing fundamental code understanding: function definitions, call sites, imports, inheritance hierarchies, argument usage, and return types.</p>
+        <h3>6.3 Adversarial Near-Miss (100 queries, LLM judge)</h3>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
                 <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
+                <th>Synsc-Delphi</th>
                 <th>Nia</th>
+                <th>Context7</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="td-highlight">Accuracy</td>
-                <td class="td-winner">0.867</td>
-                <td>0.200</td>
-                <td>0.154</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Symbol Accuracy</td>
-                <td class="td-winner">0.933</td>
-                <td>0.533</td>
-                <td>0.385</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">File Accuracy</td>
-                <td class="td-winner">1.000</td>
-                <td>0.400</td>
-                <td>0.538</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Chunk Coherence</td>
-                <td class="td-winner">0.867</td>
-                <td>0.200</td>
-                <td>0.154</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 5.</span> Code QA accuracy across 15 queries. Delphie&rsquo;s AST-level indexing provides a clear advantage on code navigation tasks.</div>
-
-        <h3>4.4 Adversarial Near-Miss</h3>
-        <p>10 pairs of semantically similar but functionally different code&mdash;same-name functions in different modules, test code vs production code, version-confused APIs. This tests whether an engine can discriminate between decoys.</p>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
-                <th>Nia</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">Accuracy</td>
-                <td class="td-winner">0.800</td>
-                <td>0.000</td>
-                <td>0.000</td>
-              </tr>
               <tr>
                 <td class="td-highlight">Discrimination</td>
-                <td class="td-winner">0.700</td>
-                <td>0.000</td>
-                <td>0.000</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Decoy Confusion</td>
-                <td>10.0%</td>
-                <td>0.0%</td>
-                <td>0.0%</td>
+                <td class="td-winner">0.560</td>
+                <td>0.140</td>
+                <td>0.170</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 6.</span> Adversarial near-miss results. Both Context7 and Nia scored 0.000&mdash;failing to return the correct target for any pair. Delphie scores 0.800 accuracy but adversarial discrimination remains its biggest improvement area.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 7.</span> Adversarial near-miss discrimination score.</div>
 
-        <h3>4.5 Hallucination Rate</h3>
-        <p>10 code generation tasks where engine-provided context is fed to an LLM, and the generated code is validated against known API surfaces. Delphie and Context7 both achieved a <strong>40% hallucination rate</strong>; Nia scored 55.6%. Most hallucinations stemmed from outdated API references and invented method names in the model&rsquo;s training data rather than retrieval failures.</p>
-      </div>
-
-      <div class="wp-divider"></div>
-
-      <!-- 5. Phase 2 -->
-      <div class="wp-section" id="phase2">
-        <span class="wp-section-num">05</span>
-        <h2>Phase 2: Validated Retrieval</h2>
-        <p>To address potential bias in hand-crafted queries, Phase 2 uses two industry-standard datasets from HuggingFace: <strong>CoSQA</strong> (Huang et al. 2021) and <strong>CodeSearchNet</strong> (Husain et al. 2019). Retrieval is measured by content similarity matching (Jaccard + SequenceMatcher, threshold 0.5) and file-path matching.</p>
-
-        <div class="wp-callout">
-          <strong>Why Context7 is excluded from Phase 2:</strong> Content-matching requires the engine to return text that closely matches a known ground-truth snippet. Context7 returns documentation rather than the actual code files in the benchmark corpus, so it cannot score hits. This is a limitation of the metric, not the engine. The LLM judge in Phases 3&ndash;4 bypasses this by evaluating usefulness regardless of source.
-        </div>
-
-        <h3>5.1 CodeSearchNet (497 queries)</h3>
-        <p>The de facto standard for code search evaluation. Queries are natural language docstrings; ground truth is the corresponding function implementation.</p>
+        <h3>6.4 Hallucination Rate (100 queries)</h3>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
                 <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
+                <th>Synsc-Delphi</th>
                 <th>Nia</th>
+                <th>Context7</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="td-highlight">MRR</td>
-                <td class="td-winner">0.940</td>
-                <td>0.000</td>
-                <td>0.053</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">P@1</td>
-                <td class="td-winner">0.938</td>
-                <td>0.000</td>
-                <td>0.053</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Recall@10</td>
-                <td class="td-winner">0.949</td>
-                <td>0.000</td>
-                <td>0.053</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">NDCG@10</td>
-                <td class="td-winner">0.941</td>
-                <td>0.000</td>
-                <td>0.053</td>
+                <td class="td-highlight">Hallucination Rate</td>
+                <td class="td-winner">39%</td>
+                <td>51%</td>
+                <td>45%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 7.</span> CodeSearchNet validated retrieval. Delphie returns the correct function as the top result 93.8% of the time.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 8.</span> Hallucination rate. Synsc-Delphi achieves the lowest rate at 39%.</div>
 
-        <h3>5.2 CoSQA (450 queries)</h3>
-        <p>500 real web search queries for Python code with human-annotated relevance labels.</p>
+        <h3>6.5 Validated Datasets (LLM judge, 100 queries each)</h3>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
+                <th>Dataset</th>
                 <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
+                <th>Synsc-Delphi</th>
                 <th>Nia</th>
+                <th>Context7</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td class="td-highlight" rowspan="2">CodeSearchNet</td>
                 <td class="td-highlight">MRR</td>
-                <td class="td-winner">0.636</td>
-                <td>0.002</td>
-                <td>0.003</td>
+                <td class="td-winner">0.865</td>
+                <td>0.040</td>
+                <td>0.010</td>
               </tr>
               <tr>
                 <td class="td-highlight">NDCG@10</td>
-                <td class="td-winner">0.642</td>
-                <td>0.002</td>
-                <td>0.004</td>
+                <td class="td-winner">0.907</td>
+                <td>0.129</td>
+                <td>0.040</td>
               </tr>
               <tr>
-                <td class="td-highlight">Avg Latency</td>
-                <td>3,939ms</td>
-                <td class="td-winner">2,822ms</td>
-                <td>6,743ms</td>
+                <td class="td-highlight" rowspan="2">CoSQA</td>
+                <td class="td-highlight">MRR</td>
+                <td class="td-winner">0.703</td>
+                <td>0.298</td>
+                <td>0.110</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">NDCG@10</td>
+                <td class="td-winner">0.907</td>
+                <td>0.597</td>
+                <td>0.190</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 8.</span> CoSQA validated retrieval. Near-zero scores for Context7 and Nia reflect content-matching limitations, not retrieval quality&mdash;hence the need for Phase 3.</div>
-      </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 9.</span> Validated dataset results. Synsc-Delphi achieves MRR 0.865 on CodeSearchNet and 0.703 on CoSQA.</div>
 
-      <div class="wp-divider"></div>
+        <h3>6.6 Enhanced Judge &mdash; Position-Debiased 4D (100 queries per dataset)</h3>
 
-      <!-- 6. Phase 3 -->
-      <div class="wp-section" id="phase3">
-        <span class="wp-section-num">06</span>
-        <h2>Phase 3: LLM-as-Judge</h2>
-        <p>Phase 3 eliminates the content-matching bias of Phase 2 entirely. Instead of comparing retrieved text against a ground-truth snippet, a blind LLM judge evaluates whether the retrieved context is <em>useful</em> for answering the query&mdash;regardless of whether it matches a specific code snippet verbatim.</p>
-
-        <h3>6.1 Methodology</h3>
-        <ol>
-          <li>Send each query to each engine and collect raw retrieved context.</li>
-          <li>Feed (query, context) pairs to Claude Sonnet 4.6 as a blind judge.</li>
-          <li>Judge scores three dimensions (0&ndash;3 each): <strong>Relevance</strong> (does the context relate to the query?), <strong>Completeness</strong> (could you fully answer from this context?), and <strong>Specificity</strong> (is the context targeted, not generic?).</li>
-          <li>Compare scores across engines; track wins and ties.</li>
-        </ol>
-
-        <h3>6.2 CodeSearchNet Results (497 queries)</h3>
+        <h4>CodeSearchNet</h4>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
                 <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
+                <th>Synsc-Delphi</th>
                 <th>Nia</th>
+                <th>Context7</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td class="td-highlight">Relevance (0&ndash;3)</td>
-                <td class="td-winner">2.870</td>
-                <td>0.590</td>
-                <td>0.300</td>
+                <td class="td-winner">1.790</td>
+                <td>0.200</td>
+                <td>0.260</td>
               </tr>
               <tr>
                 <td class="td-highlight">Completeness (0&ndash;3)</td>
-                <td class="td-winner">2.820</td>
-                <td>0.320</td>
-                <td>0.190</td>
+                <td class="td-winner">1.750</td>
+                <td>0.080</td>
+                <td>0.120</td>
               </tr>
               <tr>
                 <td class="td-highlight">Specificity (0&ndash;3)</td>
-                <td class="td-winner">2.290</td>
-                <td>0.330</td>
-                <td>0.200</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Total (0&ndash;3)</td>
-                <td class="td-winner">2.660</td>
-                <td>0.413</td>
+                <td class="td-winner">1.400</td>
+                <td>0.120</td>
                 <td>0.230</td>
               </tr>
               <tr>
+                <td class="td-highlight">Faithfulness (0&ndash;3)</td>
+                <td class="td-winner">1.880</td>
+                <td>0.980</td>
+                <td>1.030</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Total (0&ndash;3)</td>
+                <td class="td-winner">1.705</td>
+                <td>0.345</td>
+                <td>0.410</td>
+              </tr>
+              <tr>
                 <td class="td-highlight">Wins</td>
-                <td class="td-winner">92</td>
-                <td>2</td>
-                <td>2</td>
+                <td class="td-winner">84</td>
+                <td>3</td>
+                <td>3</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 9.</span> LLM Judge on CodeSearchNet (3D, no debiasing). Delphie scores 6.4x higher than Context7. This is a single-pass evaluation&mdash;Phase 4 adds debiasing.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 10.</span> Enhanced Judge on CodeSearchNet (position-debiased, 4D). Synsc-Delphi wins 84/100 queries with total score 1.705 vs 0.410 next-best.</div>
 
-        <h3>6.3 CoSQA Results (500 queries)</h3>
+        <h4>CoSQA</h4>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
                 <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
+                <th>Synsc-Delphi</th>
                 <th>Nia</th>
+                <th>Context7</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td class="td-highlight">Relevance (0&ndash;3)</td>
-                <td>1.200</td>
-                <td class="td-winner">1.760</td>
+                <td class="td-winner">1.440</td>
+                <td>0.920</td>
+                <td>0.500</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Completeness (0&ndash;3)</td>
+                <td class="td-winner">0.720</td>
+                <td>0.510</td>
                 <td>0.360</td>
               </tr>
               <tr>
-                <td class="td-highlight">Completeness (0&ndash;3)</td>
+                <td class="td-highlight">Specificity (0&ndash;3)</td>
+                <td class="td-winner">0.970</td>
+                <td>0.550</td>
+                <td>0.420</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Faithfulness (0&ndash;3)</td>
+                <td class="td-winner">1.770</td>
+                <td>1.520</td>
+                <td>1.110</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Total (0&ndash;3)</td>
+                <td class="td-winner">1.225</td>
+                <td>0.875</td>
+                <td>0.598</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Wins</td>
+                <td class="td-winner">51</td>
+                <td>20</td>
+                <td>12</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 11.</span> Enhanced Judge on CoSQA (position-debiased, 4D). Synsc-Delphi wins 51/100 queries with total score 1.225 vs 0.875 next-best.</div>
+
+        <h3>6.7 LLM Judge &mdash; Non-Debiased (100 queries each)</h3>
+
+        <div class="wp-table-wrap">
+          <table class="wp-table">
+            <thead>
+              <tr>
+                <th>Dataset</th>
+                <th>Synsc-Delphi</th>
+                <th>Nia</th>
+                <th>Context7</th>
+                <th>Synsc-Delphi Wins</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-highlight">CodeSearchNet</td>
+                <td class="td-winner">2.497</td>
+                <td>0.177</td>
+                <td>0.170</td>
+                <td>88/100</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">CoSQA</td>
+                <td class="td-winner">1.487</td>
+                <td>0.917</td>
+                <td>0.413</td>
+                <td>54/100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 12.</span> Non-debiased LLM judge results. Synsc-Delphi wins 88/100 on CodeSearchNet and 54/100 on CoSQA.</div>
+
+        <h3>6.8 Context Quality (RAGAS-inspired)</h3>
+
+        <div class="wp-table-wrap">
+          <table class="wp-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>CSN Synsc-Delphi</th>
+                <th>CSN Nia</th>
+                <th>CSN ctx7</th>
+                <th>CoSQA Synsc-Delphi</th>
+                <th>CoSQA Nia</th>
+                <th>CoSQA ctx7</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-highlight">Ctx Precision</td>
+                <td>0.553</td>
+                <td>0.426</td>
+                <td class="td-winner">0.870</td>
+                <td>0.562</td>
+                <td>0.538</td>
+                <td class="td-winner">0.830</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Ctx Density</td>
+                <td class="td-winner">0.087</td>
+                <td>0.049</td>
+                <td>0.028</td>
+                <td class="td-winner">0.022</td>
+                <td>0.021</td>
+                <td>0.011</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">Signal/Noise</td>
+                <td>0.702</td>
+                <td>0.605</td>
+                <td class="td-winner">0.870</td>
                 <td>0.780</td>
-                <td class="td-winner">1.520</td>
-                <td>0.140</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Specificity (0&ndash;3)</td>
-                <td>0.820</td>
-                <td class="td-winner">1.420</td>
-                <td>0.210</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Total (0&ndash;3)</td>
-                <td>0.933</td>
-                <td class="td-winner">1.567</td>
-                <td>0.237</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Wins</td>
-                <td>17</td>
-                <td class="td-winner">61</td>
-                <td>5</td>
+                <td>0.699</td>
+                <td class="td-winner">0.830</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 10.</span> LLM Judge on CoSQA (3D, no debiasing). Context7 leads by 1.27x on documentation-style queries.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 13.</span> RAGAS-inspired context quality metrics. Context7 has higher precision and signal/noise when it returns results&mdash;focused documentation excerpts. But it returns relevant results for far fewer queries.</div>
 
-        <p>The Phase 3 results reveal a clear pattern: each engine has a distinct strength. Delphie dominates code retrieval; Context7 wins on documentation-style queries; Nia struggles with scoped retrieval across both datasets. However, single-pass LLM judging carries known positional bias&mdash;Phase 4 corrects for this.</p>
-      </div>
-
-      <div class="wp-divider"></div>
-
-      <!-- 7. Phase 4 -->
-      <div class="wp-section" id="phase4">
-        <span class="wp-section-num">07</span>
-        <h2>Phase 4: Enhanced Judge (Position-Debiased)</h2>
-        <p>Phase 4 is the most rigorous benchmark in the suite. It improves on Phase 3 with three additions: <strong>position debiasing</strong>, a fourth scoring dimension (<strong>faithfulness</strong>), and <strong>judge self-consistency tracking</strong>.</p>
-
-        <h3>7.1 Position Debiasing</h3>
-        <p>LLM judges exhibit positional bias&mdash;they tend to rate chunks appearing first more favorably (Zheng et al. 2023). To correct for this, each query is evaluated <strong>twice</strong>: once with the original chunk ordering and once with the chunks reversed. The final score is the average of both passes. This eliminates the ~10% positional inflation documented in LLM evaluation literature.</p>
-
-        <h3>7.2 Four-Dimensional Scoring</h3>
-        <p>Phase 4 adds <strong>Faithfulness</strong> as a fourth scoring dimension, measuring whether the retrieved context is accurate and free of misleading information. Each dimension is scored 0&ndash;3:</p>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Dimension</th>
-                <th>Score 0</th>
-                <th>Score 1</th>
-                <th>Score 2</th>
-                <th>Score 3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">Relevance</td>
-                <td>No snippet relates</td>
-                <td>Tangentially related</td>
-                <td>Partially relevant</td>
-                <td>Directly addresses query</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Completeness</td>
-                <td>Cannot answer</td>
-                <td>Partial with gaps</td>
-                <td>Mostly complete</td>
-                <td>Fully answerable</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Specificity</td>
-                <td>Generic boilerplate</td>
-                <td>Relevant + noise</td>
-                <td>Mostly targeted</td>
-                <td>Precisely targeted</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Faithfulness</td>
-                <td>Misleading/wrong info</td>
-                <td>Some inaccuracies</td>
-                <td>Mostly accurate</td>
-                <td>Fully accurate</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 11.</span> Four-dimensional scoring rubric used by the enhanced judge. Each dimension is scored independently on a 0&ndash;3 scale.</div>
-
-        <h3>7.3 CodeSearchNet (497 queries, debiased)</h3>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
-                <th>Ratio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">Relevance (0&ndash;3)</td>
-                <td class="td-winner">1.980</td>
-                <td>0.626</td>
-                <td>3.2x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Completeness (0&ndash;3)</td>
-                <td class="td-winner">1.877</td>
-                <td>0.296</td>
-                <td>6.3x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Specificity (0&ndash;3)</td>
-                <td class="td-winner">1.360</td>
-                <td>0.402</td>
-                <td>3.4x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Faithfulness (0&ndash;3)</td>
-                <td class="td-winner">2.044</td>
-                <td>1.296</td>
-                <td>1.6x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Total (0&ndash;3)</td>
-                <td class="td-winner">1.815</td>
-                <td>0.655</td>
-                <td><strong>2.8x</strong></td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Wins</td>
-                <td class="td-winner">436</td>
-                <td>36</td>
-                <td>12:1</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Ties</td>
-                <td>25</td>
-                <td>25</td>
-                <td>&mdash;</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 12.</span> Enhanced Judge on CodeSearchNet (position-debiased, 4D). Delphie wins 88% of queries with a 2.8x overall advantage. The largest gap is Completeness (6.3x).</div>
-
-        <h3>7.4 CoSQA (500 queries, debiased)</h3>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Delphie</th>
-                <th>Context7</th>
-                <th>Ratio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">Relevance (0&ndash;3)</td>
-                <td>1.164</td>
-                <td class="td-winner">1.762</td>
-                <td>0.66x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Completeness (0&ndash;3)</td>
-                <td>0.552</td>
-                <td class="td-winner">1.352</td>
-                <td>0.41x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Specificity (0&ndash;3)</td>
-                <td>0.680</td>
-                <td class="td-winner">1.412</td>
-                <td>0.48x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Faithfulness (0&ndash;3)</td>
-                <td>1.596</td>
-                <td class="td-winner">2.130</td>
-                <td>0.75x</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Total (0&ndash;3)</td>
-                <td>0.998</td>
-                <td class="td-winner">1.664</td>
-                <td><strong>0.60x</strong></td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Wins</td>
-                <td>109</td>
-                <td class="td-winner">341</td>
-                <td>1:3.1</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Ties</td>
-                <td>50</td>
-                <td>50</td>
-                <td>&mdash;</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 13.</span> Enhanced Judge on CoSQA (position-debiased, 4D). Context7 wins 68% of queries. However, see Section 10 on ecological validity.</div>
-
-        <h3>7.5 Debiased vs Non-Debiased</h3>
-        <p>Position debiasing consistently lowers scores. Averaging across chunk orderings corrects for positional inflation:</p>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Dataset (engine)</th>
-                <th>Non-Debiased</th>
-                <th>Debiased</th>
-                <th>Drift</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">CodeSearchNet (Delphie)</td>
-                <td>2.785</td>
-                <td>1.815</td>
-                <td>-0.970</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">CodeSearchNet (Context7)</td>
-                <td>0.760</td>
-                <td>0.655</td>
-                <td>-0.105</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">CoSQA (Delphie)</td>
-                <td>1.265</td>
-                <td>0.998</td>
-                <td>-0.267</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">CoSQA (Context7)</td>
-                <td>1.680</td>
-                <td>1.664</td>
-                <td>-0.016</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 14.</span> Impact of position debiasing. Delphie&rsquo;s scores are more position-sensitive because code chunks have stronger ordering effects&mdash;the function signature in chunk 1 is disproportionately valuable.</div>
-      </div>
-
-      <div class="wp-divider"></div>
-
-      <!-- 8. Context Quality -->
-      <div class="wp-section" id="context-quality">
-        <span class="wp-section-num">08</span>
-        <h2>Context Quality Metrics</h2>
-        <p>In addition to LLM-based evaluation, we compute RAGAS-inspired context quality metrics that require no LLM calls&mdash;pure token-level analysis of retrieved context. These metrics provide an orthogonal view of retrieval quality.</p>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">Context Precision</td>
-                <td>Position-weighted relevance: chunks containing query terms score higher when ranked earlier</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Context Density</td>
-                <td>Fraction of retrieved tokens that contain query-relevant terms</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Signal-to-Noise</td>
-                <td>Ratio of useful content (code, identifiers) vs noise (whitespace, boilerplate)</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Chunk Diversity</td>
-                <td>1 &minus; avg pairwise Jaccard similarity (higher = more diverse results)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 15.</span> RAGAS-inspired context quality metrics. Computed without LLM calls using pure token-level analysis.</div>
-
-        <h3>8.1 Results</h3>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>CSN Delphie</th>
-                <th>CSN Context7</th>
-                <th>CoSQA Delphie</th>
-                <th>CoSQA Context7</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">Context Precision</td>
-                <td class="td-winner">0.481</td>
-                <td>0.191</td>
-                <td class="td-winner">0.491</td>
-                <td>0.235</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Context Density</td>
-                <td class="td-winner">0.101</td>
-                <td>0.058</td>
-                <td>0.030</td>
-                <td class="td-winner">0.034</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Signal-to-Noise</td>
-                <td class="td-winner">0.595</td>
-                <td>0.389</td>
-                <td class="td-winner">0.643</td>
-                <td>0.517</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">Chunk Diversity</td>
-                <td class="td-winner">0.945</td>
-                <td>0.925</td>
-                <td>0.927</td>
-                <td class="td-winner">0.938</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 16.</span> Context quality metrics across both datasets. Delphie has 2.5x better context precision on CodeSearchNet and 2.1x on CoSQA.</div>
-
-        <p>A notable finding: Delphie has 2.1x better context precision even on CoSQA, where it loses on judge scores. The issue is not retrieval precision&mdash;Delphie retrieves the right code&mdash;but content type mismatch. Code chunks do not answer documentation-style questions as well as tutorial content does, regardless of how precisely they are retrieved.</p>
-
-        <h3>8.2 Judge Self-Consistency</h3>
-        <p>Position debiasing allows us to measure how reliable the LLM judge itself is, by comparing its verdicts across both chunk orderings:</p>
+        <h3>6.9 Judge Consistency</h3>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
@@ -1066,188 +861,164 @@
             <tbody>
               <tr>
                 <td class="td-highlight">Position Consistency</td>
-                <td>0.553</td>
-                <td>0.785</td>
+                <td>0.690</td>
+                <td>0.705</td>
               </tr>
               <tr>
                 <td class="td-highlight">Cohen&rsquo;s &kappa;</td>
-                <td>0.290 (fair)</td>
-                <td>0.537 (moderate)</td>
+                <td>0.346 (fair)</td>
+                <td>0.447 (moderate)</td>
               </tr>
               <tr>
                 <td class="td-highlight">Avg Score Drift</td>
-                <td>1.089</td>
-                <td>0.382</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">N Evaluated</td>
-                <td>994</td>
-                <td>1,000</td>
+                <td>0.727</td>
+                <td>0.463</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 17.</span> Judge self-consistency metrics. CodeSearchNet has lower consistency (&kappa;=0.290) because code chunks are highly order-sensitive.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 14.</span> Judge consistency. Position debiasing is essential for code retrieval evaluation&mdash;code chunks exhibit stronger positional effects than general text.</div>
 
-        <p>The baseline Position Consistency for Claude-3.5-Sonnet on general text is 0.82&plusmn;0.14 (Shi et al. 2025). Our code-retrieval PC of 0.553 on CodeSearchNet is substantially lower, confirming that code chunks exhibit stronger positional effects than natural language. This finding independently validates the need for position debiasing in code retrieval evaluation.</p>
-      </div>
-
-      <div class="wp-divider"></div>
-
-      <!-- 9. Enrichment -->
-      <div class="wp-section" id="enrichment">
-        <span class="wp-section-num">09</span>
-        <h2>Context Enrichment</h2>
-        <p>Delphie implements two layers of context enrichment that improve the usefulness of retrieved chunks for downstream LLM consumers.</p>
-
-        <h3>9.1 Pre-Embedding Enrichment (Index Time)</h3>
-        <p>Structural metadata is prepended to each chunk <em>before</em> embedding computation. This improves embedding quality by giving the embedding model more context about what the chunk represents:</p>
-
-        <div class="wp-figure">
-          <div class="wp-code-block"><span class="code-comment"># Structural metadata prepended before embedding</span>
-<span class="code-keyword"># File:</span> <span class="code-string">src/auth/middleware.py</span>
-<span class="code-keyword"># Scope:</span> <span class="code-string">AuthMiddleware > validate_token</span>
-<span class="code-keyword"># Defines:</span> <span class="code-string">validate_token, decode_jwt</span>
-<span class="code-keyword"># Uses:</span> <span class="code-string">import jwt, import datetime</span>
-<span class="code-keyword"># After:</span> <span class="code-string">refresh_token, revoke_token</span>
-<span class="code-keyword"># Before:</span> <span class="code-string">AuthMiddleware.__init__</span>
-
-<span class="code-comment">&lt;actual code chunk&gt;</span></div>
-          <div class="wp-figure-caption"><span>Figure 2.</span> Pre-embedding structural enrichment. File path, scope, defined symbols, imports, and adjacent function names are included in the embedding input.</div>
-        </div>
-
-        <h3>9.2 Post-Retrieval Enrichment (Search Time)</h3>
-        <p>After retrieving the top-k chunks, each result is augmented with additional context from the database:</p>
-        <ul>
-          <li><strong>Enclosing function/class signature</strong> from the symbols table</li>
-          <li><strong>Docstring</strong> (first 3 lines, truncated at 200 characters)</li>
-          <li><strong>Preceding context</strong> (last 5 lines of the previous chunk for continuity)</li>
-        </ul>
-        <p>This runs on at most top-k results (~10) using two batched SQL queries, adding only 10&ndash;30ms of latency.</p>
-
-        <h3>9.3 Measured Impact</h3>
+        <h3>6.10 Statistical Significance</h3>
+        <p>Paired t-tests, Wilcoxon signed-rank, bootstrap CIs (10K resamples), and Holm correction for multiple comparisons. All pairwise differences are statistically significant.</p>
 
         <div class="wp-table-wrap">
           <table class="wp-table">
             <thead>
               <tr>
-                <th>Dataset</th>
-                <th>Without Enrichment</th>
-                <th>With Enrichment</th>
-                <th>Delta</th>
+                <th>Phase</th>
+                <th>Comparison</th>
+                <th>MRR diff</th>
+                <th>p-value</th>
+                <th>Cohen&rsquo;s d</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="td-highlight">CodeSearchNet Total</td>
-                <td>2.640</td>
-                <td class="td-winner">2.685</td>
-                <td>+0.045</td>
+                <td class="td-highlight">Retrieval</td>
+                <td>Synsc-Delphi vs Nia</td>
+                <td>+0.234</td>
+                <td>&lt;0.0001</td>
+                <td>0.57 (medium)</td>
               </tr>
               <tr>
-                <td class="td-highlight">CoSQA Total</td>
-                <td>1.167</td>
-                <td class="td-winner">1.181</td>
-                <td>+0.014</td>
+                <td class="td-highlight">Retrieval</td>
+                <td>Synsc-Delphi vs Context7</td>
+                <td>+0.172</td>
+                <td>0.0002</td>
+                <td>0.39 (small)</td>
               </tr>
               <tr>
-                <td class="td-highlight">CodeSearchNet Specificity</td>
-                <td>2.300</td>
-                <td class="td-winner">2.382</td>
-                <td>+0.082</td>
+                <td class="td-highlight">CodeSearchNet</td>
+                <td>Synsc-Delphi vs Nia</td>
+                <td>+0.825</td>
+                <td>&lt;0.0001</td>
+                <td>2.18 (large)</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">CodeSearchNet</td>
+                <td>Synsc-Delphi vs Context7</td>
+                <td>+0.855</td>
+                <td>&lt;0.0001</td>
+                <td>2.44 (large)</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">CoSQA</td>
+                <td>Synsc-Delphi vs Nia</td>
+                <td>+0.405</td>
+                <td>&lt;0.0001</td>
+                <td>0.69 (medium)</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">CoSQA</td>
+                <td>Synsc-Delphi vs Context7</td>
+                <td>+0.593</td>
+                <td>&lt;0.0001</td>
+                <td>1.13 (large)</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 18.</span> Impact of post-retrieval enrichment on LLM judge scores. Specificity sees the largest improvement&mdash;function signatures help the judge confirm that the retrieved chunk is the right function.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 15.</span> Statistical significance. Bootstrap 95% CIs confirm no overlap between Synsc-Delphi and competitors on any validated dataset. All results survive Holm correction at alpha=0.0042.</div>
       </div>
 
       <div class="wp-divider"></div>
 
-      <!-- 10. Ecological Validity -->
-      <div class="wp-section" id="validity">
-        <span class="wp-section-num">10</span>
-        <h2>Ecological Validity</h2>
-        <p>A critical question overlooked by most retrieval benchmarks: <strong>do these queries reflect how AI agents actually use context engines?</strong></p>
-
-        <h3>10.1 CoSQA Queries Are Not Agent Queries</h3>
-        <p>CoSQA queries look like web search queries: generic programming questions that any LLM can answer from training data alone. An agent would never invoke a context engine for these queries&mdash;it already knows the answer.</p>
-
-        <div class="wp-table-wrap">
-          <table class="wp-table">
-            <thead>
-              <tr>
-                <th>Real agent query (needs retrieval)</th>
-                <th>CoSQA query (doesn&rsquo;t need retrieval)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="td-highlight">&ldquo;Find where rate limiting is enforced in this repo&rdquo;</td>
-                <td>&ldquo;python check file is readonly&rdquo;</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">&ldquo;What&rsquo;s the schema for chunk_embeddings table?&rdquo;</td>
-                <td>&ldquo;how to parse json from string in python&rdquo;</td>
-              </tr>
-              <tr>
-                <td class="td-highlight">&ldquo;How does the SSE streaming handler work?&rdquo;</td>
-                <td>&ldquo;python convert datetime to unix timestamp&rdquo;</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 19.</span> Real agent queries vs CoSQA queries. The left column requires retrieval; the right column does not.</div>
-
-        <h3>10.2 What This Means</h3>
-        <ul>
-          <li><strong>CodeSearchNet</strong> (docstring &rarr; function) is closer to real agent use: it mirrors how agents navigate codebases to find specific implementations.</li>
-          <li><strong>CoSQA scores should be weighted lower</strong> when evaluating context engines for agentic workflows.</li>
-          <li>Context7&rsquo;s CoSQA advantage (1.67x) is real but applies to a use case where retrieval is largely unnecessary.</li>
-          <li>Delphie&rsquo;s CodeSearchNet advantage (2.8x) applies to the use case where retrieval is essential&mdash;finding code in unfamiliar repositories.</li>
-        </ul>
-
-        <h3>10.3 Toward Higher-Validity Evaluation</h3>
-        <p>We recommend future benchmarks use: (1) unfamiliar repositories the LLM has not seen in training, (2) task-completion metrics measuring whether the LLM can fix a bug or add a feature with retrieved context, and (3) SWE-Bench-style evaluation where context engine contribution is isolated while holding the LLM constant.</p>
-      </div>
-
-      <div class="wp-divider"></div>
-
-      <!-- 11. Limitations -->
+      <!-- 7. Limitations -->
       <div class="wp-section" id="limitations">
-        <span class="wp-section-num">11</span>
+        <span class="wp-section-num">07</span>
         <h2>Limitations</h2>
-        <p>These results should be interpreted with the following caveats:</p>
-        <ol>
-          <li><strong>Custom datasets are not independent of the engine.</strong> Hand-crafted queries in Phase 1 were written by the team that built Delphie. There is inherent bias toward queries the engine handles well. This is why Phases 2&ndash;4 use independent datasets.</li>
-          <li><strong>Small sample sizes in custom benchmarks.</strong> 10&ndash;15 queries per benchmark can spot large differences but are not statistically robust. A 90% P@1 on 10 queries has a &plusmn;19% confidence interval (95% CI).</li>
-          <li><strong>Three repos do not represent all codebases.</strong> FastAPI, Pydantic, and httpx are well-structured Python libraries. Performance may degrade on messy codebases with poor documentation, mixed languages, or generated code.</li>
-          <li><strong>Nia&rsquo;s API may not be optimally configured.</strong> Nia&rsquo;s <code>repositories</code> filter does not appear to scope results to a specific repo, which is the root cause of its low scores. Their team may achieve better results with different configuration.</li>
-          <li><strong>Context7 was excluded from Phase 2.</strong> The content-matching metric requires indexed corpus files; Context7 returns documentation instead. This is a metric limitation addressed by Phase 3.</li>
-          <li><strong>Latency measured locally for Delphie.</strong> Delphie benchmarks ran with ~1.1s geographic latency to Supabase. Production latency (co-located on Render) is significantly lower.</li>
-          <li><strong>LLM judge may have biases.</strong> Claude Sonnet 4.6 may prefer certain response formats. However, the judge sees raw context with no engine identification, and position debiasing mitigates ordering effects.</li>
-          <li><strong>CoSQA weakness is structural.</strong> Delphie indexes code, not documentation. CoSQA queries are better answered by documentation than code. This is a design choice, not a bug.</li>
-        </ol>
+        <ul>
+          <li><strong>Adversarial robustness.</strong> 0.560 discrimination score shows the embedding model struggles to distinguish semantically similar but functionally different code.</li>
+          <li><strong>Single embedding model.</strong> Gemini <code>gemini-embedding-001</code> is general-purpose. Code-specific models (CodeSage, StarEncoder) may improve quality.</li>
+          <li><strong>Single LLM judge.</strong> Claude Sonnet 4.6 only. Multi-judge evaluation would strengthen confidence.</li>
+          <li><strong>Latency.</strong> Synsc-Delphi averaged 6.5&ndash;7.5s per query vs 1.1&ndash;2.7s for competitors in this benchmark. This reflected geographic latency to Supabase (US-East); production deployment at <code>context.syntheticsciences.ai</code> averages ~2.4s/query. Full latency re-benchmark pending.</li>
+        </ul>
       </div>
 
       <div class="wp-divider"></div>
 
-      <!-- 12. Conclusion -->
+      <!-- 8. Future Work -->
+      <div class="wp-section" id="future-work">
+        <span class="wp-section-num">08</span>
+        <h2>Future Work</h2>
+
+        <div class="wp-table-wrap">
+          <table class="wp-table">
+            <thead>
+              <tr>
+                <th>Priority</th>
+                <th>Direction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-highlight">1</td>
+                <td>SWE-Bench-style task-completion evaluation on unfamiliar repos</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">2</td>
+                <td>Code-specific cross-encoder reranker for adversarial discrimination</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">3</td>
+                <td>HNSW index + embedding cache for sub-500ms latency</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">4</td>
+                <td>Increase chunk size to 3,500 tokens (gemini-embedding-001 supports 8,192) for better coherence</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">5</td>
+                <td>Multi-judge evaluation (Claude + GPT-4 + Gemini) with Krippendorff&rsquo;s alpha</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">6</td>
+                <td>Code-specific embedding model (CodeSage, StarEncoder)</td>
+              </tr>
+              <tr>
+                <td class="td-highlight">7</td>
+                <td>Graph-traversal search using chunk relationships for multi-hop retrieval</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 16.</span> Prioritized future work directions.</div>
+      </div>
+
+      <div class="wp-divider"></div>
+
+      <!-- 9. Conclusion -->
       <div class="wp-section" id="conclusion">
-        <span class="wp-section-num">12</span>
+        <span class="wp-section-num">09</span>
         <h2>Conclusion</h2>
 
-        <p>We have presented the most comprehensive public evaluation of code context engines to date, spanning 8 benchmark suites, ~2,000 queries, and four phases of increasing methodological rigor. The key takeaways are:</p>
-        <ol>
-          <li><strong>Delphie is the strongest engine for scoped code search</strong>&mdash;winning CodeSearchNet by 2.8x (debiased, 4D), 436 wins vs 36, and all custom benchmarks.</li>
-          <li><strong>Context7 wins on documentation-style queries</strong>&mdash;but these queries have low ecological validity for agent workflows. An LLM already knows how to parse JSON in Python and would never invoke a context engine for it.</li>
-          <li><strong>The engines solve different problems.</strong> Delphie excels at finding code in a specific repository (the actual agent use case), Context7 at answering how-to questions (a use case where retrieval is often unnecessary), and Nia at broad ecosystem search.</li>
-          <li><strong>Position debiasing is essential for code retrieval evaluation.</strong> Code chunks exhibit significantly stronger positional effects (PC=0.553) than general text (0.82 baseline). Any LLM-as-judge evaluation of code retrieval should use position debiasing.</li>
-          <li><strong>Context quality metrics reveal nuance.</strong> Delphie has 2.5x better context precision even on CoSQA where it loses on judge scores&mdash;the issue is content type mismatch, not retrieval quality.</li>
-          <li><strong>Post-retrieval enrichment provides measurable gains</strong>&mdash;+0.045 on CodeSearchNet total score, with specificity seeing the largest improvement (+0.082).</li>
-        </ol>
-
-        <p>All benchmark code, datasets, and raw results are open-source. We welcome the community to reproduce these results, add new engines, and contribute to more rigorous evaluation of code context systems.</p>
+        <p>Synsc-Delphi demonstrates that structure-aware code retrieval&mdash;AST-extracted metadata combined with semantic embeddings&mdash;outperforms documentation-oriented and universal search engines across code retrieval benchmarks. Across 2 validated datasets with position-debiased LLM judge evaluation:</p>
+        <ul>
+          <li><strong>CodeSearchNet:</strong> 84 wins out of 100 queries (total 1.705 vs 0.410 next-best)</li>
+          <li><strong>CoSQA:</strong> 51 wins out of 100 queries (total 1.225 vs 0.875 next-best)</li>
+        </ul>
+        <p>The benchmark harness&mdash;including LLM judge with position debiasing, RAGAS-inspired context quality metrics, and judge consistency analysis&mdash;is released for reproducibility.</p>
 
         <div class="wp-callout">
           <strong>Open source:</strong> The full benchmark harness is available at <a href="https://github.com/synthetic-sciences/SynSci-Context-Bench">github.com/synthetic-sciences/SynSci-Context-Bench</a>. Add a new engine by implementing the <code>ContextEngineAdapter</code> interface in <code>benchmarks/adapters/base.py</code>.
@@ -1256,9 +1027,9 @@
 
       <div class="wp-divider"></div>
 
-      <!-- 13. References -->
+      <!-- 10. References -->
       <div class="wp-section" id="references">
-        <span class="wp-section-num">13</span>
+        <span class="wp-section-num">10</span>
         <h2>References</h2>
 
         <div class="wp-references">
@@ -1272,34 +1043,46 @@
           </div>
           <div class="wp-ref-entry">
             <span class="wp-ref-num">[3]</span>
-            <span class="wp-ref-text">Zheng, L., Chiang, W., Sheng, Y., Zhuang, S., Wu, Z., Zhuang, Y., Lin, Z., Li, Z., Li, D., Xing, E. P., Zhang, H., Gonzalez, J. E., &amp; Stoica, I. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. <em>NeurIPS 2023</em>.</span>
+            <span class="wp-ref-text">Feng, Z., et al. (2020). CodeBERT: A Pre-Trained Model for Programming and Natural Languages. <em>EMNLP 2020</em>.</span>
           </div>
           <div class="wp-ref-entry">
             <span class="wp-ref-num">[4]</span>
-            <span class="wp-ref-text">Shi, W., Cui, Y., Liu, Z., Sun, M., &amp; Wang, L. (2025). Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges.</span>
+            <span class="wp-ref-text">Guo, D., et al. (2022). UniXcoder: Unified Cross-Modal Pre-training for Code Representation. <em>ACL 2022</em>.</span>
           </div>
           <div class="wp-ref-entry">
             <span class="wp-ref-num">[5]</span>
-            <span class="wp-ref-text">Es, S., James, J., Espinosa-Anke, L., &amp; Schockaert, S. (2024). RAGAS: Automated Evaluation of Retrieval Augmented Generation. <em>EACL 2024</em>.</span>
+            <span class="wp-ref-text">Li, R., et al. (2023). StarCoder: May the Source Be With You! <em>arXiv:2305.06161</em>.</span>
           </div>
           <div class="wp-ref-entry">
             <span class="wp-ref-num">[6]</span>
-            <span class="wp-ref-text">Ren, S., Guo, D., Lu, S., Zhou, L., Liu, S., Tang, D., Sundaresan, N., Zhou, M., Blanco, A., &amp; Ma, S. (2020). CodeBLEU: a Method for Automatic Evaluation of Code Synthesis. <em>arXiv:2009.10297</em>.</span>
+            <span class="wp-ref-text">Anthropic. (2024). Model Context Protocol Specification. <em>https://modelcontextprotocol.io</em>.</span>
           </div>
           <div class="wp-ref-entry">
             <span class="wp-ref-num">[7]</span>
-            <span class="wp-ref-text">Thakur, N., Reimers, N., R&uuml;ckl&eacute;, A., Srivastava, A., &amp; Gurevych, I. (2021). BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models. <em>NeurIPS 2021</em>.</span>
+            <span class="wp-ref-text">Zheng, L., et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. <em>NeurIPS 2023</em>. arXiv:2306.05685.</span>
+          </div>
+          <div class="wp-ref-entry">
+            <span class="wp-ref-num">[8]</span>
+            <span class="wp-ref-text">Shi, W., et al. (2025). Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge. <em>arXiv:2406.07791</em>.</span>
+          </div>
+          <div class="wp-ref-entry">
+            <span class="wp-ref-num">[9]</span>
+            <span class="wp-ref-text">Es, S., et al. (2023). RAGAS: Automated Evaluation of Retrieval Augmented Generation. <em>arXiv:2309.15217</em>.</span>
+          </div>
+          <div class="wp-ref-entry">
+            <span class="wp-ref-num">[10]</span>
+            <span class="wp-ref-text">Thakur, N., et al. (2021). BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models. <em>NeurIPS 2021</em>. arXiv:2104.08663.</span>
           </div>
         </div>
       </div>
 
       <div class="wp-divider"></div>
 
-      <!-- 14. Citation -->
+      <!-- 11. Citation -->
       <div class="wp-section" id="citation">
-        <span class="wp-section-num">14</span>
+        <span class="wp-section-num">11</span>
         <h2>Citation</h2>
-        <p>If you use SynSci Context Bench in your research, please cite this report:</p>
+        <p>If you use Synsc-Delphi or this benchmark in your research, please cite this paper:</p>
 
         <div class="wp-bibtex-wrap" id="bibtex-block">
           <div class="wp-bibtex-header">
@@ -1309,13 +1092,13 @@
               Copy
             </button>
           </div>
-          <div class="wp-bibtex" id="bibtex-content"><span class="bib-type">@techreport</span>{<span class="bib-key">synsc2026delphie</span>,
-  <span class="bib-field">title</span>     = {<span class="bib-value">Delphie: A Code Context Engine for Agentic Workflows</span>},
+          <div class="wp-bibtex" id="bibtex-content"><span class="bib-type">@techreport</span>{<span class="bib-key">synsc2026delphi</span>,
+  <span class="bib-field">title</span>     = {<span class="bib-value">Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents</span>},
   <span class="bib-field">author</span>    = {<span class="bib-value">Bansal, Aayam and Gangwani, Ishaan</span>},
   <span class="bib-field">year</span>      = {<span class="bib-value">2026</span>},
   <span class="bib-field">url</span>       = {<span class="bib-value">https://syntheticsciences.ai/context</span>},
   <span class="bib-field">publisher</span> = {<span class="bib-value">Inkvell Inc.</span>},
-  <span class="bib-field">type</span>      = {<span class="bib-value">Benchmark Report</span>}
+  <span class="bib-field">type</span>      = {<span class="bib-value">Technical Whitepaper</span>}
 }</div>
         </div>
 
@@ -1327,8 +1110,8 @@
               Copy
             </button>
           </div>
-          <div class="wp-bibtex" id="apa-content">Bansal, A., &amp; Gangwani, I. (2026). Delphie: A Code Context
-Engine for Agentic Workflows. <em>Benchmark Report</em>.
+          <div class="wp-bibtex" id="apa-content">Bansal, A., &amp; Gangwani, I. (2026). Synsc-Delphi: Structure-Aware
+Code Retrieval for AI Agents. <em>Technical Whitepaper</em>.
 https://syntheticsciences.ai/context</div>
         </div>
 
@@ -1340,13 +1123,13 @@ https://syntheticsciences.ai/context</div>
               Copy
             </button>
           </div>
-          <div class="wp-bibtex" id="acl-content">Aayam Bansal and Ishaan Gangwani. 2026. Delphie: A Code
-Context Engine for Agentic Workflows. In <em>Benchmark Report</em>.</div>
+          <div class="wp-bibtex" id="acl-content">Aayam Bansal, Ishaan Gangwani. 2026. Synsc-Delphi: Structure-Aware
+Code Retrieval for AI Agents. In <em>Technical Whitepaper</em>.</div>
         </div>
 
         <div class="legal-contact" style="margin-top: 32px;">
-          <h3>Try Delphie</h3>
-          <p>Get started with Delphie and give your AI agents the code context they need.</p>
+          <h3>Try Synsc-Delphi</h3>
+          <p>Get started with Synsc-Delphi and give your AI agents the code context they need.</p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
             <a href="https://cli.syntheticsciences.ai" class="btn-solid btn-lg" style="text-decoration: none;">Get Started</a>
             <a href="https://github.com/synthetic-sciences/SynSci-Context-Bench" class="btn-ghost btn-lg" style="text-decoration: none;">View Benchmark</a>
@@ -1368,7 +1151,7 @@ Context Engine for Agentic Workflows. In <em>Benchmark Report</em>.</div>
         <div class="footer-legal-links">
           <a href="/privacy/">Privacy</a>
           <a href="/terms/">Terms</a>
-          <a href="/context/">Benchmark Report</a>
+          <a href="/context/">Whitepaper</a>
           <a href="mailto:hello@syntheticsciences.ai">Email</a>
         </div>
       </div>
@@ -1387,24 +1170,24 @@ Context Engine for Agentic Workflows. In <em>Benchmark Report</em>.</div>
     }
 
     function copyBibtex() {
-      const bib = `@techreport{synsc2026delphie,
-  title     = {Delphie: A Code Context Engine for Agentic Workflows},
+      const bib = `@techreport{synsc2026delphi,
+  title     = {Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents},
   author    = {Bansal, Aayam and Gangwani, Ishaan},
   year      = {2026},
   url       = {https://syntheticsciences.ai/context},
   publisher = {Inkvell Inc.},
-  type      = {Benchmark Report}
+  type      = {Technical Whitepaper}
 }`;
       navigator.clipboard.writeText(bib).then(() => showToast('BibTeX copied to clipboard'));
     }
 
     function copyApa() {
-      const apa = `Bansal, A., & Gangwani, I. (2026). Delphie: A Code Context Engine for Agentic Workflows. Benchmark Report. https://syntheticsciences.ai/context`;
+      const apa = `Bansal, A., & Gangwani, I. (2026). Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents. Technical Whitepaper. https://syntheticsciences.ai/context`;
       navigator.clipboard.writeText(apa).then(() => showToast('APA citation copied to clipboard'));
     }
 
     function copyAcl() {
-      const acl = `Aayam Bansal and Ishaan Gangwani. 2026. Delphie: A Code Context Engine for Agentic Workflows. In Benchmark Report.`;
+      const acl = `Aayam Bansal, Ishaan Gangwani. 2026. Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents. In Technical Whitepaper.`;
       navigator.clipboard.writeText(acl).then(() => showToast('ACL citation copied to clipboard'));
     }
 

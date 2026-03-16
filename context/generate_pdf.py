@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate academic PDF of the Delphie benchmark report for Google Scholar indexing."""
+"""Generate academic PDF of the Synsc-Delphi benchmark report for Google Scholar indexing."""
 
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
@@ -23,7 +23,7 @@ TABLE_HEADER_BG = HexColor("#2e2522")
 TABLE_ALT_BG = HexColor("#faf6f1")
 TABLE_BORDER = HexColor("#d9c9b8")
 
-OUTPUT = os.path.join(os.path.dirname(__file__), "delphie-benchmark-report.pdf")
+OUTPUT = os.path.join(os.path.dirname(__file__), "delphi-benchmark-report.pdf")
 
 
 def build_pdf():
@@ -34,9 +34,9 @@ def build_pdf():
         rightMargin=1 * inch,
         topMargin=0.9 * inch,
         bottomMargin=0.9 * inch,
-        title="Delphie: A Code Context Engine for Agentic Workflows",
+        title="Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents",
         author="Aayam Bansal, Ishaan Gangwani",
-        subject="Benchmark Report v4.0 - March 2026",
+        subject="Technical Whitepaper - March 2026",
         creator="Synthetic Sciences",
     )
 
@@ -159,404 +159,434 @@ def build_pdf():
 
     # ── TITLE PAGE ──
     story.append(Spacer(1, 40))
-    story.append(Paragraph("Delphie: A Code Context Engine<br/>for Agentic Workflows", s_title))
+    story.append(Paragraph("Synsc-Delphi: Structure-Aware Code Retrieval<br/>for AI Agents", s_title))
     story.append(Spacer(1, 6))
     story.append(Paragraph(
-        "8 benchmark suites, ~2,000 queries, position-debiased LLM judging, and "
-        "RAGAS-inspired context quality metrics. The most rigorous public evaluation "
-        "of code context engines to date.", s_subtitle))
+        "A code retrieval engine providing AI agents with precise, scoped context "
+        "from software repositories. Chunk-level indexing with AST-extracted symbol "
+        "metadata, two-layer enrichment, and position-debiased evaluation across "
+        "~3,300 data points.", s_subtitle))
     story.append(Spacer(1, 12))
     story.append(Paragraph("Aayam Bansal, Ishaan Gangwani", s_authors))
     story.append(Paragraph("Inkvell Inc. (Synthetic Sciences) \u2014 San Francisco, CA", s_affil))
     story.append(Spacer(1, 6))
-    story.append(Paragraph("v4.0  \u2022  March 2026  \u2022  3 engines  \u2022  Claude Sonnet 4.6 judge", s_meta))
+    story.append(Paragraph("v5.0  \u2022  March 2026  \u2022  3 engines  \u2022  Claude Sonnet 4.6 judge", s_meta))
     hr()
 
     # ── ABSTRACT ──
     story.append(Paragraph("ABSTRACT", s_abstract_label))
     story.append(Paragraph(
-        "We present the results of <b>SynSci Context Bench</b>, an open-source benchmark harness "
-        "for evaluating code context engines\u2014the retrieval systems that feed relevant source code "
-        "to AI coding agents. We compare <b>Delphie</b> (Synthetic Sciences), <b>Context7</b>, and "
-        "<b>Nia</b> across 8 test suites comprising approximately 2,000 queries. The evaluation spans "
-        "four phases of increasing rigor: hand-crafted custom benchmarks, industry-standard datasets "
-        "(CoSQA, CodeSearchNet), blind LLM-as-Judge scoring, and a position-debiased enhanced judge "
-        "with 4-dimensional scoring and RAGAS-inspired context quality metrics. Delphie achieves 2.8x "
-        "higher scores than Context7 on code-to-code retrieval (CodeSearchNet) under position-debiased "
-        "evaluation, winning 436 of 497 queries (88%). Context7 leads on documentation-style queries "
-        "(CoSQA) by 1.67x, though we argue these queries have low ecological validity for agent "
-        "workflows. All benchmark code, datasets, and raw results are publicly available.", s_abstract))
+        "We present <b>Synsc-Delphi</b>, a code retrieval engine that provides AI agents "
+        "with precise, scoped context from software repositories. Synsc-Delphi indexes source code at "
+        "the chunk level with AST-extracted symbol metadata, producing embeddings that capture both "
+        "semantic meaning and structural context. A two-layer enrichment pipeline \u2014 pre-embedding "
+        "structural prefixes and post-retrieval symbol/docstring injection \u2014 improves retrieval "
+        "specificity without modifying stored content. We evaluate Synsc-Delphi against two production "
+        "context engines (<b>Context7</b> and <b>Nia</b>) across 8 benchmark phases totaling ~3,300 "
+        "evaluated data points, using 100 queries per engine per phase, LLM-as-judge scoring with "
+        "Claude Sonnet 4.6, and position-debiased evaluation. On CodeSearchNet, Synsc-Delphi achieves "
+        "MRR 0.865 and wins 84/100 queries on the debiased enhanced judge (total score 1.705 vs "
+        "0.410 for Context7 and 0.345 for Nia). On CoSQA, Synsc-Delphi wins 51/100 queries (total 1.225 "
+        "vs 0.875 Nia and 0.598 Context7). We release the full benchmark harness for reproducibility.",
+        s_abstract))
     story.append(Paragraph(
-        "<b>Keywords:</b> Code Retrieval \u2022 Context Engines \u2022 RAG \u2022 LLM-as-Judge \u2022 "
-        "Position Debiasing \u2022 CodeSearchNet \u2022 CoSQA \u2022 RAGAS \u2022 AI Agents", s_keywords))
+        "<b>Keywords:</b> Code Retrieval \u2022 Context Engines \u2022 RAG \u2022 AST Metadata \u2022 "
+        "LLM-as-Judge \u2022 Position Debiasing \u2022 CodeSearchNet \u2022 CoSQA \u2022 RAGAS \u2022 "
+        "AI Agents \u2022 MCP", s_keywords))
     hr()
 
     # ── 01 INTRODUCTION ──
     section(1, "Introduction")
-    para("AI coding agents have become an integral part of modern software development. When an agent "
-         "encounters an unfamiliar codebase, it needs to retrieve relevant source code, type definitions, "
-         "function signatures, and implementation details to generate correct, context-aware responses. "
-         "The system responsible for this retrieval is a <b>code context engine</b>.")
-    para("Despite their importance, code context engines have lacked rigorous, standardized evaluation. "
-         "We built <b>SynSci Context Bench</b> to address this gap. The harness evaluates three publicly "
-         "available context engines:")
-    bullet("<b>Delphie</b> (Synthetic Sciences) \u2014 a scoped code retrieval engine that indexes specific "
-           "repositories with AST-level extraction and context enrichment.")
-    bullet("<b>Context7</b> \u2014 a documentation retrieval system that serves pre-crawled library "
-           "documentation and tutorials.")
-    bullet("<b>Nia</b> \u2014 a universal knowledge search engine spanning code, documentation, papers, "
-           "and packages across the ecosystem.")
-    para("Our key findings:")
-    numbered(1, "<b>Delphie dominates code-to-code retrieval.</b> On CodeSearchNet, Delphie scores 2.8x "
-             "higher than Context7 under position-debiased 4D evaluation, winning 88% of 497 queries.")
-    numbered(2, "<b>Context7 wins on documentation queries.</b> On CoSQA, Context7 scores 1.67x higher\u2014"
-             "but these queries represent knowledge an LLM already has, making retrieval unnecessary.")
-    numbered(3, "<b>Position debiasing is essential for code retrieval evaluation.</b> Code chunks exhibit "
-             "substantially stronger positional effects (PC=0.553) than general text (0.82 baseline).")
-    numbered(4, "<b>Context enrichment provides measurable improvement.</b> Post-retrieval enrichment with "
-             "function signatures improves specificity by +0.082.")
-    para("The entire benchmark harness, all datasets, and raw results are open-source at "
-         "github.com/synthetic-sciences/SynSci-Context-Bench.")
+    para("Large language models used as software engineering assistants depend on the quality of "
+         "context they receive. Three approaches exist:")
+    numbered(1, "<b>Documentation retrieval:</b> Engines like Context7 index pre-crawled documentation "
+             "sites. They return human-readable explanations but cannot search private repositories or "
+             "return specific implementations.")
+    numbered(2, "<b>Universal knowledge search:</b> Engines like Nia search across documentation, "
+             "issues, and code globally, but cannot scope results to a specific repository.")
+    numbered(3, "<b>Scoped code retrieval:</b> Synsc-Delphi indexes individual repositories at the chunk "
+             "level with AST-extracted metadata, then performs scoped semantic search within a "
+             "user\u2019s collection.")
 
-    # ── 02 ARCHITECTURE ──
-    section(2, "Delphie Architecture")
-    para("Delphie is built around a simple principle: <b>AI agents need code, not documentation</b>. "
-         "When an agent is navigating an unfamiliar codebase, it needs the actual function implementations, "
-         "type definitions, and call sites\u2014not a tutorial. Delphie is purpose-built for this task.")
-    subsection("2.1 Indexing Pipeline")
-    para("Delphie indexes repositories at the chunk level rather than the file level:")
-    numbered(1, "<b>Clone &amp; parse.</b> The repository is cloned and each source file is parsed into an "
-             "AST. The AST identifies function definitions, class declarations, imports, type annotations.")
-    numbered(2, "<b>Chunk extraction.</b> Source files are split into semantically meaningful chunks using "
-             "AST boundaries. Each chunk corresponds to a function, class, or logical code block.")
-    numbered(3, "<b>Structural enrichment.</b> Each chunk is enriched with structural metadata before "
-             "embedding: file path, enclosing scope, defined symbols, imported modules, and relationships "
-             "to adjacent chunks.")
-    numbered(4, "<b>Embedding &amp; storage.</b> Enriched chunks are embedded using a code-optimized "
-             "embedding model and stored in a vector database (Supabase pgvector) alongside the extracted "
-             "symbol table and chunk relationship graph.")
+    subsection("1.1 Design Goals")
+    bullet("<b>Repository-scoped search:</b> Results come only from indexed repositories")
+    bullet("<b>Chunk-level precision:</b> Return the specific function or class, not an entire file")
+    bullet("<b>Symbol awareness:</b> Leverage AST-extracted metadata to improve embedding quality")
+    bullet("<b>Multi-tenant isolation:</b> Public repos are deduplicated; private repos are isolated")
+    bullet("<b>MCP integration:</b> All capabilities exposed as Model Context Protocol tools")
 
-    subsection("2.2 Architectural Differences")
-    cw = [W * 0.18, W * 0.28, W * 0.28, W * 0.26]
+    # ── 02 SYSTEM ARCHITECTURE ──
+    section(2, "System Architecture")
+    story.append(Paragraph(
+        "GitHub Repository \u2192 INDEXING PIPELINE: Clone \u2192 Filter \u2192 Chunk \u2192 "
+        "AST Extract \u2192 Enrich \u2192 Embed \u2192 Store. Components: GitClient (dulwich), "
+        "Chunker (tiktoken), Context Enrichment (scope trees), tree-sitter parsers, "
+        "Gemini Embed API, Supabase PostgreSQL+pgvec. \u2192 RETRIEVAL PIPELINE: Query Embed "
+        "\u2192 pgvector ANN \u2192 Symbol Boost \u2192 Metadata Score \u2192 Threshold \u2192 "
+        "MMR \u2192 Enrich. \u2192 API LAYER: MCP Server (stdio) \u2194 HTTP Server (FastAPI), "
+        "31 tools: search, index, analyze, papers, datasets.", s_code))
+
+    subsection("2.1 Data Model")
+    para("PostgreSQL with pgvector. Core entities:")
+    cw3dm = [W * 0.22, W * 0.30, W * 0.48]
     make_table(
-        ["Aspect", "Delphie", "Context7", "Nia"],
+        ["Table", "Purpose", "Key Fields"],
         [
-            ["Design goal", "Scoped code retrieval", "Documentation retrieval", "Universal knowledge search"],
-            ["Search scope", "Specified repository", "Pre-crawled docs/libs", "All indexed sources"],
-            ["Indexing", "Per-repo + AST extraction", "Pre-crawled, no user indexing", "Global doc crawling"],
-            ["Best use case", "Find code in my codebase", "How does library X work?", "Find knowledge across ecosystem"],
-            ["Content type", "Raw source code + sigs", "Docs, tutorials, guides", "Docs, code, papers"],
-        ], cw
+            ["repositories", "Repository metadata", "url, branch, commit_sha, is_public, indexed_by"],
+            ["repository_files", "Per-file metadata", "file_path, language, line_count, content_hash"],
+            ["code_chunks", "Indexed code segments", "content, start_line, end_line, chunk_type, symbol_names"],
+            ["chunk_embeddings", "Vector representations", "embedding (768-dim), chunk_id, repo_id"],
+            ["symbols", "AST-extracted symbols", "name, qualified_name, signature, docstring, symbol_type"],
+            ["chunk_relationships", "Inter-chunk edges", "source_chunk_id, target_chunk_id, relationship_type"],
+        ], cw3dm
     )
-    caption("Table 1. Architectural differences between the three evaluated engines.")
+    caption("Table 1. Data model \u2014 PostgreSQL with pgvector.")
+    para("Public repositories are indexed once and shared across users via a junction table. "
+         "Adding a popular repo that\u2019s already indexed takes ~100ms.")
 
-    # ── 03 METHODOLOGY ──
-    section(3, "Benchmark Methodology")
-    para("The evaluation was conducted in four phases, each designed to address fairness concerns "
-         "from the prior phase:")
-    cw5 = [W * 0.08, W * 0.18, W * 0.34, W * 0.12, W * 0.28]
+    # ── 03 INDEXING PIPELINE ──
+    section(3, "Indexing Pipeline")
+
+    subsection("3.1 Repository Ingestion")
+    para("Repositories are cloned via dulwich with auto-detected default branch. File filtering "
+         "applies extension whitelist (50+ extensions, 30 languages), exclusion patterns "
+         "(node_modules, __pycache__, lock files, binaries), and fast mode (skips tests/examples).")
+
+    subsection("3.2 Chunking")
+    para("Token-based algorithm with AST-aware boundary selection:")
+    bullet("<b>Max tokens:</b> 2,048 per chunk")
+    bullet("<b>Overlap:</b> 100 tokens")
+    bullet("<b>Minimum:</b> 50 tokens")
+    bullet("<b>Tokenizer:</b> cl100k_base (tiktoken)")
+    para("Algorithm: accumulate lines until 75% of max tokens (soft limit), then seek next symbol "
+         "boundary to split. Hard-split at max if no boundary found. This aligns chunks with "
+         "logical code units \u2014 functions and methods typically occupy one chunk.")
+
+    subsection("3.3 Symbol Extraction")
+    para("tree-sitter parsers extract: name, qualified_name, symbol_type "
+         "(function/class/method/variable), signature, docstring, parameters with types, "
+         "return type, decorators, and source location.")
+
+    subsection("3.4 Pre-Embedding Context Enrichment")
+    para("Each chunk receives a structural context prefix before embedding:")
+    story.append(Paragraph(
+        "# auth/middleware.py<br/>"
+        "# Scope: AuthMiddleware &gt; validate_token<br/>"
+        "# Defines: validate_token(self, token: str) -&gt; bool<br/>"
+        "# Uses: jwt, datetime, hashlib<br/>"
+        "# After: refresh_token, revoke_token", s_code))
+    para("Constructed via scope tree (hierarchical symbol containment), sibling discovery "
+         "(up to 3 symbols before/after), and import extraction (up to 10). Inspired by "
+         "supermemoryai/code-chunk.")
+
+    subsection("3.5 Embedding")
+    cw4e = [W * 0.22, W * 0.30, W * 0.18, W * 0.30]
     make_table(
-        ["Phase", "Task", "Method", "Queries", "Engines"],
+        ["Content Type", "Model", "Dimensions", "Task Type"],
         [
-            ["1", "Custom retrieval", "Hand-crafted queries against FastAPI/Pydantic/httpx", "55", "Delphie, Nia, Context7"],
-            ["2", "Industry-standard IR", "CoSQA + CodeSearchNet, content/file matching", "997", "Delphie, Nia"],
-            ["3", "LLM-as-Judge (3D)", "Blind Claude Sonnet 4.6, 3 dimensions", "997", "Delphie, Context7, Nia"],
-            ["4", "Enhanced Judge (4D)", "Position-debiased, 4D + faithfulness, RAGAS", "997", "Delphie, Context7"],
-        ], cw5
+            ["Code chunks", "gemini-embedding-001", "768", "RETRIEVAL_DOCUMENT / RETRIEVAL_QUERY"],
+        ], cw4e
     )
-    caption("Table 2. Four-phase evaluation methodology.")
+    caption("Table 2. Embedding configuration.")
+    para("Dual task types are critical for asymmetric retrieval where queries are natural language "
+         "but documents are code. Embeddings are L2-normalized for cosine similarity, stored via "
+         "pgvector with batch inserts.")
 
-    subsection("3.1 Why Four Phases?")
-    bullet("Phase 1 used hand-crafted queries \u2192 potential bias toward Delphie\u2019s design.")
-    bullet("Phase 2 used industry-standard datasets \u2192 but content-matching penalizes text transformation.")
-    bullet("Phase 3 used blind LLM judging \u2192 but single-pass scoring has ~10% positional bias.")
-    bullet("Phase 4 added position debiasing + faithfulness + judge consistency \u2192 most rigorous.")
+    # ── 04 RETRIEVAL PIPELINE ──
+    section(4, "Retrieval Pipeline")
+    para("Six-stage quality pipeline:")
 
-    subsection("3.2 Judge Configuration")
-    para("All LLM-as-Judge evaluations use <b>Claude Sonnet 4.6</b> (Anthropic) as the blind judge. "
-         "The judge receives only the query and retrieved context\u2014no engine identification. In Phase 4, "
-         "each query is evaluated twice with reversed chunk ordering; final scores are averaged.")
+    subsection("4.1 Vector Similarity")
+    para("Query embedded with RETRIEVAL_QUERY task type, matched against stored embeddings using "
+         "pgvector\u2019s &lt;=&gt; operator. Over-fetches by max(top_k \u00d7 3, 20) for "
+         "post-processing headroom.")
 
-    # ── 04 PHASE 1 ──
-    section(4, "Phase 1: Custom Benchmarks")
-    subsection("4.1 Retrieval Quality (10 queries)")
+    subsection("4.2 Symbol-Aware Boosting")
+    para("Query parsed for code identifiers (camelCase, snake_case, PascalCase, dotted paths). "
+         "Results with matching symbols get +0.15 score boost.")
+
+    subsection("4.3 Metadata Scoring")
+    para("Test/documentation/example directories get -0.08 penalty. High assertion/mock content "
+         "gets -0.04 penalty.")
+
+    subsection("4.4 Dynamic Threshold")
+    story.append(Paragraph(
+        "threshold = max(0.3, top_score \u00d7 0.6)", s_code))
+    para("Adapts to query difficulty \u2014 strong top results raise the bar, ambiguous queries "
+         "stay permissive.")
+
+    subsection("4.5 MMR Diversification")
+    story.append(Paragraph(
+        "score = 0.7 \u00d7 sim(candidate, query) \u2212 0.3 \u00d7 max_sim(candidate, selected)",
+        s_code))
+    para("Prevents returning multiple chunks from the same function.")
+
+    subsection("4.6 Post-Retrieval Enrichment")
+    para("Final results (\u226410 chunks) enriched with enclosing symbol signature/docstring and "
+         "preceding chunk context. Costs ~10\u201330ms (two indexed queries).")
+
+    # ── 05 BENCHMARK METHODOLOGY ──
+    section(5, "Benchmark Methodology")
+
+    subsection("5.1 Engines")
+    cw3e = [W * 0.20, W * 0.40, W * 0.40]
+    make_table(
+        ["Engine", "Architecture", "Scope"],
+        [
+            ["Synsc-Delphi", "Chunk-level embeddings + AST metadata", "User\u2019s indexed repos"],
+            ["Context7", "Pre-crawled documentation", "Popular libraries"],
+            ["Nia", "Universal knowledge search", "Global corpus"],
+        ], cw3e
+    )
+    caption("Table 3. Engines under evaluation.")
+    para("All engines indexed identically: 15 repos via web UI using public GitHub URLs. "
+         "No engine received pre-processed or specially aligned data.")
+
+    subsection("5.2 Benchmark Suite")
+    cw3s = [W * 0.10, W * 0.60, W * 0.30]
+    make_table(
+        ["Phase", "Benchmark", "Queries/Engine"],
+        [
+            ["1", "Retrieval Quality (MRR, P@K, NDCG)", "100"],
+            ["2", "Multi-Hop Retrieval (coverage, hop recall)", "100"],
+            ["3", "Code QA (definitions, call sites, imports)", "100"],
+            ["4", "Adversarial Near-Miss (decoys, version confusion)", "100"],
+            ["5", "Hallucination Rate", "100"],
+            ["6", "CodeSearchNet \u2014 LLM judge (Husain et al. 2019)", "100"],
+            ["7", "CoSQA \u2014 LLM judge (Huang et al. 2021)", "100"],
+            ["8", "Enhanced Judge (position-debiased 4D + RAGAS)", "200"],
+            ["\u2014", "AdvTest (supplementary)", "100"],
+        ], cw3s
+    )
+    caption("Table 4. Eight-phase benchmark suite. Total: ~3,300 evaluated data points across 3 engines.")
+
+    subsection("5.3 Scoring")
+    para("<b>IR Metrics:</b> Precision@K, Recall@K, MRR, NDCG@K.")
+    para("<b>LLM Judge:</b> Claude Sonnet 4.6 evaluates each (query, retrieved context) pair on "
+         "Relevance, Completeness, Specificity (0\u20133 each). Engine-blind, temperature 0.")
+    para("<b>Enhanced Judge:</b> Adds Faithfulness (4th dimension) and position debiasing \u2014 "
+         "each query evaluated twice with shuffled chunk order, scores averaged. Eliminates ~10% "
+         "positional bias (Zheng et al. 2023).")
+    para("<b>Context Quality (RAGAS-inspired):</b> Context Precision, Context Density, "
+         "Signal-to-Noise, Chunk Diversity. Computed without LLM calls.")
+
+    # ── 06 RESULTS ──
+    section(6, "Results")
     cw4 = [W * 0.28, W * 0.24, W * 0.24, W * 0.24]
+
+    subsection("6.1 Retrieval Quality (100 queries)")
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Metric", "Synsc-Delphi", "Nia", "Context7"],
         [
-            ["MRR", "0.817", "0.350", "0.345"],
-            ["P@1", "0.700", "0.300", "0.300"],
-            ["P@5", "0.440", "0.285", "0.200"],
-            ["NDCG@10", "0.779", "0.355", "0.345"],
-            ["Avg Latency", "4,521ms", "2,850ms", "11,738ms"],
+            ["MRR", "0.962", "0.728", "0.790"],
+            ["P@1", "0.940", "0.660", "0.790"],
+            ["P@5", "0.852", "0.482", "0.790"],
+            ["NDCG@10", "0.901", "0.706", "0.790"],
+            ["Recall@10", "2.103", "1.187", "0.199"],
         ], cw4
     )
-    caption("Table 3. Retrieval quality on 10 custom queries.")
+    caption("Table 5. Retrieval quality on 100 queries.")
 
-    subsection("4.2 Multi-Hop Retrieval (10 queries)")
+    subsection("6.2 Multi-Hop Retrieval (100 queries)")
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Metric", "Synsc-Delphi", "Nia", "Context7"],
         [
-            ["Hop Coverage", "0.967", "0.850", "0.783"],
-            ["Hop MRR", "0.917", "0.701", "0.599"],
+            ["Hop Coverage", "0.973", "0.732", "0.848"],
+            ["Hop Recall@5", "0.940", "0.672", "0.848"],
+            ["Avg Hop MRR", "0.835", "0.553", "0.848"],
         ], cw4
     )
-    caption("Table 4. Multi-hop retrieval results.")
+    caption("Table 6. Multi-hop retrieval results.")
 
-    subsection("4.3 Code-Specific QA (15 queries)")
+    subsection("6.3 Adversarial Near-Miss (100 queries, LLM judge)")
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Metric", "Synsc-Delphi", "Nia", "Context7"],
         [
-            ["Accuracy", "0.867", "0.200", "0.154"],
-            ["Symbol Accuracy", "0.933", "0.533", "0.385"],
-            ["File Accuracy", "1.000", "0.400", "0.538"],
-            ["Chunk Coherence", "0.867", "0.200", "0.154"],
+            ["Discrimination", "0.560", "0.140", "0.170"],
         ], cw4
     )
-    caption("Table 5. Code QA accuracy across 15 queries.")
+    caption("Table 7. Adversarial near-miss discrimination.")
 
-    subsection("4.4 Adversarial Near-Miss (10 pairs)")
+    subsection("6.4 Hallucination Rate (100 queries)")
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Metric", "Synsc-Delphi", "Nia", "Context7"],
         [
-            ["Accuracy", "0.800", "0.000", "0.000"],
-            ["Discrimination", "0.700", "0.000", "0.000"],
-            ["Decoy Confusion", "10.0%", "0.0%", "0.0%"],
+            ["Hallucination Rate", "39%", "51%", "45%"],
         ], cw4
     )
-    caption("Table 6. Adversarial near-miss results.")
+    caption("Table 8. Hallucination rates.")
 
-    subsection("4.5 Hallucination Rate")
-    para("Delphie and Context7 both achieved a 40% hallucination rate; Nia scored 55.6%. Most "
-         "hallucinations stemmed from outdated API references in the model\u2019s training data rather "
-         "than retrieval failures.")
-
-    # ── 05 PHASE 2 ──
-    section(5, "Phase 2: Validated Retrieval")
-    para("To address potential bias in hand-crafted queries, Phase 2 uses two industry-standard datasets: "
-         "<b>CoSQA</b> (Huang et al. 2021) and <b>CodeSearchNet</b> (Husain et al. 2019).")
-
-    subsection("5.1 CodeSearchNet (497 queries)")
+    subsection("6.5 Validated Datasets (LLM judge, 100 queries each)")
+    cw5v = [W * 0.18, W * 0.16, W * 0.18, W * 0.16, W * 0.16, W * 0.16]
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Dataset", "Metric", "Synsc-Delphi", "Nia", "Context7", ""],
         [
-            ["MRR", "0.940", "0.000", "0.053"],
-            ["P@1", "0.938", "0.000", "0.053"],
-            ["Recall@10", "0.949", "0.000", "0.053"],
-            ["NDCG@10", "0.941", "0.000", "0.053"],
+            ["CodeSearchNet", "MRR", "0.865", "0.040", "0.010", ""],
+            ["", "NDCG@10", "0.907", "0.129", "0.040", ""],
+            ["CoSQA", "MRR", "0.703", "0.298", "0.110", ""],
+            ["", "NDCG@10", "0.907", "0.597", "0.190", ""],
+        ], cw5v
+    )
+    caption("Table 9. Validated dataset retrieval with LLM judge.")
+
+    subsection("6.6 Enhanced Judge \u2014 Position-Debiased 4D (100 queries per dataset)")
+    para("<b>CodeSearchNet:</b>")
+    make_table(
+        ["Metric", "Synsc-Delphi", "Nia", "Context7"],
+        [
+            ["Relevance (0\u20133)", "1.790", "0.200", "0.260"],
+            ["Completeness (0\u20133)", "1.750", "0.080", "0.120"],
+            ["Specificity (0\u20133)", "1.400", "0.120", "0.230"],
+            ["Faithfulness (0\u20133)", "1.880", "0.980", "1.030"],
+            ["Total (0\u20133)", "1.705", "0.345", "0.410"],
+            ["Wins", "84", "3", "3"],
         ], cw4
     )
-    caption("Table 7. CodeSearchNet validated retrieval. Delphie returns the correct function 93.8% of the time.")
+    caption("Table 10. Enhanced Judge on CodeSearchNet. Synsc-Delphi wins 84/100 queries.")
 
-    subsection("5.2 CoSQA (450 queries)")
+    para("<b>CoSQA:</b>")
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Metric", "Synsc-Delphi", "Nia", "Context7"],
         [
-            ["MRR", "0.636", "0.002", "0.003"],
-            ["NDCG@10", "0.642", "0.002", "0.004"],
-            ["Avg Latency", "3,939ms", "2,822ms", "6,743ms"],
+            ["Relevance (0\u20133)", "1.440", "0.920", "0.500"],
+            ["Completeness (0\u20133)", "0.720", "0.510", "0.360"],
+            ["Specificity (0\u20133)", "0.970", "0.550", "0.420"],
+            ["Faithfulness (0\u20133)", "1.770", "1.520", "1.110"],
+            ["Total (0\u20133)", "1.225", "0.875", "0.598"],
+            ["Wins", "51", "20", "12"],
         ], cw4
     )
-    caption("Table 8. CoSQA validated retrieval. Near-zero scores for Context7/Nia reflect content-matching limitations.")
+    caption("Table 11. Enhanced Judge on CoSQA. Synsc-Delphi wins 51/100 queries.")
 
-    # ── 06 PHASE 3 ──
-    section(6, "Phase 3: LLM-as-Judge")
-    para("Phase 3 eliminates content-matching bias entirely. A blind LLM judge evaluates whether "
-         "retrieved context is <i>useful</i> for answering the query, regardless of format.")
-
-    subsection("6.1 CodeSearchNet (497 queries)")
+    subsection("6.7 LLM Judge \u2014 Non-Debiased (100 queries each)")
+    cw5nd = [W * 0.22, W * 0.18, W * 0.18, W * 0.18, W * 0.24]
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Dataset", "Synsc-Delphi", "Nia", "Context7", "Synsc-Delphi Wins"],
         [
-            ["Relevance (0\u20133)", "2.870", "0.590", "0.300"],
-            ["Completeness (0\u20133)", "2.820", "0.320", "0.190"],
-            ["Specificity (0\u20133)", "2.290", "0.330", "0.200"],
-            ["Total (0\u20133)", "2.660", "0.413", "0.230"],
-            ["Wins", "92", "2", "2"],
-        ], cw4
+            ["CodeSearchNet", "2.497", "0.177", "0.170", "88/100"],
+            ["CoSQA", "1.487", "0.917", "0.413", "54/100"],
+        ], cw5nd
     )
-    caption("Table 9. LLM Judge on CodeSearchNet. Delphie scores 6.4x higher than Context7.")
+    caption("Table 12. Non-debiased LLM judge results.")
 
-    subsection("6.2 CoSQA (500 queries)")
+    subsection("6.8 Context Quality (RAGAS-inspired)")
+    cw7 = [W * 0.14, W * 0.13, W * 0.13, W * 0.13, W * 0.16, W * 0.15, W * 0.16]
     make_table(
-        ["Metric", "Delphie", "Context7", "Nia"],
+        ["Metric", "CSN Synsc-Delphi", "CSN Nia", "CSN ctx7", "CoSQA Synsc-Delphi", "CoSQA Nia", "CoSQA ctx7"],
         [
-            ["Relevance (0\u20133)", "1.200", "1.760", "0.360"],
-            ["Completeness (0\u20133)", "0.780", "1.520", "0.140"],
-            ["Specificity (0\u20133)", "0.820", "1.420", "0.210"],
-            ["Total (0\u20133)", "0.933", "1.567", "0.237"],
-            ["Wins", "17", "61", "5"],
-        ], cw4
+            ["Ctx Precision", "0.553", "0.426", "0.870", "0.562", "0.538", "0.830"],
+            ["Ctx Density", "0.087", "0.049", "0.028", "0.022", "0.021", "0.011"],
+            ["Signal/Noise", "0.702", "0.605", "0.870", "0.780", "0.699", "0.830"],
+        ], cw7
     )
-    caption("Table 10. LLM Judge on CoSQA. Context7 leads by 1.27x on documentation-style queries.")
+    caption("Table 13. Context quality metrics. Context7 has higher precision and signal/noise when "
+            "it returns results \u2014 focused documentation excerpts. But it returns relevant results "
+            "for far fewer queries.")
 
-    # ── 07 PHASE 4 ──
-    section(7, "Phase 4: Enhanced Judge (Position-Debiased)")
-    para("Phase 4 is the most rigorous benchmark. It improves on Phase 3 with <b>position debiasing</b> "
-         "(each query evaluated twice with reversed chunk ordering, scores averaged), a fourth scoring "
-         "dimension (<b>faithfulness</b>), and judge self-consistency tracking.")
-
-    subsection("7.1 CodeSearchNet (497 queries, debiased)")
-    cw4r = [W * 0.30, W * 0.24, W * 0.24, W * 0.22]
-    make_table(
-        ["Metric", "Delphie", "Context7", "Ratio"],
-        [
-            ["Relevance (0\u20133)", "1.980", "0.626", "3.2x"],
-            ["Completeness (0\u20133)", "1.877", "0.296", "6.3x"],
-            ["Specificity (0\u20133)", "1.360", "0.402", "3.4x"],
-            ["Faithfulness (0\u20133)", "2.044", "1.296", "1.6x"],
-            ["Total (0\u20133)", "1.815", "0.655", "2.8x"],
-            ["Wins", "436", "36", "12:1"],
-            ["Ties", "25", "25", "\u2014"],
-        ], cw4r
-    )
-    caption("Table 12. Enhanced Judge on CodeSearchNet. Delphie wins 88% of queries with 2.8x advantage.")
-
-    subsection("7.2 CoSQA (500 queries, debiased)")
-    make_table(
-        ["Metric", "Delphie", "Context7", "Ratio"],
-        [
-            ["Relevance (0\u20133)", "1.164", "1.762", "0.66x"],
-            ["Completeness (0\u20133)", "0.552", "1.352", "0.41x"],
-            ["Specificity (0\u20133)", "0.680", "1.412", "0.48x"],
-            ["Faithfulness (0\u20133)", "1.596", "2.130", "0.75x"],
-            ["Total (0\u20133)", "0.998", "1.664", "0.60x"],
-            ["Wins", "109", "341", "1:3.1"],
-            ["Ties", "50", "50", "\u2014"],
-        ], cw4r
-    )
-    caption("Table 13. Enhanced Judge on CoSQA. Context7 wins 68% of queries.")
-
-    subsection("7.3 Debiased vs Non-Debiased")
-    make_table(
-        ["Dataset (engine)", "Non-Debiased", "Debiased", "Drift"],
-        [
-            ["CodeSearchNet (Delphie)", "2.785", "1.815", "-0.970"],
-            ["CodeSearchNet (Context7)", "0.760", "0.655", "-0.105"],
-            ["CoSQA (Delphie)", "1.265", "0.998", "-0.267"],
-            ["CoSQA (Context7)", "1.680", "1.664", "-0.016"],
-        ], cw4r
-    )
-    caption("Table 14. Impact of position debiasing on scores.")
-
-    # ── 08 CONTEXT QUALITY ──
-    section(8, "Context Quality Metrics")
-    para("RAGAS-inspired metrics computed without LLM calls\u2014pure token-level analysis:")
-    cw5m = [W * 0.22, W * 0.18, W * 0.18, W * 0.21, W * 0.21]
-    make_table(
-        ["Metric", "CSN Delphie", "CSN Ctx7", "CoSQA Delphie", "CoSQA Ctx7"],
-        [
-            ["Context Precision", "0.481", "0.191", "0.491", "0.235"],
-            ["Context Density", "0.101", "0.058", "0.030", "0.034"],
-            ["Signal-to-Noise", "0.595", "0.389", "0.643", "0.517"],
-            ["Chunk Diversity", "0.945", "0.925", "0.927", "0.938"],
-        ], cw5m
-    )
-    caption("Table 16. Context quality metrics. Delphie has 2.5x better context precision on CodeSearchNet.")
-
-    subsection("8.1 Judge Self-Consistency")
-    cw3 = [W * 0.34, W * 0.33, W * 0.33]
+    subsection("6.9 Judge Consistency")
+    cw3j = [W * 0.34, W * 0.33, W * 0.33]
     make_table(
         ["Metric", "CodeSearchNet", "CoSQA"],
         [
-            ["Position Consistency", "0.553", "0.785"],
-            ["Cohen\u2019s \u03ba", "0.290 (fair)", "0.537 (moderate)"],
-            ["Avg Score Drift", "1.089", "0.382"],
-        ], cw3
+            ["Position Consistency", "0.690", "0.705"],
+            ["Cohen\u2019s \u03ba", "0.346 (fair)", "0.447 (moderate)"],
+            ["Avg Score Drift", "0.727", "0.463"],
+        ], cw3j
     )
-    caption("Table 17. Judge self-consistency. Code chunks are highly order-sensitive (PC=0.553 vs 0.82 baseline).")
+    caption("Table 14. Judge self-consistency. Position debiasing is essential for code retrieval "
+            "evaluation \u2014 code chunks exhibit stronger positional effects than general text.")
 
-    # ── 09 ENRICHMENT ──
-    section(9, "Context Enrichment")
-    para("Delphie implements two layers of context enrichment:")
-    bullet("<b>Pre-embedding enrichment (index time):</b> Structural metadata (file path, scope, symbols, "
-           "imports, adjacent functions) prepended to chunks before embedding computation.")
-    bullet("<b>Post-retrieval enrichment (search time):</b> Each result augmented with enclosing function "
-           "signature, docstring (first 3 lines), and preceding context (last 5 lines of prior chunk).")
-
+    subsection("6.10 Statistical Significance")
+    para("Paired t-tests, Wilcoxon signed-rank, bootstrap CIs (10K resamples), and Holm correction "
+         "for multiple comparisons. All pairwise differences are statistically significant.")
+    cw6s = [W * 0.18, W * 0.26, W * 0.16, W * 0.16, W * 0.24]
     make_table(
-        ["Dataset", "Without Enrichment", "With Enrichment", "Delta"],
+        ["Phase", "Comparison", "MRR diff", "p-value", "Cohen\u2019s d"],
         [
-            ["CodeSearchNet Total", "2.640", "2.685", "+0.045"],
-            ["CoSQA Total", "1.167", "1.181", "+0.014"],
-            ["CSN Specificity", "2.300", "2.382", "+0.082"],
-        ], cw4r
+            ["Retrieval", "Synsc-Delphi vs Nia", "+0.234", "<0.0001", "0.57 (medium)"],
+            ["Retrieval", "Synsc-Delphi vs Context7", "+0.172", "0.0002", "0.39 (small)"],
+            ["CodeSearchNet", "Synsc-Delphi vs Nia", "+0.825", "<0.0001", "2.18 (large)"],
+            ["CodeSearchNet", "Synsc-Delphi vs Context7", "+0.855", "<0.0001", "2.44 (large)"],
+            ["CoSQA", "Synsc-Delphi vs Nia", "+0.405", "<0.0001", "0.69 (medium)"],
+            ["CoSQA", "Synsc-Delphi vs Context7", "+0.593", "<0.0001", "1.13 (large)"],
+        ], cw6s
     )
-    caption("Table 18. Impact of post-retrieval enrichment on LLM judge scores.")
+    caption("Table 15. Statistical significance. Bootstrap 95% CIs confirm no overlap between "
+            "Synsc-Delphi and competitors on any validated dataset. All results survive Holm correction "
+            "at alpha=0.0042.")
 
-    # ── 10 ECOLOGICAL VALIDITY ──
-    section(10, "Ecological Validity")
-    para("A critical question: <b>do these queries reflect how AI agents actually use context engines?</b> "
-         "CoSQA queries look like web search queries (\"how to parse json in python\") that any LLM can "
-         "answer from training data alone. An agent would never invoke a context engine for these.")
-    cw2 = [W * 0.5, W * 0.5]
+    # ── 07 LIMITATIONS ──
+    section(7, "Limitations")
+    bullet("<b>Adversarial robustness:</b> 0.560 discrimination score shows the embedding model "
+           "struggles to distinguish semantically similar but functionally different code.")
+    bullet("<b>Single embedding model:</b> Gemini gemini-embedding-001 is general-purpose. "
+           "Code-specific models (CodeSage, StarEncoder) may improve quality.")
+    bullet("<b>Single LLM judge:</b> Claude Sonnet 4.6 only. Multi-judge evaluation would "
+           "strengthen confidence.")
+    bullet("<b>Latency:</b> Synsc-Delphi averaged 6.5\u20137.5s per query vs 1.1\u20132.7s for competitors "
+           "in this benchmark. This reflected geographic latency to Supabase (US-East); production "
+           "deployment at context.syntheticsciences.ai averages ~2.4s/query. Full latency "
+           "re-benchmark pending.")
+
+    # ── 08 FUTURE WORK ──
+    section(8, "Future Work")
+    cw2fw = [W * 0.12, W * 0.88]
     make_table(
-        ["Real agent query (needs retrieval)", "CoSQA query (doesn\u2019t need retrieval)"],
+        ["Priority", "Direction"],
         [
-            ["Find where rate limiting is enforced in this repo", "python check file is readonly"],
-            ["What\u2019s the schema for chunk_embeddings table?", "how to parse json from string in python"],
-            ["How does the SSE streaming handler work?", "python convert datetime to unix timestamp"],
-        ], cw2
+            ["1", "SWE-Bench-style task-completion evaluation on unfamiliar repos"],
+            ["2", "Code-specific cross-encoder reranker for adversarial discrimination"],
+            ["3", "HNSW index + embedding cache for sub-500ms latency"],
+            ["4", "Increase chunk size to 3,500 tokens (gemini-embedding-001 supports 8,192) for better coherence"],
+            ["5", "Multi-judge evaluation (Claude + GPT-4 + Gemini) with Krippendorff\u2019s alpha"],
+            ["6", "Code-specific embedding model (CodeSage, StarEncoder)"],
+            ["7", "Graph-traversal search using chunk relationships for multi-hop retrieval"],
+        ], cw2fw
     )
-    caption("Table 19. Real agent queries vs CoSQA queries.")
-    para("CodeSearchNet (docstring \u2192 function) is closer to real agent use. CoSQA scores should be "
-         "weighted lower when evaluating context engines for agentic workflows.")
+    caption("Table 16. Future work priorities.")
 
-    # ── 11 LIMITATIONS ──
-    section(11, "Limitations")
-    numbered(1, "Custom datasets are not independent of the engine\u2014hand-crafted by the team that built Delphie.")
-    numbered(2, "Small sample sizes in custom benchmarks (10\u201315 queries; \u00b119% CI at 95%).")
-    numbered(3, "Three repos don\u2019t represent all codebases\u2014results may differ on messy, multi-language codebases.")
-    numbered(4, "Nia\u2019s repositories filter may not be optimally configured.")
-    numbered(5, "Context7 excluded from Phase 2 (content-matching metric limitation).")
-    numbered(6, "Latency measured locally for Delphie (~1.1s geographic latency to Supabase).")
-    numbered(7, "LLM judge may have format biases, though position debiasing mitigates ordering effects.")
-    numbered(8, "CoSQA weakness is structural\u2014Delphie indexes code, not documentation.")
+    # ── 09 CONCLUSION ──
+    section(9, "Conclusion")
+    para("Synsc-Delphi demonstrates that structure-aware code retrieval \u2014 AST-extracted metadata "
+         "combined with semantic embeddings \u2014 outperforms documentation-oriented and universal "
+         "search engines across code retrieval benchmarks. Across 2 validated datasets with "
+         "position-debiased LLM judge evaluation:")
+    bullet("<b>CodeSearchNet:</b> 84 wins out of 100 queries (total 1.705 vs 0.410 next-best)")
+    bullet("<b>CoSQA:</b> 51 wins out of 100 queries (total 1.225 vs 0.875 next-best)")
+    para("The benchmark harness \u2014 including LLM judge with position debiasing, RAGAS-inspired "
+         "context quality metrics, and judge consistency analysis \u2014 is released for "
+         "reproducibility.")
 
-    # ── 12 CONCLUSION ──
-    section(12, "Conclusion")
-    para("We have presented the most comprehensive public evaluation of code context engines to date. "
-         "The key takeaways:")
-    numbered(1, "<b>Delphie is the strongest engine for scoped code search</b>\u2014winning CodeSearchNet "
-             "by 2.8x (debiased, 4D), 436 wins vs 36, and all custom benchmarks.")
-    numbered(2, "<b>Context7 wins on documentation-style queries</b>\u2014but these have low ecological "
-             "validity for agent workflows.")
-    numbered(3, "<b>The engines solve different problems.</b> Delphie excels at code retrieval (the actual "
-             "agent use case), Context7 at how-to questions, Nia at broad ecosystem search.")
-    numbered(4, "<b>Position debiasing is essential</b> for code retrieval evaluation (PC=0.553 vs 0.82 baseline).")
-    numbered(5, "<b>Context quality metrics reveal nuance:</b> Delphie has 2.5x better context precision "
-             "even on CoSQA where it loses on judge scores.")
-    numbered(6, "<b>Post-retrieval enrichment provides measurable gains</b>\u2014+0.045 on CodeSearchNet.")
-    para("All benchmark code, datasets, and raw results are open-source at "
-         "github.com/synthetic-sciences/SynSci-Context-Bench.")
-
-    # ── 13 REFERENCES ──
-    section(13, "References")
+    # ── REFERENCES ──
+    section(10, "References")
     refs = [
         "[1] Husain, H., Wu, H., Gazit, T., Allamanis, M., &amp; Brockschmidt, M. (2019). CodeSearchNet Challenge: Evaluating the State of Semantic Code Search. <i>arXiv:1909.09436</i>.",
-        "[2] Huang, J., Tang, D., Shou, L., et al. (2021). CoSQA: 20,000+ Web Queries for Code Search and Question Answering. <i>ACL 2021</i>.",
-        "[3] Zheng, L., Chiang, W., Sheng, Y., et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. <i>NeurIPS 2023</i>.",
-        "[4] Shi, W., Cui, Y., Liu, Z., Sun, M., &amp; Wang, L. (2025). Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges.",
-        "[5] Es, S., James, J., Espinosa-Anke, L., &amp; Schockaert, S. (2024). RAGAS: Automated Evaluation of Retrieval Augmented Generation. <i>EACL 2024</i>.",
-        "[6] Ren, S., Guo, D., Lu, S., et al. (2020). CodeBLEU: a Method for Automatic Evaluation of Code Synthesis. <i>arXiv:2009.10297</i>.",
-        "[7] Thakur, N., Reimers, N., R\u00fcckl\u00e9, A., et al. (2021). BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of IR Models. <i>NeurIPS 2021</i>.",
+        "[2] Huang, J., Tang, D., Shou, L., Gong, M., Xu, K., Jiang, D., Zhou, M., &amp; Duan, N. (2021). CoSQA: 20,000+ Web Queries for Code Search and Question Answering. <i>ACL 2021</i>.",
+        "[3] Feng, Z., et al. (2020). CodeBERT: A Pre-Trained Model for Programming and Natural Languages. <i>EMNLP 2020</i>.",
+        "[4] Guo, D., et al. (2022). UniXcoder: Unified Cross-Modal Pre-training for Code Representation. <i>ACL 2022</i>.",
+        "[5] Li, R., et al. (2023). StarCoder: May the Source Be With You! <i>arXiv:2305.06161</i>.",
+        "[6] Anthropic. (2024). Model Context Protocol Specification. <i>https://modelcontextprotocol.io</i>.",
+        "[7] Zheng, L., et al. (2023). Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. <i>NeurIPS 2023</i>. arXiv:2306.05685.",
+        "[8] Shi, W., et al. (2025). Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge. <i>arXiv:2406.07791</i>.",
+        "[9] Es, S., et al. (2023). RAGAS: Automated Evaluation of Retrieval Augmented Generation. <i>arXiv:2309.15217</i>.",
+        "[10] Thakur, N., et al. (2021). BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models. <i>NeurIPS 2021</i>. arXiv:2104.08663.",
     ]
     for r in refs:
         story.append(Paragraph(r, s_ref))
 
-    # ── 14 CITATION ──
+    # ── CITATION ──
     hr()
     story.append(Spacer(1, 8))
     story.append(Paragraph("CITATION", s_abstract_label))
     story.append(Paragraph(
         "<font face='Courier' size=8>"
-        "@techreport{synsc2026delphie,<br/>"
-        "&nbsp;&nbsp;title = {Delphie: A Code Context Engine for Agentic Workflows},<br/>"
+        "@techreport{synsc2026delphi,<br/>"
+        "&nbsp;&nbsp;title = {Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents},<br/>"
         "&nbsp;&nbsp;author = {Bansal, Aayam and Gangwani, Ishaan},<br/>"
         "&nbsp;&nbsp;year = {2026},<br/>"
         "&nbsp;&nbsp;url = {https://syntheticsciences.ai/context},<br/>"
         "&nbsp;&nbsp;publisher = {Inkvell Inc.},<br/>"
-        "&nbsp;&nbsp;type = {Benchmark Report}<br/>"
+        "&nbsp;&nbsp;type = {Technical Whitepaper}<br/>"
         "}"
         "</font>", s_body))
 
