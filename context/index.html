@@ -115,7 +115,7 @@
     <div class="wp-cite-card">
       <div class="wp-cite-left">
         <span class="wp-cite-label">Cite this paper</span>
-        <span class="wp-cite-text">Bansal &amp; Gangwani, 2026. &ldquo;Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents.&rdquo;</span>
+        <span class="wp-cite-text">Synthetic Sciences Engineering Team, 2026. &ldquo;Synsc-Delphi: Structure-Aware Code Retrieval for AI Agents.&rdquo;</span>
       </div>
       <div class="wp-cite-actions">
         <button class="wp-cite-btn" onclick="copyBibtex()">
@@ -159,7 +159,7 @@
       <div class="wp-abstract" id="abstract">
         <span class="wp-abstract-label">Abstract</span>
         <p>We present <strong>Synsc-Delphi</strong>, a code retrieval engine that provides AI agents with precise, scoped context from software repositories. Synsc-Delphi indexes source code at the chunk level with AST-extracted symbol metadata, producing embeddings that capture both semantic meaning and structural context. A two-layer enrichment pipeline&mdash;pre-embedding structural prefixes and post-retrieval symbol/docstring injection&mdash;improves retrieval specificity without modifying stored content.</p>
-        <p>We evaluate Synsc-Delphi against two production context engines (Context7 and Nia) across 8 benchmark phases totaling ~3,300 evaluated data points, using 100 queries per engine per phase, LLM-as-judge scoring with Claude Sonnet 4.6, and position-debiased evaluation. On CodeSearchNet, Synsc-Delphi achieves MRR 0.865 and wins 84/100 queries on the debiased enhanced judge (total score 1.705 vs 0.410 for Context7 and 0.345 for Nia). On CoSQA, Synsc-Delphi wins 51/100 queries (total 1.225 vs 0.875 Nia and 0.598 Context7). We release the full benchmark harness for reproducibility.</p>
+        <p>We evaluate Synsc-Delphi against two production context engines (Context7 and Nia) across 8 benchmark phases totaling ~3,300 evaluated data points, using 100 queries per engine per phase, LLM-as-judge scoring with Claude Sonnet 4.6, and position-debiased evaluation. On CodeSearchNet, Synsc-Delphi achieves MRR 0.864 and wins 84/100 queries on the debiased enhanced judge (total score 1.705 vs 0.410 for Context7 and 0.345 for Nia). On CoSQA, Synsc-Delphi wins 51/100 queries (total 1.225 vs 0.875 Nia and 0.598 Context7). We release the full benchmark harness for reproducibility.</p>
         <div class="wp-keywords">
           <span class="wp-keyword">Code Retrieval</span>
           <span class="wp-keyword">AST Metadata</span>
@@ -578,9 +578,9 @@
             <tbody>
               <tr>
                 <td class="td-highlight">Discrimination</td>
-                <td class="td-winner">0.560</td>
-                <td>0.140</td>
-                <td>0.170</td>
+                <td class="td-winner">0.530</td>
+                <td>0.435</td>
+                <td>0.429</td>
               </tr>
             </tbody>
           </table>
@@ -602,14 +602,14 @@
             <tbody>
               <tr>
                 <td class="td-highlight">Hallucination Rate</td>
-                <td class="td-winner">39%</td>
-                <td>51%</td>
-                <td>45%</td>
+                <td class="td-winner">40.0%</td>
+                <td>46.8%</td>
+                <td>46.0%</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 8.</span> Hallucination rate. Synsc-Delphi achieves the lowest rate at 39%.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 8.</span> Hallucination rate. Synsc-Delphi achieves the lowest rate at 40.0%.</div>
 
         <h3>6.5 Validated Datasets (LLM judge, 100 queries each)</h3>
 
@@ -628,33 +628,33 @@
               <tr>
                 <td class="td-highlight" rowspan="2">CodeSearchNet</td>
                 <td class="td-highlight">MRR</td>
-                <td class="td-winner">0.865</td>
+                <td class="td-winner">0.864</td>
                 <td>0.040</td>
                 <td>0.010</td>
               </tr>
               <tr>
                 <td class="td-highlight">NDCG@10</td>
-                <td class="td-winner">0.907</td>
-                <td>0.129</td>
+                <td class="td-winner">0.867</td>
+                <td>0.090</td>
                 <td>0.040</td>
               </tr>
               <tr>
                 <td class="td-highlight" rowspan="2">CoSQA</td>
                 <td class="td-highlight">MRR</td>
-                <td class="td-winner">0.703</td>
+                <td class="td-winner">0.722</td>
                 <td>0.298</td>
                 <td>0.110</td>
               </tr>
               <tr>
                 <td class="td-highlight">NDCG@10</td>
-                <td class="td-winner">0.907</td>
+                <td class="td-winner">0.902</td>
                 <td>0.597</td>
                 <td>0.190</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 9.</span> Validated dataset results. Synsc-Delphi achieves MRR 0.865 on CodeSearchNet and 0.703 on CoSQA.</div>
+        <div class="wp-figure-caption" style="margin-top: 8px; margin-bottom: 24px;"><span>Table 9.</span> Validated dataset results. Synsc-Delphi achieves MRR 0.864 on CodeSearchNet and 0.722 on CoSQA.</div>
 
         <h3>6.6 Enhanced Judge &mdash; Position-Debiased 4D (100 queries per dataset)</h3>
 
@@ -897,44 +897,44 @@
               <tr>
                 <td class="td-highlight">Retrieval</td>
                 <td>Synsc-Delphi vs Nia</td>
-                <td>+0.234</td>
+                <td>+0.233</td>
                 <td>&lt;0.0001</td>
                 <td>0.57 (medium)</td>
               </tr>
               <tr>
                 <td class="td-highlight">Retrieval</td>
                 <td>Synsc-Delphi vs Context7</td>
-                <td>+0.172</td>
+                <td>+0.171</td>
                 <td>0.0002</td>
                 <td>0.39 (small)</td>
               </tr>
               <tr>
                 <td class="td-highlight">CodeSearchNet</td>
                 <td>Synsc-Delphi vs Nia</td>
-                <td>+0.825</td>
+                <td>+0.823</td>
                 <td>&lt;0.0001</td>
-                <td>2.18 (large)</td>
+                <td>2.17 (large)</td>
               </tr>
               <tr>
                 <td class="td-highlight">CodeSearchNet</td>
                 <td>Synsc-Delphi vs Context7</td>
-                <td>+0.855</td>
+                <td>+0.854</td>
                 <td>&lt;0.0001</td>
-                <td>2.44 (large)</td>
+                <td>2.43 (large)</td>
               </tr>
               <tr>
                 <td class="td-highlight">CoSQA</td>
                 <td>Synsc-Delphi vs Nia</td>
-                <td>+0.405</td>
+                <td>+0.423</td>
                 <td>&lt;0.0001</td>
-                <td>0.69 (medium)</td>
+                <td>0.72 (medium)</td>
               </tr>
               <tr>
                 <td class="td-highlight">CoSQA</td>
                 <td>Synsc-Delphi vs Context7</td>
-                <td>+0.593</td>
+                <td>+0.612</td>
                 <td>&lt;0.0001</td>
-                <td>1.13 (large)</td>
+                <td>1.18 (large)</td>
               </tr>
             </tbody>
           </table>
@@ -949,10 +949,9 @@
         <span class="wp-section-num">07</span>
         <h2>Limitations</h2>
         <ul>
-          <li><strong>Adversarial robustness.</strong> 0.560 discrimination score shows the embedding model struggles to distinguish semantically similar but functionally different code.</li>
+          <li><strong>Adversarial robustness.</strong> 0.530 discrimination score shows the embedding model struggles to distinguish semantically similar but functionally different code.</li>
           <li><strong>Single embedding model.</strong> Gemini <code>gemini-embedding-001</code> is general-purpose. Code-specific models (CodeSage, StarEncoder) may improve quality.</li>
           <li><strong>Single LLM judge.</strong> Claude Sonnet 4.6 only. Multi-judge evaluation would strengthen confidence.</li>
-          <li><strong>Latency.</strong> Synsc-Delphi averaged 6.5&ndash;7.5s per query vs 1.1&ndash;2.7s for competitors in this benchmark. This reflected geographic latency to Supabase (US-East); production deployment at <code>context.syntheticsciences.ai</code> averages ~2.4s/query. Full latency re-benchmark pending.</li>
         </ul>
       </div>
 

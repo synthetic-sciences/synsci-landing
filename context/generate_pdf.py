@@ -185,7 +185,7 @@ def build_pdf():
         "context engines (<b>Context7</b> and <b>Nia</b>) across 8 benchmark phases totaling ~3,300 "
         "evaluated data points, using 100 queries per engine per phase, LLM-as-judge scoring with "
         "Claude Sonnet 4.6, and position-debiased evaluation. On CodeSearchNet, Synsc-Delphi achieves "
-        "MRR 0.865 and wins 84/100 queries on the debiased enhanced judge (total score 1.705 vs "
+        "MRR 0.864 and wins 84/100 queries on the debiased enhanced judge (total score 1.705 vs "
         "0.410 for Context7 and 0.345 for Nia). On CoSQA, Synsc-Delphi wins 51/100 queries (total 1.225 "
         "vs 0.875 Nia and 0.598 Context7). We release the full benchmark harness for reproducibility.",
         s_abstract))
@@ -402,7 +402,7 @@ def build_pdf():
     make_table(
         ["Metric", "Synsc-Delphi", "Nia", "Context7"],
         [
-            ["Discrimination", "0.560", "0.140", "0.170"],
+            ["Discrimination", "0.530", "0.435", "0.429"],
         ], cw4
     )
     caption("Table 7. Adversarial near-miss discrimination.")
@@ -411,7 +411,7 @@ def build_pdf():
     make_table(
         ["Metric", "Synsc-Delphi", "Nia", "Context7"],
         [
-            ["Hallucination Rate", "39%", "51%", "45%"],
+            ["Hallucination Rate", "40.0%", "46.8%", "46.0%"],
         ], cw4
     )
     caption("Table 8. Hallucination rates.")
@@ -421,10 +421,10 @@ def build_pdf():
     make_table(
         ["Dataset", "Metric", "Synsc-Delphi", "Nia", "Context7", ""],
         [
-            ["CodeSearchNet", "MRR", "0.865", "0.040", "0.010", ""],
-            ["", "NDCG@10", "0.907", "0.129", "0.040", ""],
-            ["CoSQA", "MRR", "0.703", "0.298", "0.110", ""],
-            ["", "NDCG@10", "0.907", "0.597", "0.190", ""],
+            ["CodeSearchNet", "MRR", "0.864", "0.040", "0.010", ""],
+            ["", "NDCG@10", "0.867", "0.090", "0.040", ""],
+            ["CoSQA", "MRR", "0.722", "0.298", "0.110", ""],
+            ["", "NDCG@10", "0.902", "0.597", "0.190", ""],
         ], cw5v
     )
     caption("Table 9. Validated dataset retrieval with LLM judge.")
@@ -503,12 +503,12 @@ def build_pdf():
     make_table(
         ["Phase", "Comparison", "MRR diff", "p-value", "Cohen\u2019s d"],
         [
-            ["Retrieval", "Synsc-Delphi vs Nia", "+0.234", "<0.0001", "0.57 (medium)"],
-            ["Retrieval", "Synsc-Delphi vs Context7", "+0.172", "0.0002", "0.39 (small)"],
-            ["CodeSearchNet", "Synsc-Delphi vs Nia", "+0.825", "<0.0001", "2.18 (large)"],
-            ["CodeSearchNet", "Synsc-Delphi vs Context7", "+0.855", "<0.0001", "2.44 (large)"],
-            ["CoSQA", "Synsc-Delphi vs Nia", "+0.405", "<0.0001", "0.69 (medium)"],
-            ["CoSQA", "Synsc-Delphi vs Context7", "+0.593", "<0.0001", "1.13 (large)"],
+            ["Retrieval", "Synsc-Delphi vs Nia", "+0.233", "<0.0001", "0.57 (medium)"],
+            ["Retrieval", "Synsc-Delphi vs Context7", "+0.171", "0.0002", "0.39 (small)"],
+            ["CodeSearchNet", "Synsc-Delphi vs Nia", "+0.823", "<0.0001", "2.17 (large)"],
+            ["CodeSearchNet", "Synsc-Delphi vs Context7", "+0.854", "<0.0001", "2.43 (large)"],
+            ["CoSQA", "Synsc-Delphi vs Nia", "+0.423", "<0.0001", "0.72 (medium)"],
+            ["CoSQA", "Synsc-Delphi vs Context7", "+0.612", "<0.0001", "1.18 (large)"],
         ], cw6s
     )
     caption("Table 15. Statistical significance. Bootstrap 95% CIs confirm no overlap between "
@@ -517,16 +517,12 @@ def build_pdf():
 
     # ── 07 LIMITATIONS ──
     section(7, "Limitations")
-    bullet("<b>Adversarial robustness:</b> 0.560 discrimination score shows the embedding model "
+    bullet("<b>Adversarial robustness:</b> 0.530 discrimination score shows the embedding model "
            "struggles to distinguish semantically similar but functionally different code.")
     bullet("<b>Single embedding model:</b> Gemini gemini-embedding-001 is general-purpose. "
            "Code-specific models (CodeSage, StarEncoder) may improve quality.")
     bullet("<b>Single LLM judge:</b> Claude Sonnet 4.6 only. Multi-judge evaluation would "
            "strengthen confidence.")
-    bullet("<b>Latency:</b> Synsc-Delphi averaged 6.5\u20137.5s per query vs 1.1\u20132.7s for competitors "
-           "in this benchmark. This reflected geographic latency to Supabase (US-East); production "
-           "deployment at context.syntheticsciences.ai averages ~2.4s/query. Full latency "
-           "re-benchmark pending.")
 
     # ── 08 FUTURE WORK ──
     section(8, "Future Work")

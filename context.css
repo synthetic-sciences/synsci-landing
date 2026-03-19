@@ -266,6 +266,7 @@
 
 .wp-section ol {
   counter-reset: wp-ol;
+  list-style: none;
 }
 
 .wp-section ul li, .wp-section ol li {
